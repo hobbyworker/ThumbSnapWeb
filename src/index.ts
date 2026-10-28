@@ -2,7 +2,7 @@
 export { ThumbSnapElement, defineThumbSnap } from './ui/element';
 export type { ThumbSnapAction, ThumbSnapEventDetail, ThumbSnapOptions } from './ui/element';
 export type { ThemeSetting } from './ui/page-sync';
-// For subclasses (e.g. a branded footer via renderFooter()) so they share this build's copy of Lit.
+// For subclasses that lay out renderTop() and renderBottom() themselves, so they share this build's copy of Lit.
 export { css, html, nothing, svg } from 'lit';
 export type { CSSResultGroup, TemplateResult } from 'lit';
 

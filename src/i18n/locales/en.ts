@@ -84,9 +84,6 @@ const en = {
 
   embedUrl: 'Image URL',
   copy: 'Copy',
-
-  disclaimer:
-    'Thumbnails belong to their creators. Respect copyright when you reuse them. Not affiliated with YouTube or Google.',
 };
 
 export default en;

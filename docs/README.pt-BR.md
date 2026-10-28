@@ -110,8 +110,25 @@ A compilação e os testes foram verificados no Node.js 24.
   `{ action, videoId?, variant?, format?, count? }`, e `action` é `resolve`, `download`, `download-zip`, `copy-image`,
   `copy-text`, `share` ou `error`.
 - `load(text)` carrega links como se tivessem sido digitados; `clear()` limpa a ferramenta.
-- O conteúdo com `slot="footer"` aparece abaixo da ferramenta. Como alternativa, uma subclasse pode sobrescrever
-  `renderFooter()`: importe `src/index.ts`, que não registra nada, e registre o elemento com `defineThumbSnap()`.
+
+Uma subclasse pode montar o layout da ferramenta por conta própria. `render()` é feito de duas partes —
+`renderTop()` (o campo do link e suas opções) e `renderBottom()` (os vídeos recentes, os resultados, a
+notificação e o visualizador de imagens) — e cada parte traz o próprio espaçamento, então elas podem ser
+remontadas com o que você quiser antes, entre ou depois delas:
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` não registra nada, então a subclasse pode usar o nome `thumb-snap`. Um slot vazio não ocupa
+espaço, e o que você colocar nele fica com o mesmo espaçamento do resto da ferramenta.
 
 Os blocos de construção — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `fetchOEmbed`, `transformImage`,
 `findContentRect`, `extractPalette`, `createZip` e outros — também são exportados, para uso sem a interface.

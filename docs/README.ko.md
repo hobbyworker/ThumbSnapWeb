@@ -103,8 +103,23 @@ Node.js 24 에서 빌드와 테스트를 확인했습니다.
 - 동작마다 버블링 · composed `thumbsnap` 이벤트가 나갑니다. `detail` 은 `{ action, videoId?, variant?, format?, count? }` 이고,
   `action` 은 `resolve` · `download` · `download-zip` · `copy-image` · `copy-text` · `share` · `error` 가운데 하나입니다.
 - `load(text)` 는 입력한 것처럼 링크를 불러오고, `clear()` 는 도구를 비웁니다.
-- `slot="footer"` 를 단 내용이 도구 아래에 나옵니다. 하위 클래스에서 `renderFooter()` 를 바꿀 수도 있습니다. 이때는
-  아무것도 등록하지 않는 `src/index.ts` 를 가져와 `defineThumbSnap()` 으로 직접 등록합니다.
+
+하위 클래스가 도구의 배치를 직접 정할 수 있습니다. `render()` 는 두 부품 — `renderTop()`(링크 입력란과 옵션), `renderBottom()`(최근 항목 · 결과 · 알림
+· 이미지 뷰어) — 으로 되어 있고, 부품마다 자기 간격을 가지고 있어 앞뒤나 사이에 무엇을 넣어 다시 이어 붙여도 됩니다.
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` 는 아무것도 등록하지 않으므로 하위 클래스가 `thumb-snap` 이름을 쓸 수 있습니다. 빈 slot 은 자리를 차지하지 않고, 그 안에 넣은 것은 도구의 다른 부분과
+같은 간격으로 놓입니다.
 
 `parseTarget` · `extractTargets` · `imageUrl` · `loadImage` · `fetchOEmbed` · `transformImage` · `findContentRect` ·
 `extractPalette` · `createZip` 같은 부품도 화면 없이 쓸 수 있게 내보냅니다.

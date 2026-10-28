@@ -23,7 +23,9 @@ export const styles = css`
     --ts-warn-text: #7a4200;
     --ts-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 6px 20px rgb(0 0 0 / 4%);
 
-    display: block;
+    /* The host spaces the blocks of every part, so a subclass can rearrange the parts and keep the layout. */
+    display: grid;
+    gap: 1rem;
     container-type: inline-size;
     color: var(--ts-text);
     font-family: var(--thumbsnap-font, inherit);
@@ -80,9 +82,9 @@ export const styles = css`
     font-size: 0.9em;
   }
 
-  .ts {
-    display: grid;
-    gap: 1rem;
+  /* A part (renderTop, renderBottom) adds no box: its blocks sit straight in the host's grid. */
+  .part {
+    display: contents;
   }
 
   .panel {
@@ -731,13 +733,6 @@ export const styles = css`
     to {
       transform: rotate(360deg);
     }
-  }
-
-  .disclaimer {
-    margin: 0;
-    color: var(--ts-muted);
-    font-size: 0.78em;
-    text-align: center;
   }
 
   .toast {

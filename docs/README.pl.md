@@ -112,9 +112,24 @@ Rozpowszechniaj go razem z `THIRD_PARTY_LICENSES.txt`.
   `{ action, videoId?, variant?, format?, count? }`, a `action` to `resolve`, `download`, `download-zip`,
   `copy-image`, `copy-text`, `share` lub `error`.
 - `load(text)` wczytuje linki tak, jakby zostały wpisane; `clear()` czyści narzędzie.
-- Zawartość z atrybutem `slot="footer"` wyświetla się pod narzędziem. Zamiast tego podklasa może nadpisać
-  `renderFooter()`: zaimportuj `src/index.ts`, który niczego nie rejestruje, i zarejestruj element za pomocą
-  `defineThumbSnap()`.
+
+Podklasa może sama ułożyć narzędzie. `render()` składa się z dwóch części — `renderTop()` (pole linku i jego
+opcje) oraz `renderBottom()` (ostatnie filmy, wyniki, powiadomienie i przeglądarka obrazów) — a każda część ma
+własne odstępy, więc można je złożyć z powrotem z czymkolwiek przed nimi, pomiędzy lub po nich:
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` niczego nie rejestruje, więc podklasa może przejąć nazwę `thumb-snap`. Pusty slot nie zajmuje
+miejsca, a to, co się w nim umieści, ma takie same odstępy jak reszta narzędzia.
 
 Eksportowane są też elementy składowe — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `fetchOEmbed`,
 `transformImage`, `findContentRect`, `extractPalette`, `createZip` i inne — do użycia bez interfejsu.

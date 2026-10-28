@@ -87,9 +87,6 @@ const vi: Messages = {
 
   embedUrl: 'URL ảnh',
   copy: 'Sao chép',
-
-  disclaimer:
-    'Hình thu nhỏ thuộc về người sáng tạo. Hãy tôn trọng bản quyền khi sử dụng lại. Không liên kết với YouTube hay Google.',
 };
 
 export default vi;

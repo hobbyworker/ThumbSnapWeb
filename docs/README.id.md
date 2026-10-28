@@ -110,8 +110,25 @@ Sertakan `THIRD_PARTY_LICENSES.txt` bersamanya.
   `{ action, videoId?, variant?, format?, count? }`, dan `action` bernilai `resolve`, `download`, `download-zip`,
   `copy-image`, `copy-text`, `share`, atau `error`.
 - `load(text)` memuat link seolah-olah diketik langsung; `clear()` mengosongkan alat.
-- Konten dengan `slot="footer"` tampil di bawah alat. Sebagai alternatif, subkelas bisa menimpa `renderFooter()`:
-  impor `src/index.ts`, yang tidak mendaftarkan apa pun, lalu daftarkan elemennya dengan `defineThumbSnap()`.
+
+Subkelas bisa menata alat ini sendiri. `render()` terdiri dari dua bagian — `renderTop()` (kolom link dan
+opsinya) dan `renderBottom()` (video terbaru, hasil, notifikasi, dan penampil gambar) — dan setiap bagian
+membawa jaraknya sendiri, jadi keduanya bisa disusun ulang dengan apa saja di depan, di antara, atau di
+belakangnya:
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` tidak mendaftarkan apa pun, jadi subkelas bisa memakai nama `thumb-snap`. Slot yang kosong
+tidak memakan tempat, dan apa pun yang dimasukkan ke dalamnya diberi jarak yang sama dengan bagian lain.
 
 Blok penyusunnya — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `fetchOEmbed`, `transformImage`,
 `findContentRect`, `extractPalette`, `createZip`, dan lainnya — juga diekspor agar bisa dipakai tanpa antarmuka.

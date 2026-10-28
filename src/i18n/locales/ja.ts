@@ -85,9 +85,6 @@ const ja: Messages = {
 
   embedUrl: '画像 URL',
   copy: 'コピー',
-
-  disclaimer:
-    'サムネイルの権利は制作者に帰属します。再利用する際は著作権を尊重してください。YouTube および Google とは関係ありません。',
 };
 
 export default ja;

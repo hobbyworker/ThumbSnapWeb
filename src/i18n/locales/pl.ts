@@ -86,9 +86,6 @@ const pl: Messages = {
 
   embedUrl: 'URL obrazu',
   copy: 'Kopiuj',
-
-  disclaimer:
-    'Miniatury należą do ich twórców. Szanuj prawa autorskie przy ponownym użyciu. Brak powiązań z YouTube i Google.',
 };
 
 export default pl;

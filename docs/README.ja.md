@@ -85,7 +85,21 @@ Node.js 24でビルドとテストを確認しています。
 - CSSカスタムプロパティ：`--thumbsnap-accent`・`--thumbsnap-accent-hover`・`--thumbsnap-radius`・`--thumbsnap-font`。
 - どの操作でも、バブリングするcomposedな`thumbsnap`イベントが発生します。`detail`は`{ action, videoId?, variant?, format?, count? }`で、`action`は`resolve`・`download`・`download-zip`・`copy-image`・`copy-text`・`share`・`error`のいずれかです。
 - `load(text)`は、入力したときと同じようにリンクを読み込みます。`clear()`はツールを空にします。
-- `slot="footer"`を付けたコンテンツはツールの下に表示されます。代わりにサブクラスで`renderFooter()`をオーバーライドすることもできます。その場合は、何も登録しない`src/index.ts`をインポートし、`defineThumbSnap()`で要素を登録します。
+
+サブクラスはツールのレイアウトを自分で組み立てられます。`render()`は`renderTop()`（リンクの入力欄とオプション）と`renderBottom()`（最近の項目・結果・トースト・画像ビューア）の2つの部品でできており、部品ごとに自分の間隔を持っているので、前後や間に何かを挟んで組み直せます。
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts`は何も登録しないので、サブクラスが`thumb-snap`という名前を使えます。空のslotは場所を取らず、そこに入れたものはツールのほかの部分と同じ間隔で並びます。
 
 `parseTarget`・`extractTargets`・`imageUrl`・`loadImage`・`fetchOEmbed`・`transformImage`・`findContentRect`・`extractPalette`・`createZip`などの構成部品もエクスポートしているので、UIを使わずに利用することもできます。
 

@@ -87,9 +87,6 @@ const it: Messages = {
 
   embedUrl: 'URL immagine',
   copy: 'Copia',
-
-  disclaimer:
-    "Le miniature appartengono ai loro creatori. Rispetta il diritto d'autore quando le riutilizzi. Non affiliato a YouTube o Google.",
 };
 
 export default it;

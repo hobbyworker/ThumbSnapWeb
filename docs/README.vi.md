@@ -107,8 +107,24 @@ npm run build   # dist/thumbsnap.js, source map của nó và THIRD_PARTY_LICENS
   `{ action, videoId?, variant?, format?, count? }`, và `action` là `resolve`, `download`, `download-zip`, `copy-image`,
   `copy-text`, `share` hoặc `error`.
 - `load(text)` tải liên kết như thể chúng được gõ vào; `clear()` làm trống công cụ.
-- Nội dung có `slot="footer"` hiển thị bên dưới công cụ. Thay vào đó, lớp con có thể ghi đè `renderFooter()`: import
-  `src/index.ts` — tệp này không đăng ký gì — rồi đăng ký phần tử bằng `defineThumbSnap()`.
+
+Lớp con có thể tự sắp xếp bố cục của công cụ. `render()` gồm hai phần — `renderTop()` (ô nhập liên kết và các
+tùy chọn) và `renderBottom()` (video gần đây, kết quả, thông báo và trình xem ảnh) — và mỗi phần mang theo
+khoảng cách của riêng nó, nên có thể ghép lại, chèn thứ gì vào trước, giữa hay sau chúng cũng được:
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` không đăng ký gì, nên lớp con có thể dùng tên `thumb-snap`. Slot trống không chiếm chỗ, và thứ
+đặt vào đó được giãn cách giống phần còn lại của công cụ.
 
 Các thành phần cơ bản — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `fetchOEmbed`, `transformImage`,
 `findContentRect`, `extractPalette`, `createZip` và nhiều hàm khác — cũng được export để dùng mà không cần giao diện.

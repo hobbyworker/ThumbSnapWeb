@@ -88,9 +88,6 @@ const fr: Messages = {
 
   embedUrl: "URL de l'image",
   copy: 'Copier',
-
-  disclaimer:
-    "Les miniatures appartiennent à leurs créateurs. Respectez le droit d'auteur en les réutilisant. Sans lien avec YouTube ni Google.",
 };
 
 export default fr;

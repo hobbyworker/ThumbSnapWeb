@@ -98,7 +98,7 @@ function canShareFiles(): boolean {
  * `<thumb-snap>`: paste YouTube links, get every thumbnail and frame YouTube serves for them.
  *
  * Attributes: `locale`, `theme` (auto | light | dark), `value`, `no-url-sync`, `no-history`, `max-videos`.
- * Slot: `footer`. Event: `thumbsnap` (see ThumbSnapEventDetail).
+ * Event: `thumbsnap` (see ThumbSnapEventDetail). Parts: renderTop() and renderBottom(), for subclasses.
  */
 export class ThumbSnapElement extends LitElement {
   /** Typed as a group so subclasses can extend it: `static styles = [ThumbSnapElement.styles, css`…`]`. */
@@ -158,6 +158,9 @@ export class ThumbSnapElement extends LitElement {
     this._history = [];
     this._notice = '';
     this._zipping = new Set();
+    // On the host, not a wrapper, so a subclass that lays the parts out itself keeps drag and drop.
+    this.addEventListener('dragover', this.#onDragOver);
+    this.addEventListener('drop', this.#onDrop);
   }
 
   /** Resolved UI language. */
@@ -215,12 +218,26 @@ export class ThumbSnapElement extends LitElement {
     }
   }
 
-  /** Hook for branded builds: content placed below the tool. Defaults to the `footer` slot. */
-  protected renderFooter(): TemplateResult | typeof nothing {
-    return html`<slot name="footer"></slot>`;
+  /**
+   * The tool in two parts, so a subclass can lay it out itself and put anything around or between them, e.g.
+   * html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`.
+   * The host is the grid that spaces every block, and a part adds no box of its own, so any arrangement keeps
+   * the same spacing and an empty slot takes no room.
+   */
+  override render(): TemplateResult {
+    return html`${this.renderTop()}${this.renderBottom()}`;
   }
 
-  override render(): TemplateResult {
+  /** The link field with its buttons and options, and the notice under it. */
+  protected renderTop(): TemplateResult {
+    const t = this.messages;
+    return html`<div class="part" lang=${this.#page.locale}>
+      ${this.#renderForm(t)} ${this._notice ? html`<p class="msg warn" role="alert">${this._notice}</p>` : nothing}
+    </div>`;
+  }
+
+  /** Recent videos and the results, with the toast and the image viewer. */
+  protected renderBottom(): TemplateResult {
     const t = this.messages;
     const multi = this._entries.length > 1;
     const ctx: RenderContext = {
@@ -238,8 +255,7 @@ export class ThumbSnapElement extends LitElement {
       remove: (entry) => this.#remove(entry),
       toggle: (entry) => this.#toggle(entry),
     };
-    return html`<div class="ts" lang=${this.#page.locale} @dragover=${this.#onDragOver} @drop=${this.#onDrop}>
-      ${this.#renderForm(t)} ${this._notice ? html`<p class="msg warn" role="alert">${this._notice}</p>` : nothing}
+    return html`<div class="part" lang=${this.#page.locale}>
       ${this.#renderHistory(t)}
       ${multi
         ? html`<div class="batch">
@@ -252,8 +268,6 @@ export class ThumbSnapElement extends LitElement {
       ${this._entries.length
         ? html`<div class="results">${repeat(this._entries, (e) => e.key, (e) => renderEntry(e, ctx))}</div>`
         : nothing}
-      ${this.renderFooter()}
-      <p class="disclaimer">${t.disclaimer}</p>
       ${this.#renderToast(t)} ${this.#renderViewer(t)}
     </div>`;
   }

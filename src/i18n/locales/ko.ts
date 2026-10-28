@@ -85,9 +85,6 @@ const ko: Messages = {
 
   embedUrl: '이미지 URL',
   copy: '복사',
-
-  disclaimer:
-    '썸네일의 저작권은 제작자에게 있습니다. 재사용할 때는 저작권을 존중해 주세요. YouTube 및 Google과 관련이 없습니다.',
 };
 
 export default ko;

@@ -112,8 +112,24 @@ loads. Ship `THIRD_PARTY_LICENSES.txt` with it.
   `{ action, videoId?, variant?, format?, count? }`, and `action` is `resolve`, `download`,
   `download-zip`, `copy-image`, `copy-text`, `share` or `error`.
 - `load(text)` loads links as if they had been typed in; `clear()` empties the tool.
-- Content with `slot="footer"` shows under the tool. A subclass can override `renderFooter()` instead:
-  import `src/index.ts`, which registers nothing, and register the element with `defineThumbSnap()`.
+
+A subclass can lay the tool out itself. `render()` is made of two parts — `renderTop()` (the link field and
+its options) and `renderBottom()` (recent videos, the results, the toast and the image viewer) — and each part
+brings its own spacing, so they can be put back together with anything before, between or after them:
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` registers nothing, so the subclass can take the `thumb-snap` name. An empty slot takes no room,
+and whatever goes in it is spaced like the rest of the tool.
 
 The building blocks — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `fetchOEmbed`,
 `transformImage`, `findContentRect`, `extractPalette`, `createZip` and more — are exported too, for use

@@ -85,9 +85,6 @@ const id: Messages = {
 
   embedUrl: 'URL gambar',
   copy: 'Salin',
-
-  disclaimer:
-    'Thumbnail adalah milik kreatornya. Hormati hak cipta saat menggunakannya kembali. Tidak berafiliasi dengan YouTube atau Google.',
 };
 
 export default id;

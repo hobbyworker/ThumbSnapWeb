@@ -84,8 +84,6 @@ const zhHans: Messages = {
 
   embedUrl: '图片网址',
   copy: '复制',
-
-  disclaimer: '缩略图版权归其创作者所有，转用时请尊重版权。本工具与 YouTube 及 Google 无关。',
 };
 
 export default zhHans;

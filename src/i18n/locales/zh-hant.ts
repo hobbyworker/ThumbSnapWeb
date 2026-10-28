@@ -84,8 +84,6 @@ const zhHant: Messages = {
 
   embedUrl: '圖片網址',
   copy: '複製',
-
-  disclaimer: '縮圖的版權屬於其創作者，再利用時請尊重著作權。本工具與 YouTube 及 Google 無關。',
 };
 
 export default zhHant;

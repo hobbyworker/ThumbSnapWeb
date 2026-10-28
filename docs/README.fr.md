@@ -114,9 +114,25 @@ Distribuez-le avec `THIRD_PARTY_LICENSES.txt`.
   `{ action, videoId?, variant?, format?, count? }`, et `action` vaut `resolve`, `download`, `download-zip`,
   `copy-image`, `copy-text`, `share` ou `error`.
 - `load(text)` charge des liens comme s’ils avaient été saisis ; `clear()` vide l’outil.
-- Le contenu avec `slot="footer"` s’affiche sous l’outil. Une sous-classe peut à la place redéfinir
-  `renderFooter()` : importez `src/index.ts`, qui n’enregistre rien, et enregistrez l’élément avec
-  `defineThumbSnap()`.
+
+Une sous-classe peut agencer l’outil elle-même. `render()` se compose de deux parties — `renderTop()` (le
+champ du lien et ses options) et `renderBottom()` (les vidéos récentes, les résultats, la notification et la
+visionneuse d’images) — et chaque partie apporte son propre espacement, si bien qu’on peut les réassembler
+avec ce qu’on veut avant, entre ou après elles :
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` n’enregistre rien, la sous-classe peut donc prendre le nom `thumb-snap`. Un slot vide ne prend
+aucune place, et ce qu’on y met est espacé comme le reste de l’outil.
 
 Les briques de base – `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `fetchOEmbed`, `transformImage`,
 `findContentRect`, `extractPalette`, `createZip` et d’autres – sont aussi exportées, pour un usage sans

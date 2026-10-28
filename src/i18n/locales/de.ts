@@ -87,9 +87,6 @@ const de: Messages = {
 
   embedUrl: 'Bild-URL',
   copy: 'Kopieren',
-
-  disclaimer:
-    'Thumbnails gehören ihren Urhebern. Achte bei der Weiterverwendung auf das Urheberrecht. Nicht mit YouTube oder Google verbunden.',
 };
 
 export default de;

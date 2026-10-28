@@ -85,7 +85,21 @@ npm run build   # dist/thumbsnap.js、其 source map 和 THIRD_PARTY_LICENSES.tx
 - CSS 自訂屬性：`--thumbsnap-accent`、`--thumbsnap-accent-hover`、`--thumbsnap-radius`、`--thumbsnap-font`。
 - 每個操作都會觸發一個可冒泡、composed 的 `thumbsnap` 事件。其 `detail` 為 `{ action, videoId?, variant?, format?, count? }`，`action` 為 `resolve`、`download`、`download-zip`、`copy-image`、`copy-text`、`share` 或 `error`。
 - `load(text)` 會像手動輸入一樣載入連結；`clear()` 會清空工具。
-- 帶有 `slot="footer"` 的內容會顯示在工具下方。也可以改為在子類別中覆寫 `renderFooter()`：匯入不會註冊任何元素的 `src/index.ts`，再用 `defineThumbSnap()` 註冊元素。
+
+子類別可以自行安排工具的版面。`render()` 由兩個部件組成：`renderTop()`（連結輸入框及其選項）和 `renderBottom()`（最近項目、結果、通知和圖片檢視器）。每個部件都自帶間距，因此可以在前後或中間插入任何內容後重新組合：
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` 不會註冊任何元素，因此子類別可以使用 `thumb-snap` 這個名稱。空的 slot 不佔空間，放入其中的內容與工具其他部分的間距相同。
 
 `parseTarget`、`extractTargets`、`imageUrl`、`loadImage`、`fetchOEmbed`、`transformImage`、`findContentRect`、`extractPalette`、`createZip` 等底層函式也一併匯出，可以脫離介面單獨使用。
 

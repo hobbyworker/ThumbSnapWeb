@@ -114,9 +114,25 @@ Liefere `THIRD_PARTY_LICENSES.txt` mit.
   `{ action, videoId?, variant?, format?, count? }`, und `action` ist `resolve`, `download`,
   `download-zip`, `copy-image`, `copy-text`, `share` oder `error`.
 - `load(text)` lädt Links, als wären sie eingetippt worden; `clear()` leert das Tool.
-- Inhalt mit `slot="footer"` erscheint unter dem Tool. Alternativ kann eine Unterklasse `renderFooter()`
-  überschreiben: Importiere dazu `src/index.ts`, das nichts registriert, und registriere das Element mit
-  `defineThumbSnap()`.
+
+Eine Unterklasse kann das Tool selbst anordnen. `render()` besteht aus zwei Teilen – `renderTop()` (das
+Linkfeld mit seinen Optionen) und `renderBottom()` (die zuletzt angesehenen Videos, die Ergebnisse, die
+Benachrichtigung und die Bildansicht) –, und jeder Teil bringt seine eigenen Abstände mit. So lassen sie sich
+neu zusammensetzen, mit beliebigem Inhalt davor, dazwischen oder danach:
+
+```js
+import { ThumbSnapElement, defineThumbSnap, html } from './src/index.ts';
+
+class MyThumbSnap extends ThumbSnapElement {
+  render() {
+    return html`${this.renderTop()}<slot name="between"></slot>${this.renderBottom()}`;
+  }
+}
+defineThumbSnap('thumb-snap', MyThumbSnap);
+```
+
+`src/index.ts` registriert nichts, daher kann die Unterklasse den Namen `thumb-snap` übernehmen. Ein leerer
+Slot nimmt keinen Platz ein, und was darin steht, bekommt dieselben Abstände wie der Rest des Tools.
 
 Auch die Bausteine – `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `fetchOEmbed`, `transformImage`,
 `findContentRect`, `extractPalette`, `createZip` und weitere – werden exportiert und lassen sich ohne die
