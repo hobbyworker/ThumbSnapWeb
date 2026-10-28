@@ -1,0 +1,91 @@
+/** Source catalog. Every other locale must define exactly these keys (checked by the type system and tests). */
+const en = {
+  inputLabel: 'YouTube link or video ID',
+  inputPlaceholder: 'Paste a YouTube link: video, Shorts, live or playlist',
+  inputHint: 'Add several links at once, one per line.',
+  paste: 'Paste',
+  submit: 'Get thumbnails',
+  clearInput: 'Clear input',
+  recent: 'Recent',
+  clearRecent: 'Clear history',
+  noTargets: 'No YouTube link or video ID found. Check the address and try again.',
+  tooMany: 'Only the first {max} videos are shown.',
+  pasteBlocked: 'The browser blocked clipboard access. Paste with Ctrl+V or ⌘V instead.',
+
+  optFormat: 'Format',
+  formatOriginal: 'Original (JPG)',
+  optCrop: 'Remove black bars',
+  optCropHint: 'Crops letterbox bars from 4:3 images when you download or copy them.',
+  optFilename: 'File name',
+  filenameId: 'Video ID',
+  filenameTitle: 'Title + video ID',
+  formatFallback: "This browser can't create {format} files, so PNG was used instead.",
+
+  loading: 'Loading…',
+  unavailable: 'Not available',
+  metaUnavailable: 'Video details are unavailable (private, removed or restricted), but thumbnails may still exist.',
+  notFound: 'No thumbnails found. The video may be private or removed, or the ID may be wrong.',
+  networkError: 'Network error. Check your connection and try again.',
+  retry: 'Retry',
+  playlistCover: 'Playlist “{title}”: showing its cover video.',
+  playlistUnavailable: "This playlist can't be read. It may be private or a personal list such as Watch Later.",
+
+  sectionThumbnails: 'Thumbnails',
+  sectionThumbnailsHint: 'The video thumbnail in every size YouTube serves.',
+  sectionOriginal: 'Original-ratio frames',
+  sectionOriginalHint:
+    "Frames YouTube captured in the video's original aspect ratio, without black bars: vertical for Shorts, up to 1080p.",
+  sectionFrames: 'Auto-generated frames',
+  sectionFramesHint: 'The three frames YouTube picks automatically from the start, middle and end of the video.',
+  sectionWebp: 'WebP versions',
+  sectionWebpHint:
+    'Lighter WebP files from YouTube. Open one to save it, or set the format to WebP to convert any image.',
+  sectionEmbed: 'Embed code',
+  sectionEmbedHint: 'A clickable thumbnail for blogs, READMEs and forums.',
+
+  colors: 'Colors',
+  copyColor: 'Copy {color}',
+
+  sizeMaxres: 'Max resolution',
+  size720: 'HD 720p',
+  sizeSd: 'Standard',
+  sizeHq: 'High',
+  sizeMq: 'Medium',
+  sizeDefault: 'Small',
+  frameN: 'Frame {n}',
+  firstFrame: 'First frame',
+  imageSize: 'Size',
+
+  best: 'Best',
+  downloadBest: 'Download best',
+  downloadZip: 'Download all (ZIP)',
+  downloadEverything: 'Download every video (ZIP)',
+  zipping: 'Preparing ZIP…',
+  download: 'Download',
+  copyImage: 'Copy image',
+  copyImageUrl: 'Copy image URL',
+  copyVideoLink: 'Copy video link',
+  openImage: 'Open image',
+  openVideo: 'Watch on YouTube',
+  share: 'Share',
+  remove: 'Remove',
+  showImages: 'Show images',
+  hideImages: 'Hide images',
+  copied: 'Copied',
+  copyFailed: "Couldn't copy. Your browser may not allow it here.",
+  downloadFailed: 'Download failed. Please try again.',
+  close: 'Close',
+  videoCount: 'Videos: {n}',
+
+  badgeShorts: 'Vertical (Shorts)',
+  badgeCustom: 'Custom thumbnail',
+  badgeAuto: 'Auto frame {n} is the thumbnail',
+
+  embedUrl: 'Image URL',
+  copy: 'Copy',
+
+  disclaimer:
+    'Thumbnails belong to their creators. Respect copyright when you reuse them. Not affiliated with YouTube or Google.',
+};
+
+export default en;

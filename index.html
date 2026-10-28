@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ThumbSnapWeb demo</title>
+    <script>
+      // Same convention as many static-site themes: data-theme on <html>, choice kept in localStorage.
+      (() => {
+        let stored = null;
+        try {
+          stored = localStorage.getItem('demo-theme');
+        } catch {}
+        if (stored === 'light' || stored === 'dark') document.documentElement.dataset.theme = stored;
+      })();
+    </script>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fff;
+        --fg: #161209;
+        --muted: #6b6f76;
+        --line: #e5e7eb;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          --bg: #252627;
+          --fg: #c9cacc;
+          --muted: #9a9ea6;
+          --line: #3a3c40;
+        }
+      }
+      :root[data-theme='dark'] {
+        --bg: #252627;
+        --fg: #c9cacc;
+        --muted: #9a9ea6;
+        --line: #3a3c40;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family:
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          'Noto Sans',
+          'Apple SD Gothic Neo',
+          'Noto Sans KR',
+          sans-serif;
+      }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.75rem 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      header strong {
+        font-size: 1.1rem;
+      }
+      header label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      main {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 1.5rem 16px 3rem;
+      }
+      details {
+        margin-top: 2rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      pre {
+        max-height: 14rem;
+        overflow: auto;
+        white-space: pre-wrap;
+      }
+    </style>
+    <script type="module" src="/src/auto.ts"></script>
+  </head>
+  <body>
+    <header>
+      <strong>ThumbSnapWeb</strong>
+      <span>
+        <label>
+          Language
+          <select id="lang">
+            <option value="en">English</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="zh-hans">简体中文</option>
+            <option value="zh-hant">繁體中文</option>
+            <option value="id">Bahasa Indonesia</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="pt">Português</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pl">Polski</option>
+          </select>
+        </label>
+        <label>
+          Theme
+          <select id="theme">
+            <option value="auto">Auto</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
+      </span>
+    </header>
+    <main>
+      <thumb-snap></thumb-snap>
+      <details>
+        <summary>thumbsnap events</summary>
+        <pre id="log"></pre>
+      </details>
+    </main>
+    <script type="module">
+      const root = document.documentElement;
+      const lang = document.getElementById('lang');
+      const theme = document.getElementById('theme');
+      const params = new URLSearchParams(location.search);
+      const initialLang = params.get('lang');
+      if (initialLang) root.lang = initialLang;
+      lang.value = root.lang;
+      theme.value = root.dataset.theme ?? 'auto';
+      lang.addEventListener('change', () => (root.lang = lang.value));
+      theme.addEventListener('change', () => {
+        if (theme.value === 'auto') delete root.dataset.theme;
+        else root.dataset.theme = theme.value;
+        try {
+          localStorage.setItem('demo-theme', theme.value);
+        } catch {}
+      });
+      const log = document.getElementById('log');
+      document.addEventListener('thumbsnap', (e) => {
+        log.textContent = `${new Date().toLocaleTimeString()} ${JSON.stringify(e.detail)}\n` + log.textContent;
+      });
+    </script>
+  </body>
+</html>

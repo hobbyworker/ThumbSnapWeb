@@ -1,0 +1,93 @@
+import type { Messages } from '../types';
+
+const es: Messages = {
+  inputLabel: 'Enlace de YouTube o ID del vídeo',
+  inputPlaceholder: 'Pega un enlace de YouTube: vídeo, Shorts, directo o lista',
+  inputHint: 'Puedes añadir varios enlaces a la vez, uno por línea.',
+  paste: 'Pegar',
+  submit: 'Obtener miniaturas',
+  clearInput: 'Borrar entrada',
+  recent: 'Recientes',
+  clearRecent: 'Borrar historial',
+  noTargets: 'No se encontró ningún enlace de YouTube ni ID de vídeo. Revisa la dirección e inténtalo de nuevo.',
+  tooMany: 'Solo se muestran los primeros {max} vídeos.',
+  pasteBlocked: 'El navegador bloqueó el acceso al portapapeles. Pega con Ctrl+V o ⌘V.',
+
+  optFormat: 'Formato',
+  formatOriginal: 'Original (JPG)',
+  optCrop: 'Quitar bandas negras',
+  optCropHint: 'Recorta las bandas negras de las imágenes 4:3 al descargarlas o copiarlas.',
+  optFilename: 'Nombre del archivo',
+  filenameId: 'ID del vídeo',
+  filenameTitle: 'Título + ID del vídeo',
+  formatFallback: 'Este navegador no puede crear archivos {format}, así que se usó PNG.',
+
+  loading: 'Cargando…',
+  unavailable: 'No disponible',
+  metaUnavailable:
+    'Los datos del vídeo no están disponibles (privado, eliminado o restringido), pero puede que las miniaturas sigan existiendo.',
+  notFound: 'No se encontraron miniaturas. Puede que el vídeo sea privado o se haya eliminado, o que el ID sea incorrecto.',
+  networkError: 'Error de red. Comprueba tu conexión e inténtalo de nuevo.',
+  retry: 'Reintentar',
+  playlistCover: 'Lista “{title}”: se muestra su vídeo de portada.',
+  playlistUnavailable: 'No se puede leer esta lista. Puede que sea privada o una lista personal como Ver más tarde.',
+
+  sectionThumbnails: 'Miniaturas',
+  sectionThumbnailsHint: 'La miniatura del vídeo en todos los tamaños que ofrece YouTube.',
+  sectionOriginal: 'Fotogramas en proporción original',
+  sectionOriginalHint:
+    'Fotogramas que YouTube capturó con la relación de aspecto original del vídeo, sin bandas negras: verticales en los Shorts, hasta 1080p.',
+  sectionFrames: 'Fotogramas automáticos',
+  sectionFramesHint: 'Los tres fotogramas que YouTube elige automáticamente del inicio, la mitad y el final del vídeo.',
+  sectionWebp: 'Versiones WebP',
+  sectionWebpHint:
+    'Archivos WebP más ligeros de YouTube. Ábrelos para guardarlos o elige el formato WebP para convertir cualquier imagen.',
+  sectionEmbed: 'Código para insertar',
+  sectionEmbedHint: 'Una miniatura con enlace para blogs, README y foros.',
+
+  colors: 'Colores',
+  copyColor: 'Copiar {color}',
+
+  sizeMaxres: 'Resolución máxima',
+  size720: 'HD 720p',
+  sizeSd: 'Estándar',
+  sizeHq: 'Alta',
+  sizeMq: 'Media',
+  sizeDefault: 'Pequeña',
+  frameN: 'Fotograma {n}',
+  firstFrame: 'Primer fotograma',
+  imageSize: 'Tamaño',
+
+  best: 'Mejor',
+  downloadBest: 'Descargar la mejor',
+  downloadZip: 'Descargar todo (ZIP)',
+  downloadEverything: 'Descargar todos los vídeos (ZIP)',
+  zipping: 'Preparando ZIP…',
+  download: 'Descargar',
+  copyImage: 'Copiar imagen',
+  copyImageUrl: 'Copiar URL de la imagen',
+  copyVideoLink: 'Copiar enlace del vídeo',
+  openImage: 'Abrir imagen',
+  openVideo: 'Ver en YouTube',
+  share: 'Compartir',
+  remove: 'Quitar',
+  showImages: 'Mostrar imágenes',
+  hideImages: 'Ocultar imágenes',
+  copied: 'Copiado',
+  copyFailed: 'No se pudo copiar. Puede que tu navegador no lo permita aquí.',
+  downloadFailed: 'La descarga falló. Inténtalo de nuevo.',
+  close: 'Cerrar',
+  videoCount: 'Vídeos: {n}',
+
+  badgeShorts: 'Vertical (Shorts)',
+  badgeCustom: 'Miniatura personalizada',
+  badgeAuto: 'La miniatura es el fotograma automático {n}',
+
+  embedUrl: 'URL de la imagen',
+  copy: 'Copiar',
+
+  disclaimer:
+    'Las miniaturas pertenecen a sus creadores. Respeta los derechos de autor al reutilizarlas. Sin relación con YouTube ni Google.',
+};
+
+export default es;

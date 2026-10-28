@@ -1,0 +1,93 @@
+import type { Messages } from '../types';
+
+const pl: Messages = {
+  inputLabel: 'Link do YouTube lub identyfikator filmu',
+  inputPlaceholder: 'Wklej link do YouTube: film, Shorts, transmisja na żywo lub playlista',
+  inputHint: 'Możesz dodać kilka linków naraz, po jednym w wierszu.',
+  paste: 'Wklej',
+  submit: 'Pobierz miniatury',
+  clearInput: 'Wyczyść pole',
+  recent: 'Ostatnie',
+  clearRecent: 'Wyczyść historię',
+  noTargets: 'Nie znaleziono linku do YouTube ani identyfikatora filmu. Sprawdź adres i spróbuj ponownie.',
+  tooMany: 'Wyświetlane są tylko pierwsze filmy (limit: {max}).',
+  pasteBlocked: 'Przeglądarka zablokowała dostęp do schowka. Wklej za pomocą Ctrl+V lub ⌘V.',
+
+  optFormat: 'Format',
+  formatOriginal: 'Oryginał (JPG)',
+  optCrop: 'Usuń czarne pasy',
+  optCropHint: 'Przycina czarne pasy z obrazów 4:3 podczas pobierania lub kopiowania.',
+  optFilename: 'Nazwa pliku',
+  filenameId: 'Identyfikator filmu',
+  filenameTitle: 'Tytuł + identyfikator filmu',
+  formatFallback: 'Ta przeglądarka nie potrafi tworzyć plików {format}, więc użyto formatu PNG.',
+
+  loading: 'Wczytywanie…',
+  unavailable: 'Niedostępne',
+  metaUnavailable:
+    'Szczegóły filmu są niedostępne (prywatny, usunięty lub z ograniczeniami), ale miniatury mogą nadal istnieć.',
+  notFound: 'Nie znaleziono miniatur. Film może być prywatny lub usunięty albo identyfikator jest błędny.',
+  networkError: 'Błąd sieci. Sprawdź połączenie i spróbuj ponownie.',
+  retry: 'Spróbuj ponownie',
+  playlistCover: 'Playlista „{title}”: wyświetlany jest jej film okładkowy.',
+  playlistUnavailable: 'Nie można odczytać tej playlisty. Może być prywatna lub osobista, np. Do obejrzenia.',
+
+  sectionThumbnails: 'Miniatury',
+  sectionThumbnailsHint: 'Miniatura filmu we wszystkich rozmiarach udostępnianych przez YouTube.',
+  sectionOriginal: 'Klatki w oryginalnych proporcjach',
+  sectionOriginalHint:
+    'Klatki zapisane przez YouTube w oryginalnych proporcjach filmu, bez czarnych pasów: pionowe w Shorts, do 1080p.',
+  sectionFrames: 'Klatki automatyczne',
+  sectionFramesHint: 'Trzy klatki wybierane automatycznie przez YouTube z początku, środka i końca filmu.',
+  sectionWebp: 'Wersje WebP',
+  sectionWebpHint:
+    'Lżejsze pliki WebP z YouTube. Otwórz plik, aby go zapisać, lub ustaw format WebP, aby przekonwertować dowolny obraz.',
+  sectionEmbed: 'Kod do osadzenia',
+  sectionEmbedHint: 'Klikalna miniatura do blogów, plików README i forów.',
+
+  colors: 'Kolory',
+  copyColor: 'Kopiuj {color}',
+
+  sizeMaxres: 'Maksymalna rozdzielczość',
+  size720: 'HD 720p',
+  sizeSd: 'Standardowa',
+  sizeHq: 'Wysoka',
+  sizeMq: 'Średnia',
+  sizeDefault: 'Mała',
+  frameN: 'Klatka {n}',
+  firstFrame: 'Pierwsza klatka',
+  imageSize: 'Rozmiar',
+
+  best: 'Najlepsza',
+  downloadBest: 'Pobierz najlepszą',
+  downloadZip: 'Pobierz wszystko (ZIP)',
+  downloadEverything: 'Pobierz wszystkie filmy (ZIP)',
+  zipping: 'Przygotowywanie ZIP…',
+  download: 'Pobierz',
+  copyImage: 'Kopiuj obraz',
+  copyImageUrl: 'Kopiuj URL obrazu',
+  copyVideoLink: 'Kopiuj link do filmu',
+  openImage: 'Otwórz obraz',
+  openVideo: 'Obejrzyj w YouTube',
+  share: 'Udostępnij',
+  remove: 'Usuń',
+  showImages: 'Pokaż obrazy',
+  hideImages: 'Ukryj obrazy',
+  copied: 'Skopiowano',
+  copyFailed: 'Nie udało się skopiować. Przeglądarka może na to tutaj nie pozwalać.',
+  downloadFailed: 'Pobieranie nie powiodło się. Spróbuj ponownie.',
+  close: 'Zamknij',
+  videoCount: 'Filmy: {n}',
+
+  badgeShorts: 'Pionowy (Shorts)',
+  badgeCustom: 'Własna miniatura',
+  badgeAuto: 'Miniaturą jest klatka automatyczna {n}',
+
+  embedUrl: 'URL obrazu',
+  copy: 'Kopiuj',
+
+  disclaimer:
+    'Miniatury należą do ich twórców. Szanuj prawa autorskie przy ponownym użyciu. Brak powiązań z YouTube i Google.',
+};
+
+export default pl;

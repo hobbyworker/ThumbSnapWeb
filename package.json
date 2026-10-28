@@ -1,0 +1,45 @@
+{
+  "name": "thumbsnap-web",
+  "version": "0.1.0",
+  "description": "Extract every thumbnail and frame YouTube serves for a video. An embeddable, dependency-light web component.",
+  "license": "MIT",
+  "author": "hobbyworker",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hobbyworker/ThumbSnapWeb.git"
+  },
+  "homepage": "https://github.com/hobbyworker/ThumbSnapWeb#readme",
+  "bugs": "https://github.com/hobbyworker/ThumbSnapWeb/issues",
+  "keywords": [
+    "youtube",
+    "thumbnail",
+    "web-component",
+    "custom-element",
+    "lit"
+  ],
+  "exports": {
+    ".": "./dist/thumbsnap.js"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lit": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

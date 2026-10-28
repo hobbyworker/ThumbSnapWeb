@@ -1,0 +1,93 @@
+import type { Messages } from '../types';
+
+const pt: Messages = {
+  inputLabel: 'Link do YouTube ou ID do vídeo',
+  inputPlaceholder: 'Cole um link do YouTube: vídeo, Shorts, ao vivo ou playlist',
+  inputHint: 'Adicione vários links de uma vez, um por linha.',
+  paste: 'Colar',
+  submit: 'Obter miniaturas',
+  clearInput: 'Limpar entrada',
+  recent: 'Recentes',
+  clearRecent: 'Limpar histórico',
+  noTargets: 'Nenhum link do YouTube ou ID de vídeo encontrado. Verifique o endereço e tente novamente.',
+  tooMany: 'Apenas os primeiros {max} vídeos são exibidos.',
+  pasteBlocked: 'O navegador bloqueou o acesso à área de transferência. Cole com Ctrl+V ou ⌘V.',
+
+  optFormat: 'Formato',
+  formatOriginal: 'Original (JPG)',
+  optCrop: 'Remover faixas pretas',
+  optCropHint: 'Corta as faixas pretas das imagens 4:3 ao baixar ou copiar.',
+  optFilename: 'Nome do arquivo',
+  filenameId: 'ID do vídeo',
+  filenameTitle: 'Título + ID do vídeo',
+  formatFallback: 'Este navegador não consegue criar arquivos {format}, então foi usado PNG.',
+
+  loading: 'Carregando…',
+  unavailable: 'Indisponível',
+  metaUnavailable:
+    'Os detalhes do vídeo estão indisponíveis (privado, removido ou restrito), mas as miniaturas ainda podem existir.',
+  notFound: 'Nenhuma miniatura encontrada. O vídeo pode ser privado ou ter sido removido, ou o ID está errado.',
+  networkError: 'Erro de rede. Verifique sua conexão e tente novamente.',
+  retry: 'Tentar novamente',
+  playlistCover: 'Playlist “{title}”: mostrando o vídeo de capa.',
+  playlistUnavailable: 'Não é possível ler esta playlist. Ela pode ser privada ou uma lista pessoal, como Assistir mais tarde.',
+
+  sectionThumbnails: 'Miniaturas',
+  sectionThumbnailsHint: 'A miniatura do vídeo em todos os tamanhos que o YouTube oferece.',
+  sectionOriginal: 'Quadros na proporção original',
+  sectionOriginalHint:
+    'Quadros capturados pelo YouTube na proporção original do vídeo, sem faixas pretas: verticais nos Shorts, até 1080p.',
+  sectionFrames: 'Quadros automáticos',
+  sectionFramesHint: 'Os três quadros que o YouTube escolhe automaticamente do início, meio e fim do vídeo.',
+  sectionWebp: 'Versões WebP',
+  sectionWebpHint:
+    'Arquivos WebP mais leves do YouTube. Abra um para salvá-lo ou escolha o formato WebP para converter qualquer imagem.',
+  sectionEmbed: 'Código de incorporação',
+  sectionEmbedHint: 'Uma miniatura clicável para blogs, READMEs e fóruns.',
+
+  colors: 'Cores',
+  copyColor: 'Copiar {color}',
+
+  sizeMaxres: 'Resolução máxima',
+  size720: 'HD 720p',
+  sizeSd: 'Padrão',
+  sizeHq: 'Alta',
+  sizeMq: 'Média',
+  sizeDefault: 'Pequena',
+  frameN: 'Quadro {n}',
+  firstFrame: 'Primeiro quadro',
+  imageSize: 'Tamanho',
+
+  best: 'Melhor',
+  downloadBest: 'Baixar a melhor',
+  downloadZip: 'Baixar tudo (ZIP)',
+  downloadEverything: 'Baixar todos os vídeos (ZIP)',
+  zipping: 'Preparando ZIP…',
+  download: 'Baixar',
+  copyImage: 'Copiar imagem',
+  copyImageUrl: 'Copiar URL da imagem',
+  copyVideoLink: 'Copiar link do vídeo',
+  openImage: 'Abrir imagem',
+  openVideo: 'Assistir no YouTube',
+  share: 'Compartilhar',
+  remove: 'Remover',
+  showImages: 'Mostrar imagens',
+  hideImages: 'Ocultar imagens',
+  copied: 'Copiado',
+  copyFailed: 'Não foi possível copiar. Seu navegador pode não permitir isso aqui.',
+  downloadFailed: 'Falha no download. Tente novamente.',
+  close: 'Fechar',
+  videoCount: 'Vídeos: {n}',
+
+  badgeShorts: 'Vertical (Shorts)',
+  badgeCustom: 'Miniatura personalizada',
+  badgeAuto: 'O quadro automático {n} é a miniatura',
+
+  embedUrl: 'URL da imagem',
+  copy: 'Copiar',
+
+  disclaimer:
+    'As miniaturas pertencem aos seus criadores. Respeite os direitos autorais ao reutilizá-las. Sem afiliação com o YouTube ou o Google.',
+};
+
+export default pt;

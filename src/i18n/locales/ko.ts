@@ -1,0 +1,92 @@
+import type { Messages } from '../types';
+
+const ko: Messages = {
+  inputLabel: 'YouTube 링크 또는 동영상 ID',
+  inputPlaceholder: 'YouTube 링크를 붙여 넣으세요: 동영상, Shorts, 라이브, 재생목록',
+  inputHint: '한 줄에 하나씩 여러 링크를 한 번에 입력할 수 있습니다.',
+  paste: '붙여넣기',
+  submit: '썸네일 가져오기',
+  clearInput: '입력 지우기',
+  recent: '최근 항목',
+  clearRecent: '기록 삭제',
+  noTargets: 'YouTube 링크나 동영상 ID를 찾지 못했습니다. 주소를 확인하고 다시 시도해 주세요.',
+  tooMany: '처음 {max}개 동영상만 표시합니다.',
+  pasteBlocked: '브라우저가 클립보드 접근을 막았습니다. Ctrl+V 또는 ⌘V로 붙여 넣어 주세요.',
+
+  optFormat: '형식',
+  formatOriginal: '원본 (JPG)',
+  optCrop: '검은 여백 제거',
+  optCropHint: '4:3 이미지를 다운로드하거나 복사할 때 위아래 검은 띠를 잘라냅니다.',
+  optFilename: '파일 이름',
+  filenameId: '동영상 ID',
+  filenameTitle: '제목 + 동영상 ID',
+  formatFallback: '이 브라우저는 {format} 파일을 만들 수 없어 PNG로 저장했습니다.',
+
+  loading: '불러오는 중…',
+  unavailable: '제공되지 않음',
+  metaUnavailable: '동영상 정보를 가져올 수 없습니다(비공개, 삭제 또는 제한됨). 썸네일은 남아 있을 수 있습니다.',
+  notFound: '썸네일을 찾지 못했습니다. 비공개 또는 삭제된 동영상이거나 ID가 잘못되었을 수 있습니다.',
+  networkError: '네트워크 오류입니다. 연결 상태를 확인하고 다시 시도해 주세요.',
+  retry: '다시 시도',
+  playlistCover: '재생목록 “{title}”: 대표 동영상을 표시합니다.',
+  playlistUnavailable: "이 재생목록을 읽을 수 없습니다. 비공개이거나 '나중에 볼 동영상' 같은 개인 목록일 수 있습니다.",
+
+  sectionThumbnails: '썸네일',
+  sectionThumbnailsHint: 'YouTube가 제공하는 모든 크기의 동영상 썸네일입니다.',
+  sectionOriginal: '원본 비율 프레임',
+  sectionOriginalHint:
+    'YouTube가 동영상 본래의 화면비로 캡처한 프레임으로, 검은 여백이 없습니다. Shorts는 세로형이며 최대 1080p입니다.',
+  sectionFrames: '자동 생성 프레임',
+  sectionFramesHint: 'YouTube가 동영상의 시작, 중간, 끝부분에서 자동으로 고른 세 장의 프레임입니다.',
+  sectionWebp: 'WebP 버전',
+  sectionWebpHint:
+    'YouTube가 제공하는 더 가벼운 WebP 파일입니다. 열어서 저장하거나, 형식을 WebP로 설정하면 어떤 이미지든 변환할 수 있습니다.',
+  sectionEmbed: '삽입 코드',
+  sectionEmbedHint: '블로그, README, 커뮤니티에 쓸 수 있는 클릭 가능한 썸네일입니다.',
+
+  colors: '색상',
+  copyColor: '{color} 복사',
+
+  sizeMaxres: '최대 해상도',
+  size720: 'HD 720p',
+  sizeSd: '표준',
+  sizeHq: '고화질',
+  sizeMq: '중간',
+  sizeDefault: '소형',
+  frameN: '프레임 {n}',
+  firstFrame: '첫 프레임',
+  imageSize: '크기',
+
+  best: '최고 화질',
+  downloadBest: '최고 화질 다운로드',
+  downloadZip: '전체 다운로드 (ZIP)',
+  downloadEverything: '모든 동영상 다운로드 (ZIP)',
+  zipping: 'ZIP 준비 중…',
+  download: '다운로드',
+  copyImage: '이미지 복사',
+  copyImageUrl: '이미지 URL 복사',
+  copyVideoLink: '동영상 링크 복사',
+  openImage: '이미지 열기',
+  openVideo: 'YouTube에서 보기',
+  share: '공유',
+  remove: '제거',
+  showImages: '이미지 보기',
+  hideImages: '이미지 숨기기',
+  copied: '복사했습니다',
+  copyFailed: '복사하지 못했습니다. 이 환경에서는 브라우저가 허용하지 않을 수 있습니다.',
+  downloadFailed: '다운로드에 실패했습니다. 다시 시도해 주세요.',
+  close: '닫기',
+  videoCount: '동영상 {n}개',
+
+  badgeShorts: '세로형 (Shorts)',
+  badgeCustom: '맞춤 썸네일',
+  badgeAuto: '자동 프레임 {n}을 썸네일로 사용',
+
+  embedUrl: '이미지 URL',
+  copy: '복사',
+
+  disclaimer:
+    '썸네일의 저작권은 제작자에게 있습니다. 재사용할 때는 저작권을 존중해 주세요. YouTube 및 Google과 관련이 없습니다.',
+};
+
+export default ko;
