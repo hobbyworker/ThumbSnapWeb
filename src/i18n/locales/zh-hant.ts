@@ -36,6 +36,7 @@ const zhHant: Messages = {
   sectionOriginal: '原始比例畫面',
   sectionOriginalHint:
     'YouTube 以影片原始長寬比擷取的畫面，沒有黑邊：Shorts 為直式，最高 1080p。',
+  originalMissing: '這部影片沒有原始比例畫面 1–3。YouTube 通常只為 Shorts 和較早的影片提供這些畫面。',
   sectionFrames: '自動產生的畫面',
   sectionFramesHint: 'YouTube 從影片開頭、中段和結尾自動選出的三張畫面。',
   sectionWebp: 'WebP 版本',

@@ -35,6 +35,7 @@ const en = {
   sectionOriginal: 'Original-ratio frames',
   sectionOriginalHint:
     "Frames YouTube captured in the video's original aspect ratio, without black bars: vertical for Shorts, up to 1080p.",
+  originalMissing: 'No original-ratio frames 1–3 for this video. YouTube usually keeps them only for Shorts and older videos.',
   sectionFrames: 'Auto-generated frames',
   sectionFramesHint: 'The three frames YouTube picks automatically from the start, middle and end of the video.',
   sectionWebp: 'WebP versions',

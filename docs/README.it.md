@@ -43,7 +43,7 @@ le miniature appartengono ai loro creatori.
 
 ## Provalo
 
-ThumbSnap è disponibile su [hobbyworker.me](https://hobbyworker.me/it/tools/thumbsnap/), in tutte le 13 lingue.
+ThumbSnap è disponibile su [hobbyworker.me](https://hobbyworker.me/it/services/thumbsnap/), in tutte le 13 lingue.
 
 ## Requisiti
 
@@ -142,8 +142,6 @@ garantiscono.
   il creatore ha scelto un altro dei fotogrammi suggeriti da Studio, anche la sua miniatura sembra caricata.
 - I file WebP di YouTube si possono solo aprire: senza CORS la pagina non può salvarli né convertirli.
   Convertire un JPEG in WebP dà lo stesso risultato.
-- I video normali recenti non hanno fotogrammi in proporzioni originali, quindi quelle tre schede indicano
-  “Non disponibile”.
 - I file che richiedono le firme di YouTube – la copertina verticale di uno Short, le anteprime animate, gli
   storyboard – e le playlist o i canali interi sono fuori portata senza un server.
 - La verifica di file inesistenti lascia errori 404 nella console del browser.

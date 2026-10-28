@@ -37,6 +37,7 @@ const pl: Messages = {
   sectionOriginal: 'Klatki w oryginalnych proporcjach',
   sectionOriginalHint:
     'Klatki zapisane przez YouTube w oryginalnych proporcjach filmu, bez czarnych pasów: pionowe w Shorts, do 1080p.',
+  originalMissing: 'Ten film nie ma klatek 1–3 w oryginalnych proporcjach. YouTube zwykle zapisuje je tylko dla Shorts i starszych filmów.',
   sectionFrames: 'Klatki automatyczne',
   sectionFramesHint: 'Trzy klatki wybierane automatycznie przez YouTube z początku, środka i końca filmu.',
   sectionWebp: 'Wersje WebP',

@@ -36,6 +36,7 @@ const id: Messages = {
   sectionOriginal: 'Frame rasio asli',
   sectionOriginalHint:
     'Frame yang diambil YouTube dengan rasio aspek asli video, tanpa bilah hitam: vertikal untuk Shorts, hingga 1080p.',
+  originalMissing: 'Video ini tidak memiliki frame rasio asli 1–3. YouTube biasanya hanya menyediakannya untuk Shorts dan video lama.',
   sectionFrames: 'Frame otomatis',
   sectionFramesHint: 'Tiga frame yang dipilih otomatis oleh YouTube dari awal, tengah, dan akhir video.',
   sectionWebp: 'Versi WebP',

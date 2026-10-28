@@ -37,6 +37,7 @@ const pt: Messages = {
   sectionOriginal: 'Quadros na proporção original',
   sectionOriginalHint:
     'Quadros capturados pelo YouTube na proporção original do vídeo, sem faixas pretas: verticais nos Shorts, até 1080p.',
+  originalMissing: 'Este vídeo não tem quadros 1–3 na proporção original. O YouTube costuma mantê-los só para Shorts e vídeos mais antigos.',
   sectionFrames: 'Quadros automáticos',
   sectionFramesHint: 'Os três quadros que o YouTube escolhe automaticamente do início, meio e fim do vídeo.',
   sectionWebp: 'Versões WebP',

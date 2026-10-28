@@ -44,7 +44,7 @@ twórców.
 
 ## Wypróbuj
 
-ThumbSnap działa na [hobbyworker.me](https://hobbyworker.me/pl/tools/thumbsnap/) we wszystkich 13 językach.
+ThumbSnap działa na [hobbyworker.me](https://hobbyworker.me/pl/services/thumbsnap/) we wszystkich 13 językach.
 
 ## Wymagania
 
@@ -142,7 +142,6 @@ Każdy katalog ma te same klucze i symbole zastępcze co `en.ts`; pilnują tego 
   twórca wybrał w Studio inną z proponowanych klatek, to również wygląda jak przesłana miniatura.
 - Pliki WebP z YouTube można tylko otworzyć: bez CORS strona nie może ich zapisać ani przekonwertować.
   Konwersja JPEG do WebP daje ten sam wynik.
-- Nowsze zwykłe filmy nie mają klatek w oryginalnych proporcjach, więc te trzy karty pokazują „Niedostępne”.
 - Pliki wymagające podpisów YouTube — pionowa okładka filmu Shorts, animowane podglądy, storyboardy — oraz całe
   playlisty czy kanały są bez serwera poza zasięgiem.
 - Sprawdzanie nieistniejących plików zostawia błędy 404 w konsoli przeglądarki.

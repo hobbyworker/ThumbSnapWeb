@@ -45,7 +45,7 @@ Thumbnails gehören ihren Urhebern.
 
 ## Ausprobieren
 
-ThumbSnap läuft auf [hobbyworker.me](https://hobbyworker.me/de/tools/thumbsnap/), in allen 13 Sprachen.
+ThumbSnap läuft auf [hobbyworker.me](https://hobbyworker.me/de/services/thumbsnap/), in allen 13 Sprachen.
 
 ## Voraussetzungen
 
@@ -146,7 +146,6 @@ Jeder Katalog hat dieselben Schlüssel und Platzhalter wie `en.ts`; dafür sorge
   Upload aus.
 - WebP-Dateien von YouTube lassen sich nur öffnen: Ohne CORS kann die Seite sie weder speichern noch umwandeln.
   Wer ein JPEG in WebP umwandelt, erhält dasselbe Ergebnis.
-- Neuere normale Videos haben keine Frames im Originalformat, daher zeigen diese drei Karten „Nicht verfügbar“.
 - Dateien, die Signaturen von YouTube brauchen – das hochkante Cover eines Shorts, animierte Vorschauen,
   Storyboards –, sowie ganze Playlists oder Kanäle sind ohne Server nicht erreichbar.
 - Die Prüfung auf nicht vorhandene Dateien hinterlässt 404-Fehler in der Browserkonsole.

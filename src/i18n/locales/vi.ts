@@ -38,6 +38,7 @@ const vi: Messages = {
   sectionOriginal: 'Khung hình tỷ lệ gốc',
   sectionOriginalHint:
     'Khung hình YouTube chụp theo tỷ lệ khung hình gốc của video, không có viền đen: dọc với Shorts, tối đa 1080p.',
+  originalMissing: 'Video này không có khung hình tỷ lệ gốc 1–3. YouTube thường chỉ có các khung hình này cho Shorts và video cũ.',
   sectionFrames: 'Khung hình tự động',
   sectionFramesHint: 'Ba khung hình YouTube tự động chọn từ phần đầu, giữa và cuối video.',
   sectionWebp: 'Bản WebP',

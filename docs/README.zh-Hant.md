@@ -31,7 +31,7 @@ YouTube 不會說明其中哪些檔案存在，所以 ThumbSnap 會逐一請求�
 
 ## 試用
 
-ThumbSnap 已在 [hobbyworker.me](https://hobbyworker.me/zh-hant/tools/thumbsnap/) 上線，支援全部 13 種語言。
+ThumbSnap 已在 [hobbyworker.me](https://hobbyworker.me/zh-hant/services/thumbsnap/) 上線，支援全部 13 種語言。
 
 ## 系統需求
 
@@ -110,6 +110,5 @@ index.html      示範頁面
 - YouTube 沒有為這些檔案提供任何說明文件。哪些檔案存在、位於何處，都可能改變。
 - 上傳的縮圖和自動產生的縮圖，是透過與 `hq1`–`hq3` 比較位元組來分辨的。創作者如果選用了 YouTube 工作室的其他建議畫面，看起來也會像是上傳的。
 - YouTube 的 WebP 檔案只能開啟：由於沒有 CORS，頁面無法儲存或轉換它們。把 JPEG 轉換成 WebP 也能得到相同的結果。
-- 近期的一般影片沒有原始比例畫面，因此那三張卡片會顯示「無法提供」。
 - 需要 YouTube 簽章的檔案（Shorts 的直式封面、動態預覽、分鏡圖），以及整個播放清單或頻道，沒有伺服器就無法取得。
 - 檢查不存在的檔案時，瀏覽器的控制台會留下 404 錯誤。

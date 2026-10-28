@@ -43,7 +43,7 @@ pertenecen a sus creadores.
 
 ## Pruébalo
 
-ThumbSnap funciona en [hobbyworker.me](https://hobbyworker.me/es/tools/thumbsnap/), en los 13 idiomas.
+ThumbSnap funciona en [hobbyworker.me](https://hobbyworker.me/es/services/thumbsnap/), en los 13 idiomas.
 
 ## Requisitos
 
@@ -141,8 +141,6 @@ pruebas se encargan de comprobarlo.
   otra de las sugerencias de Studio, también parecerá una miniatura subida.
 - Los archivos WebP de YouTube solo se pueden abrir: sin CORS, la página no puede guardarlos ni convertirlos.
   Convertir un JPEG a WebP da el mismo resultado.
-- Los vídeos normales recientes no tienen fotogramas en proporción original, así que esas tres tarjetas muestran
-  No disponible.
 - Los archivos que necesitan firmas de YouTube —la portada vertical de un Short, las vistas previas animadas, los
   storyboards— y las listas de reproducción o canales completos quedan fuera de alcance sin un servidor.
 - Comprobar archivos que no existen deja errores 404 en la consola del navegador.

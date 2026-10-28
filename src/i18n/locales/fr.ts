@@ -39,6 +39,7 @@ const fr: Messages = {
   sectionOriginal: "Images au format d'origine",
   sectionOriginalHint:
     "Images capturées par YouTube au format d'origine de la vidéo, sans bandes noires\u00a0: verticales pour les Shorts, jusqu'en 1080p.",
+  originalMissing: "Cette vidéo n'a pas d'images 1–3 au format d'origine. YouTube ne les conserve généralement que pour les Shorts et les vidéos plus anciennes.",
   sectionFrames: 'Images générées automatiquement',
   sectionFramesHint: 'Les trois images que YouTube choisit automatiquement au début, au milieu et à la fin de la vidéo.',
   sectionWebp: 'Versions WebP',

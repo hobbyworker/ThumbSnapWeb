@@ -36,6 +36,7 @@ const ko: Messages = {
   sectionOriginal: '원본 비율 프레임',
   sectionOriginalHint:
     'YouTube가 동영상 본래의 화면비로 캡처한 프레임으로, 검은 여백이 없습니다. Shorts는 세로형이며 최대 1080p입니다.',
+  originalMissing: '이 동영상에는 원본 비율 프레임 1~3이 없습니다. YouTube는 보통 Shorts와 오래된 동영상에만 이 프레임을 둡니다.',
   sectionFrames: '자동 생성 프레임',
   sectionFramesHint: 'YouTube가 동영상의 시작, 중간, 끝부분에서 자동으로 고른 세 장의 프레임입니다.',
   sectionWebp: 'WebP 버전',

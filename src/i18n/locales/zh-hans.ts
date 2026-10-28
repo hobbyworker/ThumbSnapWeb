@@ -36,6 +36,7 @@ const zhHans: Messages = {
   sectionOriginal: '原始比例画面',
   sectionOriginalHint:
     'YouTube 按视频原始宽高比截取的画面，没有黑边：Shorts 为竖屏，最高 1080p。',
+  originalMissing: '此视频没有原始比例画面 1–3。YouTube 通常只为 Shorts 和较早的视频提供这些画面。',
   sectionFrames: '自动生成的画面',
   sectionFramesHint: 'YouTube 从视频开头、中间和结尾自动选取的三帧画面。',
   sectionWebp: 'WebP 版本',

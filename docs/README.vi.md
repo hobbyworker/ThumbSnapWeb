@@ -41,7 +41,7 @@ này. ThumbSnap không liên kết với YouTube hay Google, và hình thu nhỏ
 
 ## Dùng thử
 
-ThumbSnap chạy trên [hobbyworker.me](https://hobbyworker.me/vi/tools/thumbsnap/), với đủ 13 ngôn ngữ.
+ThumbSnap chạy trên [hobbyworker.me](https://hobbyworker.me/vi/services/thumbsnap/), với đủ 13 ngôn ngữ.
 
 ## Yêu cầu
 
@@ -136,7 +136,6 @@ Mọi tệp ngôn ngữ có cùng các khóa và placeholder như `en.ts`; trìn
   tạo chọn một trong các gợi ý khác của Studio, hình đó cũng trông như được tải lên.
 - Tệp WebP từ YouTube chỉ mở được: không có CORS, trang không thể lưu hay chuyển đổi chúng. Chuyển JPEG sang WebP cũng
   cho cùng kết quả.
-- Video thông thường gần đây không có khung hình tỷ lệ gốc, nên ba thẻ đó hiển thị "Không có".
 - Các tệp cần chữ ký của YouTube — ảnh bìa dọc của video Shorts, bản xem trước dạng động, storyboard — cùng toàn bộ danh
   sách phát hay kênh đều nằm ngoài tầm với nếu không có máy chủ.
 - Việc kiểm tra các tệp không tồn tại để lại lỗi 404 trong console của trình duyệt.

@@ -44,7 +44,7 @@ thumbnails belong to their creators.
 
 ## Try it
 
-ThumbSnap runs on [hobbyworker.me](https://hobbyworker.me/en/tools/thumbsnap/), in all 13 languages.
+ThumbSnap runs on [hobbyworker.me](https://hobbyworker.me/en/services/thumbsnap/), in all 13 languages.
 
 ## Requirements
 
@@ -143,7 +143,6 @@ of it.
   creator who chose one of Studio's other suggestions looks like an upload too.
 - WebP files from YouTube can only be opened: without CORS the page can't save or convert them.
   Converting a JPEG to WebP gives the same result.
-- Recent regular videos have no original-ratio frames, so those three cards say Not available.
 - Files that need YouTube's signatures — a Short's vertical cover, animated previews, storyboards — and
   whole playlists or channels are out of reach without a server.
 - Checking for files that don't exist leaves 404s in the browser console.

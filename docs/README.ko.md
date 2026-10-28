@@ -40,7 +40,7 @@ YouTube · Google 과 관련이 없고, 썸네일의 권리는 그 제작자에�
 
 ## 써 보기
 
-ThumbSnap 은 [hobbyworker.me](https://hobbyworker.me/ko/tools/thumbsnap/) 에서 13개 언어로 쓸 수 있습니다.
+ThumbSnap 은 [hobbyworker.me](https://hobbyworker.me/ko/services/thumbsnap/) 에서 13개 언어로 쓸 수 있습니다.
 
 ## 요구 사항
 
@@ -132,7 +132,6 @@ index.html      데모 페이지
   직접 올린 것으로 보입니다.
 - YouTube 의 WebP 파일은 열기만 됩니다. CORS 가 없어 페이지에서 저장하거나 변환할 수 없습니다. JPEG 를 WebP 로 변환하면
   같은 결과를 얻습니다.
-- 최근 일반 영상에는 원본 비율 프레임이 없어서, 그 세 카드에는 "제공되지 않음" 이 나옵니다.
 - YouTube 의 서명이 필요한 파일 — Shorts 의 세로 커버, 애니메이션 미리보기, 스토리보드 — 과 재생목록 · 채널 전체는 서버
   없이는 가져올 수 없습니다.
 - 없는 파일을 확인하는 과정에서 브라우저 콘솔에 404 가 남습니다.

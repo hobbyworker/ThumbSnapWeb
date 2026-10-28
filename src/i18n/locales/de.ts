@@ -38,6 +38,7 @@ const de: Messages = {
   sectionOriginal: 'Frames im Originalformat',
   sectionOriginalHint:
     'Von YouTube im ursprünglichen Seitenverhältnis des Videos aufgenommene Frames, ohne schwarze Balken: hochkant bei Shorts, bis 1080p.',
+  originalMissing: 'Für dieses Video gibt es keine Frames 1–3 im Originalformat. YouTube hat sie meist nur für Shorts und ältere Videos.',
   sectionFrames: 'Automatisch erzeugte Frames',
   sectionFramesHint: 'Die drei Frames, die YouTube automatisch vom Anfang, aus der Mitte und vom Ende des Videos auswählt.',
   sectionWebp: 'WebP-Versionen',

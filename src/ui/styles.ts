@@ -554,6 +554,10 @@ export const styles = css`
     font-size: 0.85em;
   }
 
+  .sec .msg {
+    margin-bottom: 0.75rem;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));

@@ -42,7 +42,7 @@ kreatornya.
 
 ## Coba langsung
 
-ThumbSnap berjalan di [hobbyworker.me](https://hobbyworker.me/id/tools/thumbsnap/) dalam ke-13 bahasanya.
+ThumbSnap berjalan di [hobbyworker.me](https://hobbyworker.me/id/services/thumbsnap/) dalam ke-13 bahasanya.
 
 ## Persyaratan
 
@@ -139,7 +139,6 @@ Setiap katalog memiliki kunci dan placeholder yang sama dengan `en.ts`; pemeriks
   kreator memilih salah satu saran lain dari Studio, thumbnail-nya juga akan terlihat seperti unggahan.
 - File WebP dari YouTube hanya bisa dibuka: tanpa CORS, halaman tidak bisa menyimpan atau mengonversinya. Mengonversi
   JPEG ke WebP memberikan hasil yang sama.
-- Video biasa yang baru tidak punya frame rasio asli, jadi ketiga kartu itu menampilkan Tidak tersedia.
 - File yang memerlukan tanda tangan YouTube — sampul vertikal Short, pratinjau animasi, storyboard — serta seluruh isi
   playlist atau channel tidak bisa dijangkau tanpa server.
 - Memeriksa file yang tidak ada akan meninggalkan galat 404 di konsol browser.

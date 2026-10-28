@@ -36,6 +36,7 @@ const ja: Messages = {
   sectionOriginal: 'オリジナル比率のフレーム',
   sectionOriginalHint:
     'YouTube が動画本来のアスペクト比でキャプチャしたフレームで、黒帯がありません。ショートは縦長で、最大 1080p です。',
+  originalMissing: 'この動画にはオリジナル比率のフレーム 1〜3 がありません。YouTube は通常、ショートと古い動画にだけこれらを用意しています。',
   sectionFrames: '自動生成フレーム',
   sectionFramesHint: 'YouTube が動画の冒頭・中盤・終盤から自動的に選んだ 3 枚のフレームです。',
   sectionWebp: 'WebP 版',

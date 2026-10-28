@@ -136,6 +136,19 @@ function frameCard(entry: VideoEntry, frame: FrameNumber, c: RenderContext): Tem
   return card(entry, variant, c, { extra: chips });
 }
 
+/**
+ * Original-ratio frames. Recent regular videos have no `oar1`–`oar3`, so once all three have
+ * answered missing, their cards give way to one line (the first frame still shows when it exists).
+ */
+function originals(entry: VideoEntry, c: RenderContext): TemplateResult {
+  const statuses = ORIGINALS.filter((v) => v.frame !== 0).map((v) => entry.slot(v.key).status);
+  const settled = statuses.every((s) => s !== 'idle' && s !== 'loading');
+  const noFrames = settled && statuses.every((s) => s === 'missing');
+  const shown = settled ? ORIGINALS.filter((v) => entry.slot(v.key).status !== 'missing') : ORIGINALS;
+  return html`${noFrames ? html`<p class="msg">${c.t.originalMissing}</p>` : nothing}
+  ${shown.length ? grid(shown.map((v) => card(entry, v, c))) : nothing}`;
+}
+
 function webpCard(entry: VideoEntry, variant: Variant, c: RenderContext): TemplateResult {
   const { t } = c;
   const state = entry.webp(variant.key);
@@ -325,7 +338,7 @@ function body(entry: VideoEntry, c: RenderContext): TemplateResult | typeof noth
       <p class="sec-hint">${t.sectionThumbnailsHint}</p>
       ${grid(entry.thumbnails.map((v) => card(entry, v, c, { best: v.key === best?.variant.key })))}
     </section>
-    ${collapsible(entry, 'original', t.sectionOriginal, t.sectionOriginalHint, () => grid(ORIGINALS.map((v) => card(entry, v, c))))}
+    ${collapsible(entry, 'original', t.sectionOriginal, t.sectionOriginalHint, () => originals(entry, c))}
     ${collapsible(entry, 'frames', t.sectionFrames, t.sectionFramesHint, () =>
       grid(FRAME_NUMBERS.map((n) => frameCard(entry, n, c))),
     )}

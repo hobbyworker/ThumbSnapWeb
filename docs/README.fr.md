@@ -44,7 +44,7 @@ ni à Google, et les miniatures appartiennent à leurs créateurs.
 
 ## Essayer
 
-ThumbSnap fonctionne sur [hobbyworker.me](https://hobbyworker.me/fr/tools/thumbsnap/), dans les 13 langues.
+ThumbSnap fonctionne sur [hobbyworker.me](https://hobbyworker.me/fr/services/thumbsnap/), dans les 13 langues.
 
 ## Configuration requise
 
@@ -147,8 +147,6 @@ tests y veillent.
   miniature mise en ligne.
 - Les fichiers WebP de YouTube peuvent seulement être ouverts : sans CORS, la page ne peut ni les enregistrer ni
   les convertir. Convertir un JPEG en WebP donne le même résultat.
-- Les vidéos classiques récentes n’ont pas d’images au format d’origine, si bien que ces trois cartes indiquent
-  « Non disponible ».
 - Les fichiers qui nécessitent les signatures de YouTube – la couverture verticale d’un Short, les aperçus
   animés, les storyboards – ainsi que les playlists ou chaînes entières sont hors de portée sans serveur.
 - La vérification de fichiers inexistants laisse des erreurs 404 dans la console du navigateur.

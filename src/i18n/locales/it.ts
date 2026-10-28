@@ -38,6 +38,7 @@ const it: Messages = {
   sectionOriginal: 'Fotogrammi in proporzioni originali',
   sectionOriginalHint:
     'Fotogrammi acquisiti da YouTube nelle proporzioni originali del video, senza bande nere: verticali per gli Shorts, fino a 1080p.',
+  originalMissing: 'Questo video non ha fotogrammi 1–3 in proporzioni originali. YouTube di solito li conserva solo per gli Shorts e i video più vecchi.',
   sectionFrames: 'Fotogrammi automatici',
   sectionFramesHint: "I tre fotogrammi che YouTube sceglie automaticamente dall'inizio, dalla metà e dalla fine del video.",
   sectionWebp: 'Versioni WebP',
