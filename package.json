@@ -1,6 +1,6 @@
 {
   "name": "thumbsnap-web",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Extract every thumbnail and frame YouTube serves for a video. An embeddable, dependency-light web component.",
   "license": "MIT",
   "author": "hobbyworker",
