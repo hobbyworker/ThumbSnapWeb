@@ -8,6 +8,7 @@ import ja from './locales/ja';
 import ko from './locales/ko';
 import pl from './locales/pl';
 import pt from './locales/pt';
+import ptBr from './locales/pt-br';
 import vi from './locales/vi';
 import zhHans from './locales/zh-hans';
 import zhHant from './locales/zh-hant';
@@ -16,7 +17,7 @@ import type { Messages } from './types';
 export type { MessageKey, Messages } from './types';
 
 /** Same codes (and order) as the language folders of hobbyworker.me. */
-export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'vi', 'de', 'it', 'pl'] as const;
+export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
@@ -30,6 +31,7 @@ const CATALOG: Record<Locale, Messages> = {
   es,
   fr,
   pt,
+  'pt-br': ptBr,
   vi,
   de,
   it,
@@ -46,7 +48,8 @@ const INTL_TAGS: Record<Locale, string> = {
   id: 'id',
   es: 'es',
   fr: 'fr',
-  pt: 'pt',
+  pt: 'pt-PT',
+  'pt-br': 'pt-BR',
   vi: 'vi',
   de: 'de',
   it: 'it',
@@ -66,6 +69,8 @@ export function resolveLocale(tag: string | null | undefined): Locale | null {
     return /-(?:hant|tw|hk|mo)(?:-|$)/.test(value) ? 'zh-hant' : 'zh-hans';
   }
   const base = value.split('-')[0];
+  // Brazil has its own catalog; plain `pt` and every other region get Portugal's.
+  if (base === 'pt') return /-br(?:-|$)/.test(value) ? 'pt-br' : 'pt';
   if (base === 'in') return 'id'; // legacy code for Indonesian
   return isLocale(base) ? base : null;
 }

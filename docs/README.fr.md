@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <b>Français</b> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <b>Français</b> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Un composant web qui reçoit des liens YouTube et trouve, pour chaque vidéo, toutes les images que YouTube
 fournit – la miniature dans toutes ses tailles, des images au format d’origine de la vidéo et celles que YouTube
@@ -33,9 +33,10 @@ images générées automatiquement, et il obtient le titre, la chaîne et l’or
 de terminaison oEmbed de YouTube. Les observations faites en interrogeant YouTube sont consignées dans
 [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-L’outil est disponible en 13 langues – anglais, coréen, japonais, chinois (simplifié et traditionnel), allemand,
-espagnol, français, italien, portugais, polonais, indonésien et vietnamien – et suit la langue de la page qui
-l’accueille. Dans les autres langues, il s’affiche en anglais. Il suit aussi le mode sombre de la page.
+L’outil est disponible en 14 langues – anglais, coréen, japonais, chinois (simplifié et traditionnel), allemand,
+espagnol, français, italien, portugais (du Portugal et du Brésil), polonais, indonésien et vietnamien – et suit la
+langue de la page qui l’accueille. Dans les autres langues, il s’affiche en anglais. Il suit aussi le mode sombre de
+la page.
 
 Le code source de ce dépôt est sous licence MIT. Le nom ThumbSnap et son icône ne font pas partie de ce code
 source. L’icône en haut de la page n’est présentée qu’à titre d’illustration : elle n’est pas couverte par la
@@ -44,7 +45,7 @@ ni à Google, et les miniatures appartiennent à leurs créateurs.
 
 ## Essayer
 
-ThumbSnap fonctionne sur [hobbyworker.me](https://hobbyworker.me/fr/services/thumbsnap/), dans les 13 langues.
+ThumbSnap fonctionne sur [hobbyworker.me](https://hobbyworker.me/fr/services/thumbsnap/), dans les 14 langues.
 
 ## Configuration requise
 
@@ -101,7 +102,7 @@ Distribuez-le avec `THIRD_PARTY_LICENSES.txt`.
 
 | Attribut | Par défaut | |
 |---|---|---|
-| `locale` | l’attribut `lang` le plus proche | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` `vi` `de` `it` `pl` ; les étiquettes comme `zh-TW` ou `pt-BR` sont ramenées à la langue correspondante |
+| `locale` | l’attribut `lang` le plus proche | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brésil) `vi` `de` `it` `pl` ; les étiquettes comme `zh-TW` ou `pt-BR` sont ramenées à la langue correspondante |
 | `theme` | `auto` | `auto` suit `data-theme`, `data-color-scheme` ou `data-bs-theme` sur `<html>`, sa classe `dark` ou `light`, ou son `color-scheme`, puis le système ; `light` et `dark` imposent le thème |
 | `value` | | liens ou ID à charger au démarrage |
 | `no-url-sync` | désactivé | laisse `?v=` et `?list=` tels quels dans la barre d’adresse |
@@ -143,7 +144,7 @@ l’interface.
 ```
 src/
 ├── core/       liens, fichiers du CDN, chargement et vérification, oEmbed, recadrage, conversion et couleurs, ZIP, noms de fichiers (sans interface)
-├── i18n/       en (source), ko, ja, zh-hans, zh-hant, id, es, fr, pt, vi, de, it, pl
+├── i18n/       en (source), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
 ├── ui/         l’élément <thumb-snap> (Lit) – la langue et le thème de la page, l’état d’une vidéo, les modèles, les styles
 ├── index.ts    l’API publique ; n’enregistre rien
 └── auto.ts     le point d’entrée du bundle ; enregistre <thumb-snap>

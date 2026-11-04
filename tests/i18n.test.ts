@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LOCALES, format, getMessages, resolveLocale } from '../src/i18n';
+import { LOCALES, format, getMessages, intlTag, resolveLocale } from '../src/i18n';
 
 const PLACEHOLDER = /\{(\w+)\}/g;
 const placeholders = (s: string) => [...s.matchAll(PLACEHOLDER)].map((m) => m[1]).sort();
@@ -17,7 +17,12 @@ describe('catalogs', () => {
   });
 
   it('matches the languages of hobbyworker.me', () => {
-    expect(LOCALES).toEqual(['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'vi', 'de', 'it', 'pl']);
+    expect(LOCALES).toEqual(['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl']);
+  });
+
+  it('keeps Portugal and Brazil apart', () => {
+    expect(getMessages('pt').optFilename).toBe('Nome do ficheiro');
+    expect(getMessages('pt-br').optFilename).toBe('Nome do arquivo');
   });
 });
 
@@ -33,7 +38,12 @@ describe('resolveLocale', () => {
     ['zh-HK', 'zh-hant'],
     ['zh-Hant', 'zh-hant'],
     ['zh-hant', 'zh-hant'],
-    ['pt-BR', 'pt'],
+    ['pt', 'pt'],
+    ['pt-PT', 'pt'],
+    ['pt-AO', 'pt'],
+    ['pt-BR', 'pt-br'],
+    ['pt_BR', 'pt-br'],
+    ['pt-br', 'pt-br'],
     ['in', 'id'],
     ['de-AT', 'de'],
   ])('%s → %s', (tag, locale) => {
@@ -42,6 +52,20 @@ describe('resolveLocale', () => {
 
   it.each([[null], [undefined], [''], ['xx'], ['ru']])('%j → null', (tag) => {
     expect(resolveLocale(tag)).toBeNull();
+  });
+});
+
+describe('intlTag', () => {
+  it.each(LOCALES)('%s has a canonical BCP 47 tag', (locale) => {
+    expect(Intl.getCanonicalLocales(intlTag(locale))).toEqual([intlTag(locale)]);
+  });
+
+  it.each([
+    ['pt', 'pt-PT'],
+    ['pt-br', 'pt-BR'],
+    ['zh-hant', 'zh-Hant'],
+  ] as const)('%s → %s', (locale, tag) => {
+    expect(intlTag(locale)).toBe(tag);
   });
 });
 

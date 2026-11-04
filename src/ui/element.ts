@@ -6,7 +6,7 @@ import { extractTargets, isVideoId, playlistUrl, targetKey } from '../core/parse
 import { readJson, removeKey, writeJson } from '../core/storage';
 import { imageUrl, type Variant } from '../core/variants';
 import { createZip, type ZipFile } from '../core/zip';
-import { format, formatBytes, getMessages, type Locale, type MessageKey, type Messages } from '../i18n';
+import { format, formatBytes, getMessages, intlTag, type Locale, type MessageKey, type Messages } from '../i18n';
 import { icons } from './icons';
 import { PageSync, type ThemeSetting } from './page-sync';
 import { renderEntry, variantLabel, type RenderContext } from './render';
@@ -231,7 +231,7 @@ export class ThumbSnapElement extends LitElement {
   /** The link field with its buttons and options, and the notice under it. */
   protected renderTop(): TemplateResult {
     const t = this.messages;
-    return html`<div class="part" lang=${this.#page.locale}>
+    return html`<div class="part" lang=${intlTag(this.#page.locale)}>
       ${this.#renderForm(t)} ${this._notice ? html`<p class="msg warn" role="alert">${this._notice}</p>` : nothing}
     </div>`;
   }
@@ -255,7 +255,7 @@ export class ThumbSnapElement extends LitElement {
       remove: (entry) => this.#remove(entry),
       toggle: (entry) => this.#toggle(entry),
     };
-    return html`<div class="part" lang=${this.#page.locale}>
+    return html`<div class="part" lang=${intlTag(this.#page.locale)}>
       ${this.#renderHistory(t)}
       ${multi
         ? html`<div class="batch">

@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.vi.md">Tiếng Việt</a> · <b>简体中文</b> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.vi.md">Tiếng Việt</a> · <b>简体中文</b> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 这是一个 Web 组件：输入 YouTube 链接，它就会找出 YouTube 为每个视频提供的所有图片——各种尺寸的缩略图、保持视频原始宽高比的画面，以及 YouTube 自动选取的画面——供你下载、复制、转换或打包成 ZIP 保存。它完全在浏览器中运行，无需服务器，也无需 API 密钥。
 
@@ -25,13 +25,13 @@
 
 YouTube 不会说明其中哪些文件存在，所以 ThumbSnap 会逐一请求每个文件，并读取响应：不存在的文件会返回 404，并附带一张灰色的 120×90 占位图。它将缩略图与自动生成的画面逐字节比较，以区分上传的缩略图和自动生成的缩略图，并通过 YouTube 的 oEmbed 端点获取标题、频道以及视频是否为竖屏。探查 YouTube 得到的结果记录在 [docs/youtube-thumbnails.md](youtube-thumbnails.md) 中。
 
-本工具提供 13 种语言：英语、韩语、日语、中文（简体、繁体）、德语、西班牙语、法语、意大利语、葡萄牙语、波兰语、印度尼西亚语和越南语。工具会跟随所在页面的语言，其他语言则显示为英语。它也会跟随页面的深色模式。
+本工具提供 14 种语言：英语、韩语、日语、中文（简体、繁体）、德语、西班牙语、法语、意大利语、葡萄牙语（葡萄牙、巴西）、波兰语、印度尼西亚语和越南语。工具会跟随所在页面的语言，其他语言则显示为英语。它也会跟随页面的深色模式。
 
 本仓库的源代码采用 MIT 许可证。ThumbSnap 这一名称及其图标不包含在此源代码中。顶部的图标仅供展示，不在 MIT 许可证的范围内，用本仓库构建出的文件中也不包含它。ThumbSnap 与 YouTube 及 Google 无关，缩略图的版权归其创作者所有。
 
 ## 试用
 
-ThumbSnap 已在 [hobbyworker.me](https://hobbyworker.me/zh-hans/services/thumbsnap/) 上线，支持全部 13 种语言。
+ThumbSnap 已在 [hobbyworker.me](https://hobbyworker.me/zh-hans/services/thumbsnap/) 上线，支持全部 14 种语言。
 
 ## 系统要求
 
@@ -75,7 +75,7 @@ npm run build   # dist/thumbsnap.js、其 source map 和 THIRD_PARTY_LICENSES.tx
 
 | 属性 | 默认值 | |
 |---|---|---|
-| `locale` | 最近的 `lang` 属性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` `vi` `de` `it` `pl`；`zh-TW`、`pt-BR` 等语言标签会映射到对应的语言 |
+| `locale` | 最近的 `lang` 属性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt`（葡萄牙） `pt-br`（巴西） `vi` `de` `it` `pl`；`zh-TW`、`pt-BR` 等语言标签会映射到对应的语言 |
 | `theme` | `auto` | `auto` 依次跟随 `<html>` 的 `data-theme`、`data-color-scheme` 或 `data-bs-theme`，其 `dark` 或 `light` 类名，或其 `color-scheme`，最后是系统设置；`light` 和 `dark` 则固定主题 |
 | `value` | | 启动时加载的链接或 ID |
 | `no-url-sync` | 关闭 | 不改动地址栏中的 `?v=` 和 `?list=` |
@@ -108,7 +108,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 ```
 src/
 ├── core/       链接、CDN 上的文件、加载与探测、oEmbed、裁剪、转换与颜色、ZIP、文件名（不含界面）
-├── i18n/       en（原文）、ko、ja、zh-hans、zh-hant、id、es、fr、pt、vi、de、it、pl
+├── i18n/       en（原文）、ko、ja、zh-hans、zh-hant、id、es、fr、pt、pt-br、vi、de、it、pl
 ├── ui/         <thumb-snap> 元素（Lit）— 页面的语言和主题、单个视频的状态、模板、样式
 ├── index.ts    公共 API；不注册任何元素
 └── auto.ts     打包入口；注册 <thumb-snap>

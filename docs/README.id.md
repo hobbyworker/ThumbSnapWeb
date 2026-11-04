@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <b>Bahasa Indonesia</b> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <b>Bahasa Indonesia</b> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Komponen web yang menerima link YouTube dan menemukan semua gambar yang disediakan YouTube untuk setiap video —
 thumbnail dalam semua ukurannya, frame dengan rasio aspek asli video, dan frame yang dipilih YouTube sendiri — untuk
@@ -31,9 +31,9 @@ dengan frame otomatis byte demi byte untuk membedakan thumbnail yang diunggah da
 mengambil judul, channel, dan apakah videonya vertikal dari endpoint oEmbed YouTube. Temuan dari penyelidikan terhadap
 YouTube dicatat di [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-Alat ini tersedia dalam 13 bahasa — Inggris, Korea, Jepang, Tionghoa (Sederhana dan Tradisional), Jerman, Spanyol,
-Prancis, Italia, Portugis, Polandia, Indonesia, dan Vietnam. Alat ini mengikuti bahasa halaman tempatnya dipasang;
-untuk bahasa lainnya, alat ini tampil dalam bahasa Inggris. Begitu pula mode gelap halaman.
+Alat ini tersedia dalam 14 bahasa — Inggris, Korea, Jepang, Tionghoa (Sederhana dan Tradisional), Jerman, Spanyol,
+Prancis, Italia, Portugis (Portugal dan Brasil), Polandia, Indonesia, dan Vietnam. Alat ini mengikuti bahasa halaman
+tempatnya dipasang; untuk bahasa lainnya, alat ini tampil dalam bahasa Inggris. Begitu pula mode gelap halaman.
 
 Kode sumber di repositori ini berlisensi MIT. Nama ThumbSnap dan ikonnya tidak termasuk dalam kode sumber ini. Ikon di
 bagian atas hanya ditampilkan sebagai gambaran: ikon itu tidak dicakup lisensi MIT dan tidak disertakan dalam hasil
@@ -42,7 +42,7 @@ kreatornya.
 
 ## Coba langsung
 
-ThumbSnap berjalan di [hobbyworker.me](https://hobbyworker.me/id/services/thumbsnap/) dalam ke-13 bahasanya.
+ThumbSnap berjalan di [hobbyworker.me](https://hobbyworker.me/id/services/thumbsnap/) dalam ke-14 bahasanya.
 
 ## Persyaratan
 
@@ -98,7 +98,7 @@ Sertakan `THIRD_PARTY_LICENSES.txt` bersamanya.
 
 | Atribut | Bawaan | |
 |---|---|---|
-| `locale` | atribut `lang` terdekat | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` `vi` `de` `it` `pl`; tag seperti `zh-TW` atau `pt-BR` dipetakan ke bahasa yang sesuai |
+| `locale` | atribut `lang` terdekat | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl`; tag seperti `zh-TW` atau `pt-BR` dipetakan ke bahasa yang sesuai |
 | `theme` | `auto` | `auto` mengikuti `data-theme`, `data-color-scheme`, atau `data-bs-theme`, kelas `dark` atau `light`, atau `color-scheme` pada `<html>`, lalu pengaturan sistem; `light` dan `dark` mengunci tema |
 | `value` | | link atau ID yang dimuat di awal |
 | `no-url-sync` | nonaktif | membiarkan `?v=` dan `?list=` di bilah alamat apa adanya |
@@ -138,7 +138,7 @@ Blok penyusunnya — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `
 ```
 src/
 ├── core/       link, file di CDN, pemuatan dan pengecekan, oEmbed, pemotongan, konversi dan warna, ZIP, nama file (tanpa antarmuka)
-├── i18n/       en (sumber), ko, ja, zh-hans, zh-hant, id, es, fr, pt, vi, de, it, pl
+├── i18n/       en (sumber), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
 ├── ui/         elemen <thumb-snap> (Lit) — bahasa dan tema halaman, status satu video, template, gaya
 ├── index.ts    API publik; tidak mendaftarkan apa pun
 └── auto.ts     titik masuk bundle; mendaftarkan <thumb-snap>
