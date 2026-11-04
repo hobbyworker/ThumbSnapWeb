@@ -34,7 +34,8 @@ do YouTube o título, o canal e se o vídeo é vertical. O que se descobriu sond
 
 A ferramenta está disponível em 14 idiomas — inglês, coreano, japonês, chinês (simplificado e tradicional), alemão,
 espanhol, francês, italiano, português (de Portugal e do Brasil), polonês, indonésio e vietnamita — e segue o idioma da
-página em que está. Em qualquer outro idioma, ela aparece em inglês. Também segue o modo escuro da página.
+página em que está. Em qualquer outro idioma, ela aparece em inglês. O modo claro ou escuro segue a configuração do
+dispositivo, ou o modo escuro da página quando a página o repassa.
 
 O código-fonte deste repositório está sob a licença MIT. O nome ThumbSnap e o seu ícone não fazem parte deste código.
 O ícone no topo é mostrado apenas como referência: ele não está coberto pela licença MIT, e o que for compilado a
@@ -98,12 +99,15 @@ A compilação e os testes foram verificados no Node.js 24.
 | Atributo | Padrão | |
 |---|---|---|
 | `locale` | o atributo `lang` mais próximo | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl`; tags como `zh-TW` ou `pt-BR` são convertidas para o idioma correspondente |
-| `theme` | `auto` | `auto` segue `data-theme`, `data-color-scheme` ou `data-bs-theme` no `<html>`, a classe `dark` ou `light` dele, ou o `color-scheme` dele, e depois o sistema; `light` e `dark` fixam o tema |
 | `value` | | links ou IDs para carregar no início |
 | `no-url-sync` | desativado | não mexe em `?v=` e `?list=` na barra de endereço |
 | `no-history` | desativado | não guarda vídeos recentes no `localStorage` |
 | `max-videos` | `20` | o máximo de vídeos carregados de uma vez |
 
+- O modo claro ou escuro vem do `color-scheme` do CSS e, por padrão, segue a configuração do dispositivo. Para seguir
+  o modo escuro da página, dê ao elemento um `color-scheme`: `thumb-snap { color-scheme: inherit; }` herda o da
+  página, ou use `thumb-snap { color-scheme: dark; }` enquanto a página estiver escura. Navegadores sem `light-dark()`
+  (Chrome e Edge antes da 123, Firefox antes da 120, Safari antes da 17.5) mostram as cores claras.
 - Propriedades personalizadas de CSS: `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`,
   `--thumbsnap-font`.
 - Cada ação dispara um evento `thumbsnap` com `bubbles` e `composed` ativados. O `detail` dele é
@@ -139,7 +143,7 @@ Os blocos de construção — `parseTarget`, `extractTargets`, `imageUrl`, `load
 src/
 ├── core/       links, os arquivos da CDN, carregamento e sondagem, oEmbed, recorte, conversão e cores, ZIP, nomes de arquivo (sem interface)
 ├── i18n/       en (original), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
-├── ui/         o elemento <thumb-snap> (Lit) — o idioma e o tema da página, o estado de um vídeo, templates, estilos
+├── ui/         o elemento <thumb-snap> (Lit) — o idioma da página, o estado de um vídeo, templates, estilos
 ├── index.ts    a API pública; não registra nada
 └── auto.ts     o ponto de entrada do bundle; registra <thumb-snap>
 tests/          Vitest — links, arquivos, ZIP, recorte, oEmbed, os catálogos, a escolha do melhor tamanho

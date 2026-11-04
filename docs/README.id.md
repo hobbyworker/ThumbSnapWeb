@@ -33,7 +33,8 @@ YouTube dicatat di [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
 Alat ini tersedia dalam 14 bahasa — Inggris, Korea, Jepang, Tionghoa (Sederhana dan Tradisional), Jerman, Spanyol,
 Prancis, Italia, Portugis (Portugal dan Brasil), Polandia, Indonesia, dan Vietnam. Alat ini mengikuti bahasa halaman
-tempatnya dipasang; untuk bahasa lainnya, alat ini tampil dalam bahasa Inggris. Begitu pula mode gelap halaman.
+tempatnya dipasang; untuk bahasa lainnya, alat ini tampil dalam bahasa Inggris. Tampilan terang atau gelap mengikuti
+pengaturan perangkat, atau mode gelap halaman bila halaman meneruskannya.
 
 Kode sumber di repositori ini berlisensi MIT. Nama ThumbSnap dan ikonnya tidak termasuk dalam kode sumber ini. Ikon di
 bagian atas hanya ditampilkan sebagai gambaran: ikon itu tidak dicakup lisensi MIT dan tidak disertakan dalam hasil
@@ -99,12 +100,15 @@ Sertakan `THIRD_PARTY_LICENSES.txt` bersamanya.
 | Atribut | Bawaan | |
 |---|---|---|
 | `locale` | atribut `lang` terdekat | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl`; tag seperti `zh-TW` atau `pt-BR` dipetakan ke bahasa yang sesuai |
-| `theme` | `auto` | `auto` mengikuti `data-theme`, `data-color-scheme`, atau `data-bs-theme`, kelas `dark` atau `light`, atau `color-scheme` pada `<html>`, lalu pengaturan sistem; `light` dan `dark` mengunci tema |
 | `value` | | link atau ID yang dimuat di awal |
 | `no-url-sync` | nonaktif | membiarkan `?v=` dan `?list=` di bilah alamat apa adanya |
 | `no-history` | nonaktif | tidak menyimpan video terbaru di `localStorage` |
 | `max-videos` | `20` | jumlah video maksimum yang dimuat sekaligus |
 
+- Terang atau gelap ditentukan oleh `color-scheme` CSS, dan secara bawaan mengikuti pengaturan perangkat. Agar
+  mengikuti mode gelap halaman, beri elemen itu `color-scheme`: `thumb-snap { color-scheme: inherit; }` mengambil
+  milik halaman, atau pasang `thumb-snap { color-scheme: dark; }` selama halaman dalam mode gelap. Browser tanpa
+  `light-dark()` (Chrome dan Edge sebelum 123, Firefox sebelum 120, Safari sebelum 17.5) menampilkan warna terang.
 - Properti kustom CSS: `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`, `--thumbsnap-font`.
 - Setiap tindakan memicu event `thumbsnap` dengan `bubbles` dan `composed` aktif. `detail`-nya berupa
   `{ action, videoId?, variant?, format?, count? }`, dan `action` bernilai `resolve`, `download`, `download-zip`,
@@ -139,7 +143,7 @@ Blok penyusunnya — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `
 src/
 ├── core/       link, file di CDN, pemuatan dan pengecekan, oEmbed, pemotongan, konversi dan warna, ZIP, nama file (tanpa antarmuka)
 ├── i18n/       en (sumber), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
-├── ui/         elemen <thumb-snap> (Lit) — bahasa dan tema halaman, status satu video, template, gaya
+├── ui/         elemen <thumb-snap> (Lit) — bahasa halaman, status satu video, template, gaya
 ├── index.ts    API publik; tidak mendaftarkan apa pun
 └── auto.ts     titik masuk bundle; mendaftarkan <thumb-snap>
 tests/          Vitest — link, file, ZIP, pemotongan, oEmbed, katalog, pemilihan ukuran terbaik

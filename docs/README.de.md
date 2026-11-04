@@ -36,7 +36,8 @@ festgehalten.
 Das Tool gibt es in 14 Sprachen – Englisch, Koreanisch, Japanisch, Chinesisch (vereinfacht und traditionell),
 Deutsch, Spanisch, Französisch, Italienisch, Portugiesisch (Portugal und Brasilien), Polnisch, Indonesisch und
 Vietnamesisch. Es folgt der Sprache der Seite, in die es eingebunden ist; in allen anderen Sprachen erscheint es
-auf Englisch. Auch den Dunkelmodus der Seite übernimmt es.
+auf Englisch. Hell oder dunkel richtet sich nach der Einstellung des Geräts oder nach dem Dunkelmodus der Seite,
+wenn die Seite ihn weitergibt.
 
 Der Quellcode in diesem Repository steht unter der MIT-Lizenz. Der Name ThumbSnap und sein Symbol sind nicht in
 diesem Quellcode enthalten. Das Symbol ganz oben dient nur der Anschauung: Es fällt nicht unter die MIT-Lizenz und
@@ -102,12 +103,17 @@ Liefere `THIRD_PARTY_LICENSES.txt` mit.
 | Attribut | Standard | |
 |---|---|---|
 | `locale` | das nächstgelegene `lang`-Attribut | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brasilien) `vi` `de` `it` `pl`; Tags wie `zh-TW` oder `pt-BR` werden passend zugeordnet |
-| `theme` | `auto` | `auto` folgt `data-theme`, `data-color-scheme` oder `data-bs-theme` an `<html>`, dessen Klasse `dark` oder `light` oder dessen `color-scheme`, danach dem System; `light` und `dark` legen das Theme fest |
 | `value` | | Links oder IDs, die beim Start geladen werden |
 | `no-url-sync` | aus | lässt `?v=` und `?list=` in der Adressleiste unangetastet |
 | `no-history` | aus | speichert keine zuletzt geladenen Videos in `localStorage` |
 | `max-videos` | `20` | die Höchstzahl der auf einmal geladenen Videos |
 
+- Hell oder dunkel kommt aus CSS `color-scheme`, standardmäßig aus der Einstellung des Geräts.
+  Soll das Tool dem Dunkelmodus der Seite folgen, gib dem Element ein `color-scheme`:
+  `thumb-snap { color-scheme: inherit; }` übernimmt das der Seite, oder
+  `thumb-snap { color-scheme: dark; }`, solange die Seite dunkel ist. Browser ohne
+  `light-dark()` (Chrome und Edge vor 123, Firefox vor 120, Safari vor 17.5) zeigen die hellen
+  Farben.
 - CSS-Custom-Properties: `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`,
   `--thumbsnap-font`.
 - Jede Aktion löst ein `thumbsnap`-Event mit `bubbles` und `composed` aus. Sein `detail` ist
@@ -144,7 +150,7 @@ Oberfläche nutzen.
 src/
 ├── core/       Links, die Dateien des CDN, Laden und Prüfen, oEmbed, Zuschneiden, Umwandeln und Farben, ZIP, Dateinamen (ohne Oberfläche)
 ├── i18n/       en (Ausgangstext), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
-├── ui/         das Element <thumb-snap> (Lit) – Sprache und Theme der Seite, der Zustand eines Videos, Templates, Styles
+├── ui/         das Element <thumb-snap> (Lit) – Sprache der Seite, der Zustand eines Videos, Templates, Styles
 ├── index.ts    die öffentliche API; registriert nichts
 └── auto.ts     der Einstiegspunkt des Bundles; registriert <thumb-snap>
 tests/          Vitest – Links, Dateien, ZIP, Zuschneiden, oEmbed, die Kataloge, die Wahl der besten Größe

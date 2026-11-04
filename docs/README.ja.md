@@ -25,7 +25,7 @@ YouTubeのリンクから、動画ごとにYouTubeが配信している画像を
 
 YouTubeはこのうちどれが存在するかを示さないため、ThumbSnapはファイルを1つずつ要求し、その応答を読み取ります。存在しないファイルは、灰色の120×90のプレースホルダー画像を伴う404として返ってきます。また、サムネイルと自動生成フレームをバイト単位で比較して、アップロードされたサムネイルか自動生成されたものかを見分け、タイトル・チャンネル・縦長の動画かどうかはYouTubeのoEmbedエンドポイントから取得します。YouTubeを調べてわかったことは[docs/youtube-thumbnails.md](youtube-thumbnails.md)にまとめています。
 
-このツールは14の言語で表示されます：英語・韓国語・日本語・中国語（簡体字・繁体字）・ドイツ語・スペイン語・フランス語・イタリア語・ポルトガル語（ポルトガル・ブラジル）・ポーランド語・インドネシア語・ベトナム語。置かれたページの言語に従い、それ以外の言語では英語で表示されます。ページのダークモードにも従います。
+このツールは14の言語で表示されます：英語・韓国語・日本語・中国語（簡体字・繁体字）・ドイツ語・スペイン語・フランス語・イタリア語・ポルトガル語（ポルトガル・ブラジル）・ポーランド語・インドネシア語・ベトナム語。置かれたページの言語に従い、それ以外の言語では英語で表示されます。ライト・ダークは標準では端末の設定に従い、ページが引き渡せばページのダークモードに従います。
 
 このリポジトリのソースはMITライセンスです。ThumbSnapという名前とそのアイコンは、このソースに含まれていません。冒頭のアイコンは紹介のために置いた画像で、MITライセンスの対象外です。このリポジトリからビルドしたものにも含まれません。ThumbSnapはYouTubeおよびGoogleとは関係がなく、サムネイルの権利は制作者に帰属します。
 
@@ -76,12 +76,12 @@ Node.js 24でビルドとテストを確認しています。
 | 属性 | 既定値 | |
 |---|---|---|
 | `locale` | 最も近い`lang`属性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt`（ポルトガル） `pt-br`（ブラジル） `vi` `de` `it` `pl`。`zh-TW`や`pt-BR`などのタグも対応する言語に割り当てる |
-| `theme` | `auto` | `auto`は`<html>`の`data-theme`・`data-color-scheme`・`data-bs-theme`、`dark`または`light`クラス、`color-scheme`の順に従い、どれもなければシステムの設定に従う。`light`と`dark`はそのテーマに固定する |
 | `value` | | 最初に読み込むリンクまたはID |
 | `no-url-sync` | オフ | アドレスバーの`?v=`と`?list=`を変更しない |
 | `no-history` | オフ | 最近の動画を`localStorage`に保存しない |
 | `max-videos` | `20` | 一度に読み込む動画の最大数 |
 
+- ライト・ダークはCSSの`color-scheme`に従い、標準では端末の設定になります。ページのダークモードに合わせるには、要素に`color-scheme`を指定します。`thumb-snap { color-scheme: inherit; }`ならページの設定を引き継ぎ、ページがダークのあいだ`thumb-snap { color-scheme: dark; }`を指定しても構いません。`light-dark()`に対応していないブラウザ（Chrome・Edge 123、Firefox 120、Safari 17.5より前）ではライトの色で表示されます。
 - CSSカスタムプロパティ：`--thumbsnap-accent`・`--thumbsnap-accent-hover`・`--thumbsnap-radius`・`--thumbsnap-font`。
 - どの操作でも、バブリングするcomposedな`thumbsnap`イベントが発生します。`detail`は`{ action, videoId?, variant?, format?, count? }`で、`action`は`resolve`・`download`・`download-zip`・`copy-image`・`copy-text`・`share`・`error`のいずれかです。
 - `load(text)`は、入力したときと同じようにリンクを読み込みます。`clear()`はツールを空にします。
@@ -109,7 +109,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 src/
 ├── core/       リンク、CDNのファイル、読み込みと存在確認、oEmbed、切り抜き・変換・カラー、ZIP、ファイル名（UIなし）
 ├── i18n/       en（原文）・ko・ja・zh-hans・zh-hant・id・es・fr・pt・pt-br・vi・de・it・pl
-├── ui/         <thumb-snap>要素（Lit）— ページの言語とテーマ、動画1本分の状態、テンプレート、スタイル
+├── ui/         <thumb-snap>要素（Lit）— ページの言語、動画1本分の状態、テンプレート、スタイル
 ├── index.ts    公開API。何も登録しない
 └── auto.ts     バンドルのエントリポイント。<thumb-snap>を登録する
 tests/          Vitest — リンク、ファイル、ZIP、切り抜き、oEmbed、翻訳カタログ、最高画質の判定

@@ -5,36 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ThumbSnapWeb demo</title>
     <script>
-      // Same convention as many static-site themes: data-theme on <html>, choice kept in localStorage.
+      // The page's own light or dark choice, kept in localStorage: it only sets color-scheme on <html>.
       (() => {
         let stored = null;
         try {
           stored = localStorage.getItem('demo-theme');
         } catch {}
-        if (stored === 'light' || stored === 'dark') document.documentElement.dataset.theme = stored;
+        if (stored === 'light' || stored === 'dark') document.documentElement.style.colorScheme = stored;
       })();
     </script>
     <style>
       :root {
         color-scheme: light dark;
-        --bg: #fff;
-        --fg: #161209;
-        --muted: #6b6f76;
-        --line: #e5e7eb;
+        --bg: light-dark(#fff, #252627);
+        --fg: light-dark(#161209, #c9cacc);
+        --muted: light-dark(#6b6f76, #9a9ea6);
+        --line: light-dark(#e5e7eb, #3a3c40);
       }
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme='light']) {
-          --bg: #252627;
-          --fg: #c9cacc;
-          --muted: #9a9ea6;
-          --line: #3a3c40;
-        }
-      }
-      :root[data-theme='dark'] {
-        --bg: #252627;
-        --fg: #c9cacc;
-        --muted: #9a9ea6;
-        --line: #3a3c40;
+      /* Hands the page's color-scheme to the tool. Without this line the tool follows the device. */
+      thumb-snap {
+        color-scheme: inherit;
       }
       body {
         margin: 0;
@@ -135,11 +125,10 @@
       const initialLang = params.get('lang');
       if (initialLang) root.lang = initialLang;
       lang.value = root.lang;
-      theme.value = root.dataset.theme ?? 'auto';
+      theme.value = root.style.colorScheme || 'auto';
       lang.addEventListener('change', () => (root.lang = lang.value));
       theme.addEventListener('change', () => {
-        if (theme.value === 'auto') delete root.dataset.theme;
-        else root.dataset.theme = theme.value;
+        root.style.colorScheme = theme.value === 'auto' ? '' : theme.value;
         try {
           localStorage.setItem('demo-theme', theme.value);
         } catch {}

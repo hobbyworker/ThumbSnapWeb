@@ -34,8 +34,8 @@ YouTube turned up is written down in [docs/youtube-thumbnails.md](docs/youtube-t
 
 The tool is available in 14 languages — English, Korean, Japanese, Chinese (Simplified and
 Traditional), German, Spanish, French, Italian, Portuguese (Portugal and Brazil), Polish, Indonesian
-and Vietnamese — and follows the language of the page it sits in. Other languages get English. It
-follows the page's dark mode too.
+and Vietnamese — and follows the language of the page it sits in. Other languages get English. Its
+colours follow the device's light or dark setting, or the page's own when the page passes it on.
 
 The source in this repository is MIT licensed. The name ThumbSnap and its icon are not part of this
 source. The icon at the top is shown for reference only: it is not covered by the MIT license, and
@@ -100,12 +100,16 @@ loads. Ship `THIRD_PARTY_LICENSES.txt` with it.
 | Attribute | Default | |
 |---|---|---|
 | `locale` | the nearest `lang` attribute | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brazil) `vi` `de` `it` `pl`; tags such as `zh-TW` or `pt-BR` are mapped |
-| `theme` | `auto` | `auto` follows `data-theme`, `data-color-scheme` or `data-bs-theme` on `<html>`, its `dark` or `light` class, or its `color-scheme`, then the system; `light` and `dark` fix it |
 | `value` | | links or IDs to load at start |
 | `no-url-sync` | off | leaves `?v=` and `?list=` in the address bar alone |
 | `no-history` | off | keeps no recent videos in `localStorage` |
 | `max-videos` | `20` | the most videos loaded in one go |
 
+- Light or dark comes from CSS `color-scheme`, the device's setting by default. To follow the
+  page's dark mode, give the element one: `thumb-snap { color-scheme: inherit; }` takes the
+  page's, or `thumb-snap { color-scheme: dark; }` while the page is dark. Browsers without
+  `light-dark()` (Chrome and Edge before 123, Firefox before 120, Safari before 17.5) show the
+  light colours.
 - CSS custom properties: `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`,
   `--thumbsnap-font`.
 - Every action fires a bubbling, composed `thumbsnap` event. Its `detail` is
@@ -141,7 +145,7 @@ without the interface.
 src/
 ├── core/       links, the CDN's files, loading and probing, oEmbed, cropping, converting and colours, ZIP, file names (no interface)
 ├── i18n/       en (source), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
-├── ui/         the <thumb-snap> element (Lit) — the page's language and theme, one video's state, templates, styles
+├── ui/         the <thumb-snap> element (Lit) — the page's language, one video's state, templates, styles
 ├── index.ts    the public API; registers nothing
 └── auto.ts     the bundle's entry point; registers <thumb-snap>
 tests/          Vitest — links, files, ZIP, cropping, oEmbed, the catalogs, choosing the best size

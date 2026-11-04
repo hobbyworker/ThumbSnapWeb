@@ -35,7 +35,8 @@ w [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 Narzędzie jest dostępne w 14 językach — angielskim, koreańskim, japońskim, chińskim (uproszczonym
 i tradycyjnym), niemieckim, hiszpańskim, francuskim, włoskim, portugalskim (europejskim i brazylijskim),
 polskim, indonezyjskim i wietnamskim — i używa języka strony, na której się znajduje. W pozostałych
-językach wyświetla się po angielsku. Dostosowuje się też do trybu ciemnego strony.
+językach wyświetla się po angielsku. Jasny lub ciemny wygląd zależy od ustawienia urządzenia albo od
+trybu ciemnego strony, jeśli strona go przekaże.
 
 Kod źródłowy w tym repozytorium jest objęty licencją MIT. Nazwa ThumbSnap i jego ikona nie wchodzą w skład tego
 kodu. Ikona na górze jest pokazana wyłącznie poglądowo: nie obejmuje jej licencja MIT i nie ma jej w komponencie
@@ -100,12 +101,16 @@ Rozpowszechniaj go razem z `THIRD_PARTY_LICENSES.txt`.
 | Atrybut | Domyślnie | |
 |---|---|---|
 | `locale` | najbliższy atrybut `lang` | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugalia) `pt-br` (Brazylia) `vi` `de` `it` `pl`; tagi takie jak `zh-TW` czy `pt-BR` są przypisywane do odpowiedniego języka |
-| `theme` | `auto` | `auto` kieruje się atrybutem `data-theme`, `data-color-scheme` lub `data-bs-theme` elementu `<html>`, jego klasą `dark` lub `light` albo jego `color-scheme`, a potem ustawieniem systemu; `light` i `dark` ustawiają motyw na stałe |
 | `value` | | linki lub identyfikatory do wczytania na starcie |
 | `no-url-sync` | wyłączony | nie zmienia `?v=` ani `?list=` w pasku adresu |
 | `no-history` | wyłączony | nie zapisuje ostatnich filmów w `localStorage` |
 | `max-videos` | `20` | maksymalna liczba filmów wczytywanych naraz |
 
+- Jasny lub ciemny wygląd wynika z CSS `color-scheme`, domyślnie z ustawienia urządzenia. Aby narzędzie
+  podążało za trybem ciemnym strony, nadaj elementowi `color-scheme`:
+  `thumb-snap { color-scheme: inherit; }` przejmuje ustawienie strony, można też podać
+  `thumb-snap { color-scheme: dark; }`, gdy strona jest ciemna. Przeglądarki bez `light-dark()` (Chrome
+  i Edge przed 123, Firefox przed 120, Safari przed 17.5) pokazują jasne kolory.
 - Właściwości niestandardowe CSS: `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`,
   `--thumbsnap-font`.
 - Każda akcja wywołuje zdarzenie `thumbsnap` z włączonymi `bubbles` i `composed`. Jego `detail` to
@@ -140,7 +145,7 @@ Eksportowane są też elementy składowe — `parseTarget`, `extractTargets`, `i
 src/
 ├── core/       linki, pliki z CDN, wczytywanie i sprawdzanie, oEmbed, przycinanie, konwersja i kolory, ZIP, nazwy plików (bez interfejsu)
 ├── i18n/       en (źródło), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
-├── ui/         element <thumb-snap> (Lit) — język i motyw strony, stan jednego filmu, szablony, style
+├── ui/         element <thumb-snap> (Lit) — język strony, stan jednego filmu, szablony, style
 ├── index.ts    publiczne API; niczego nie rejestruje
 └── auto.ts     punkt wejścia bundla; rejestruje <thumb-snap>
 tests/          Vitest — linki, pliki, ZIP, przycinanie, oEmbed, katalogi, wybór najlepszego rozmiaru

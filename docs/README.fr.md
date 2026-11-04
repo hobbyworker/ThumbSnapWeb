@@ -35,8 +35,8 @@ de terminaison oEmbed de YouTube. Les observations faites en interrogeant YouTub
 
 L’outil est disponible en 14 langues – anglais, coréen, japonais, chinois (simplifié et traditionnel), allemand,
 espagnol, français, italien, portugais (du Portugal et du Brésil), polonais, indonésien et vietnamien – et suit la
-langue de la page qui l’accueille. Dans les autres langues, il s’affiche en anglais. Il suit aussi le mode sombre de
-la page.
+langue de la page qui l’accueille. Dans les autres langues, il s’affiche en anglais. Clair ou sombre, il suit le
+réglage de l’appareil, ou le mode sombre de la page quand celle-ci le lui transmet.
 
 Le code source de ce dépôt est sous licence MIT. Le nom ThumbSnap et son icône ne font pas partie de ce code
 source. L’icône en haut de la page n’est présentée qu’à titre d’illustration : elle n’est pas couverte par la
@@ -103,12 +103,16 @@ Distribuez-le avec `THIRD_PARTY_LICENSES.txt`.
 | Attribut | Par défaut | |
 |---|---|---|
 | `locale` | l’attribut `lang` le plus proche | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brésil) `vi` `de` `it` `pl` ; les étiquettes comme `zh-TW` ou `pt-BR` sont ramenées à la langue correspondante |
-| `theme` | `auto` | `auto` suit `data-theme`, `data-color-scheme` ou `data-bs-theme` sur `<html>`, sa classe `dark` ou `light`, ou son `color-scheme`, puis le système ; `light` et `dark` imposent le thème |
 | `value` | | liens ou ID à charger au démarrage |
 | `no-url-sync` | désactivé | laisse `?v=` et `?list=` tels quels dans la barre d’adresse |
 | `no-history` | désactivé | ne conserve aucune vidéo récente dans `localStorage` |
 | `max-videos` | `20` | le nombre maximal de vidéos chargées en une fois |
 
+- Le clair ou le sombre vient de la propriété CSS `color-scheme` : par défaut, le réglage de l’appareil.
+  Pour suivre le mode sombre de la page, donnez un `color-scheme` à l’élément :
+  `thumb-snap { color-scheme: inherit; }` reprend celui de la page, ou `thumb-snap { color-scheme: dark; }`
+  tant que la page est sombre. Les navigateurs sans `light-dark()` (Chrome et Edge avant la 123, Firefox
+  avant la 120, Safari avant la 17.5) affichent les couleurs claires.
 - Propriétés personnalisées CSS : `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`,
   `--thumbsnap-font`.
 - Chaque action déclenche un événement `thumbsnap` avec `bubbles` et `composed`. Son `detail` est
@@ -145,7 +149,7 @@ l’interface.
 src/
 ├── core/       liens, fichiers du CDN, chargement et vérification, oEmbed, recadrage, conversion et couleurs, ZIP, noms de fichiers (sans interface)
 ├── i18n/       en (source), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
-├── ui/         l’élément <thumb-snap> (Lit) – la langue et le thème de la page, l’état d’une vidéo, les modèles, les styles
+├── ui/         l’élément <thumb-snap> (Lit) – la langue de la page, l’état d’une vidéo, les modèles, les styles
 ├── index.ts    l’API publique ; n’enregistre rien
 └── auto.ts     le point d’entrée du bundle ; enregistre <thumb-snap>
 tests/          Vitest – liens, fichiers, ZIP, recadrage, oEmbed, les catalogues, le choix de la meilleure taille

@@ -8,20 +8,21 @@ export const styles = css`
   :host {
     --ts-accent: var(--thumbsnap-accent, #d93025);
     --ts-accent-hover: var(--thumbsnap-accent-hover, #b3261e);
-    --ts-accent-text: #b3261e;
+    --ts-accent-text: light-dark(#b3261e, #ff8a80);
     --ts-on-accent: #fff;
     --ts-radius: var(--thumbsnap-radius, 12px);
-    --ts-surface: #fff;
-    --ts-surface-2: #f4f5f7;
-    --ts-surface-3: #e8eaee;
-    --ts-border: #dde0e5;
-    --ts-text: #1f2328;
-    --ts-muted: #59616c;
-    --ts-link: #1a6bb0;
-    --ts-preview: #eceef1;
-    --ts-warn-bg: #fff4e5;
-    --ts-warn-text: #7a4200;
-    --ts-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 6px 20px rgb(0 0 0 / 4%);
+    --ts-surface: light-dark(#fff, #2b2c30);
+    --ts-surface-2: light-dark(#f4f5f7, #33353a);
+    --ts-surface-3: light-dark(#e8eaee, #3e4046);
+    --ts-border: light-dark(#dde0e5, #44474e);
+    --ts-text: light-dark(#1f2328, #e6e7ea);
+    --ts-muted: light-dark(#59616c, #a6abb4);
+    --ts-link: light-dark(#1a6bb0, #8ab4f8);
+    --ts-preview: light-dark(#eceef1, #1d1e21);
+    --ts-warn-bg: light-dark(#fff4e5, #3a2c16);
+    --ts-warn-text: light-dark(#7a4200, #ffcc80);
+    /* No shadow in the dark: the same shadows, transparent. */
+    --ts-shadow: 0 1px 2px light-dark(rgb(0 0 0 / 4%), transparent), 0 6px 20px light-dark(rgb(0 0 0 / 4%), transparent);
 
     /* The host spaces the blocks of every part, so a subclass can rearrange the parts and keep the layout. */
     display: grid;
@@ -30,24 +31,29 @@ export const styles = css`
     color: var(--ts-text);
     font-family: var(--thumbsnap-font, inherit);
     line-height: 1.5;
-    color-scheme: light;
+    /* The device's setting unless the page gives the element its own, e.g. thumb-snap { color-scheme: inherit; }.
+       A page's rule wins over :host; the element's style attribute would win over the page, so it stays out of it. */
+    color-scheme: light dark;
     -webkit-text-size-adjust: 100%;
   }
 
-  :host([data-scheme='dark']) {
-    --ts-accent-text: #ff8a80;
-    --ts-surface: #2b2c30;
-    --ts-surface-2: #33353a;
-    --ts-surface-3: #3e4046;
-    --ts-border: #44474e;
-    --ts-text: #e6e7ea;
-    --ts-muted: #a6abb4;
-    --ts-link: #8ab4f8;
-    --ts-preview: #1d1e21;
-    --ts-warn-bg: #3a2c16;
-    --ts-warn-text: #ffcc80;
-    --ts-shadow: none;
-    color-scheme: dark;
+  /* Without light-dark() (Chrome and Edge before 123, Firefox before 120, Safari before 17.5): the light colours. */
+  @supports not (color: light-dark(#000, #fff)) {
+    :host {
+      --ts-accent-text: #b3261e;
+      --ts-surface: #fff;
+      --ts-surface-2: #f4f5f7;
+      --ts-surface-3: #e8eaee;
+      --ts-border: #dde0e5;
+      --ts-text: #1f2328;
+      --ts-muted: #59616c;
+      --ts-link: #1a6bb0;
+      --ts-preview: #eceef1;
+      --ts-warn-bg: #fff4e5;
+      --ts-warn-text: #7a4200;
+      --ts-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 6px 20px rgb(0 0 0 / 4%);
+      color-scheme: light;
+    }
   }
 
   :host([hidden]) {

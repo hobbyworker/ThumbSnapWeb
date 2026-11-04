@@ -31,8 +31,8 @@ YouTube 는 이 가운데 무엇이 있는지 알려 주지 않으므로, ThumbS
 [docs/youtube-thumbnails.md](youtube-thumbnails.md) 에 정리해 두었습니다.
 
 도구는 14개 언어로 나옵니다 — 영어 · 한국어 · 일본어 · 중국어(간체 · 번체) · 독일어 · 스페인어 · 프랑스어 · 이탈리아어 ·
-포르투갈어(포르투갈 · 브라질) · 폴란드어 · 인도네시아어 · 베트남어. 들어간 페이지의 언어를 따르고, 그 밖의 언어에서는
-영어로 나옵니다. 페이지의 다크 모드도 따라갑니다.
+포르투갈어(포르투갈 · 브라질) · 폴란드어 · 인도네시아어 · 베트남어. 들어간 페이지의 언어를 따르고, 그 밖의 언어에서는 영어로
+나옵니다. 라이트 · 다크는 기본으로 기기 설정을 따르고, 페이지가 넘겨 주면 페이지의 다크 모드를 따릅니다.
 
 이 저장소의 소스는 MIT 라이선스입니다. ThumbSnap 이라는 이름과 아이콘은 이 소스에 들어 있지 않습니다. 맨 위의 아이콘은
 보여 드리려고 둔 그림으로, MIT 라이선스에 포함되지 않고 이 저장소로 빌드한 결과에도 들어가지 않습니다. ThumbSnap 은
@@ -93,12 +93,14 @@ Node.js 24 에서 빌드와 테스트를 확인했습니다.
 | 속성 | 기본값 | |
 |---|---|---|
 | `locale` | 가장 가까운 `lang` 속성 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt`(포르투갈) `pt-br`(브라질) `vi` `de` `it` `pl`. `zh-TW` · `pt-BR` 같은 태그도 알맞게 바꿉니다 |
-| `theme` | `auto` | `auto` 는 `<html>` 의 `data-theme` · `data-color-scheme` · `data-bs-theme`, `dark` · `light` 클래스, `color-scheme` 을 차례로 보고, 없으면 시스템 설정을 따릅니다. `light` · `dark` 는 고정 |
 | `value` | | 시작할 때 불러올 링크나 ID |
 | `no-url-sync` | 꺼짐 | 주소창의 `?v=` · `?list=` 를 건드리지 않음 |
 | `no-history` | 꺼짐 | 최근 항목을 `localStorage` 에 남기지 않음 |
 | `max-videos` | `20` | 한 번에 불러오는 최대 영상 수 |
 
+- 라이트 · 다크는 CSS `color-scheme` 을 따르고, 기본은 기기 설정입니다. 페이지의 다크 모드를 따르게 하려면 요소에 `color-scheme` 을 줍니다 —
+  `thumb-snap { color-scheme: inherit; }` 은 페이지의 것을 물려받고, 페이지가 다크일 때 `thumb-snap { color-scheme: dark; }` 를 줘도
+  됩니다. `light-dark()` 를 모르는 브라우저(Chrome · Edge 123, Firefox 120, Safari 17.5 미만)에서는 라이트 색으로 나옵니다.
 - CSS 사용자 속성: `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`, `--thumbsnap-font`
 - 동작마다 버블링 · composed `thumbsnap` 이벤트가 나갑니다. `detail` 은 `{ action, videoId?, variant?, format?, count? }` 이고,
   `action` 은 `resolve` · `download` · `download-zip` · `copy-image` · `copy-text` · `share` · `error` 가운데 하나입니다.
@@ -130,7 +132,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 src/
 ├── core/       링크 · CDN 의 파일 · 불러오기와 확인 · oEmbed · 자르기 · 변환 · 색상 · ZIP · 파일 이름 (화면 없음)
 ├── i18n/       en(원문) · ko · ja · zh-hans · zh-hant · id · es · fr · pt · pt-br · vi · de · it · pl
-├── ui/         <thumb-snap> 요소 (Lit) — 페이지의 언어와 테마, 영상 하나의 상태, 템플릿, 스타일
+├── ui/         <thumb-snap> 요소 (Lit) — 페이지의 언어, 영상 하나의 상태, 템플릿, 스타일
 ├── index.ts    공개 API — 아무것도 등록하지 않음
 └── auto.ts     번들의 진입점 — <thumb-snap> 을 등록
 tests/          Vitest — 링크 · 파일 · ZIP · 자르기 · oEmbed · 번역 카탈로그 · 최고 화질 고르기

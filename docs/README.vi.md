@@ -33,7 +33,8 @@ dạng dọc hay không từ endpoint oEmbed của YouTube. Những gì tìm ra 
 
 Công cụ có 14 ngôn ngữ — tiếng Anh, tiếng Hàn, tiếng Nhật, tiếng Trung (Giản thể và Phồn thể), tiếng Đức, tiếng Tây Ban
 Nha, tiếng Pháp, tiếng Ý, tiếng Bồ Đào Nha (Bồ Đào Nha và Brazil), tiếng Ba Lan, tiếng Indonesia và tiếng Việt — và theo
-ngôn ngữ của trang chứa nó. Với các ngôn ngữ khác, công cụ hiển thị bằng tiếng Anh. Công cụ cũng theo chế độ tối của trang.
+ngôn ngữ của trang chứa nó. Với các ngôn ngữ khác, công cụ hiển thị bằng tiếng Anh. Giao diện sáng hay tối theo cài đặt của
+thiết bị, hoặc theo chế độ tối của trang khi trang truyền sang.
 
 Mã nguồn trong kho này được cấp phép MIT. Tên ThumbSnap và biểu tượng của nó không nằm trong mã nguồn này. Biểu tượng ở
 đầu trang chỉ để minh họa: biểu tượng này không thuộc phạm vi giấy phép MIT và cũng không có trong các bản build từ kho
@@ -96,12 +97,15 @@ npm run build   # dist/thumbsnap.js, source map của nó và THIRD_PARTY_LICENS
 | Thuộc tính | Mặc định | |
 |---|---|---|
 | `locale` | thuộc tính `lang` gần nhất | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Bồ Đào Nha) `pt-br` (Brazil) `vi` `de` `it` `pl`; các thẻ ngôn ngữ như `zh-TW` hoặc `pt-BR` cũng được ánh xạ |
-| `theme` | `auto` | `auto` theo `data-theme`, `data-color-scheme` hoặc `data-bs-theme` trên `<html>`, class `dark` hoặc `light` của nó, hoặc `color-scheme` của nó, rồi đến hệ thống; `light` và `dark` cố định chủ đề |
 | `value` | | liên kết hoặc ID cần tải khi khởi động |
 | `no-url-sync` | tắt | không động đến `?v=` và `?list=` trên thanh địa chỉ |
 | `no-history` | tắt | không lưu video gần đây vào `localStorage` |
 | `max-videos` | `20` | số video tối đa được tải trong một lần |
 
+- Sáng hay tối do `color-scheme` của CSS quyết định, mặc định theo cài đặt của thiết bị. Để công cụ theo chế độ tối của
+  trang, hãy đặt `color-scheme` cho phần tử: `thumb-snap { color-scheme: inherit; }` lấy theo trang, hoặc đặt
+  `thumb-snap { color-scheme: dark; }` khi trang đang tối. Trình duyệt không hỗ trợ `light-dark()` (Chrome và Edge trước
+  123, Firefox trước 120, Safari trước 17.5) sẽ hiển thị màu sáng.
 - Thuộc tính tùy chỉnh CSS: `--thumbsnap-accent`, `--thumbsnap-accent-hover`, `--thumbsnap-radius`, `--thumbsnap-font`.
 - Mọi thao tác đều phát ra sự kiện `thumbsnap` (bubbling, composed). `detail` của sự kiện là
   `{ action, videoId?, variant?, format?, count? }`, và `action` là `resolve`, `download`, `download-zip`, `copy-image`,
@@ -135,7 +139,7 @@ Các thành phần cơ bản — `parseTarget`, `extractTargets`, `imageUrl`, `l
 src/
 ├── core/       liên kết, các tệp trên CDN, tải và thăm dò, oEmbed, cắt ảnh, chuyển đổi và màu sắc, ZIP, tên tệp (không có giao diện)
 ├── i18n/       en (gốc), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl
-├── ui/         phần tử <thumb-snap> (Lit) — ngôn ngữ và chủ đề của trang, trạng thái của từng video, template, style
+├── ui/         phần tử <thumb-snap> (Lit) — ngôn ngữ của trang, trạng thái của từng video, template, style
 ├── index.ts    API công khai; không đăng ký gì
 └── auto.ts     điểm vào của bundle; đăng ký <thumb-snap>
 tests/          Vitest — liên kết, tệp, ZIP, cắt ảnh, oEmbed, các tệp ngôn ngữ, chọn kích thước tốt nhất

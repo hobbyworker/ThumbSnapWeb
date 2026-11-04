@@ -8,7 +8,7 @@ import { imageUrl, type Variant } from '../core/variants';
 import { createZip, type ZipFile } from '../core/zip';
 import { format, formatBytes, getMessages, intlTag, type Locale, type MessageKey, type Messages } from '../i18n';
 import { icons } from './icons';
-import { PageSync, type ThemeSetting } from './page-sync';
+import { PageSync } from './page-sync';
 import { renderEntry, variantLabel, type RenderContext } from './render';
 import { styles } from './styles';
 import { VideoEntry } from './video-entry';
@@ -97,7 +97,7 @@ function canShareFiles(): boolean {
 /**
  * `<thumb-snap>`: paste YouTube links, get every thumbnail and frame YouTube serves for them.
  *
- * Attributes: `locale`, `theme` (auto | light | dark), `value`, `no-url-sync`, `no-history`, `max-videos`.
+ * Attributes: `locale`, `value`, `no-url-sync`, `no-history`, `max-videos`. Light or dark follows its CSS `color-scheme`.
  * Event: `thumbsnap` (see ThumbSnapEventDetail). Parts: renderTop() and renderBottom(), for subclasses.
  */
 export class ThumbSnapElement extends LitElement {
@@ -106,7 +106,6 @@ export class ThumbSnapElement extends LitElement {
 
   static override properties = {
     locale: { type: String },
-    theme: { type: String },
     value: { type: String },
     noUrlSync: { type: Boolean, attribute: 'no-url-sync' },
     noHistory: { type: Boolean, attribute: 'no-history' },
@@ -123,8 +122,6 @@ export class ThumbSnapElement extends LitElement {
 
   /** Language override. By default the nearest `lang` attribute (usually `<html lang>`) decides. */
   declare locale: string | undefined;
-  /** `auto` follows the page's dark mode markers, then the OS. */
-  declare theme: ThemeSetting;
   /** Links or IDs to load when the element starts. */
   declare value: string | undefined;
   /** Don't read `?v=` / `?list=` from the page URL or write them back. */
@@ -148,7 +145,6 @@ export class ThumbSnapElement extends LitElement {
 
   constructor() {
     super();
-    this.theme = 'auto';
     this.noUrlSync = false;
     this.noHistory = false;
     this.maxVideos = 20;
@@ -203,8 +199,7 @@ export class ThumbSnapElement extends LitElement {
   }
 
   protected override willUpdate(changed: PropertyValues): void {
-    if (changed.has('locale') || changed.has('theme')) this.#page.refresh();
-    this.dataset.scheme = this.#page.scheme;
+    if (changed.has('locale')) this.#page.refresh();
   }
 
   protected override updated(changed: PropertyValues): void {

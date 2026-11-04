@@ -25,7 +25,7 @@
 
 YouTube 不會說明其中哪些檔案存在，所以 ThumbSnap 會逐一請求每個檔案，並讀取回應：不存在的檔案會以 404 傳回，並附帶一張灰色的 120×90 佔位圖。它會逐位元組比較縮圖和自動產生的畫面，藉此分辨上傳的縮圖和自動產生的縮圖，並透過 YouTube 的 oEmbed 端點取得標題、頻道以及影片是否為直式。探查 YouTube 的結果記錄在 [docs/youtube-thumbnails.md](youtube-thumbnails.md) 中。
 
-本工具提供 14 種語言：英文、韓文、日文、中文（簡體、繁體）、德文、西班牙文、法文、義大利文、葡萄牙文（葡萄牙、巴西）、波蘭文、印尼文和越南文。工具會依照所在頁面的語言顯示，其他語言則顯示英文。它也會跟隨頁面的深色模式。
+本工具提供 14 種語言：英文、韓文、日文、中文（簡體、繁體）、德文、西班牙文、法文、義大利文、葡萄牙文（葡萄牙、巴西）、波蘭文、印尼文和越南文。工具會依照所在頁面的語言顯示，其他語言則顯示英文。淺色或深色預設跟隨裝置設定；頁面把自己的設定傳給它時，則跟隨頁面的深色模式。
 
 本儲存庫的原始碼採用 MIT 授權條款。ThumbSnap 這個名稱及其圖像不包含在此原始碼中。最上方的圖像僅供展示，不在 MIT 授權條款的範圍內，以本儲存庫建置出的檔案也不包含它。ThumbSnap 與 YouTube 及 Google 無關，縮圖的版權屬於其創作者。
 
@@ -76,12 +76,12 @@ npm run build   # dist/thumbsnap.js、其 source map 和 THIRD_PARTY_LICENSES.tx
 | 屬性 | 預設值 | |
 |---|---|---|
 | `locale` | 最接近的 `lang` 屬性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt`（葡萄牙） `pt-br`（巴西） `vi` `de` `it` `pl`；`zh-TW`、`pt-BR` 等語言標籤會對應到相應的語言 |
-| `theme` | `auto` | `auto` 依序跟隨 `<html>` 的 `data-theme`、`data-color-scheme` 或 `data-bs-theme`，其 `dark` 或 `light` 類別，或其 `color-scheme`，最後是系統設定；`light` 和 `dark` 則固定主題 |
 | `value` | | 啟動時要載入的連結或 ID |
 | `no-url-sync` | 關閉 | 不更動網址列中的 `?v=` 和 `?list=` |
 | `no-history` | 關閉 | 不在 `localStorage` 中保存最近的影片 |
 | `max-videos` | `20` | 一次最多載入的影片數 |
 
+- 淺色或深色由 CSS `color-scheme` 決定，預設跟隨裝置設定。若要跟隨頁面的深色模式，請為元素指定 `color-scheme`：`thumb-snap { color-scheme: inherit; }` 會沿用頁面的設定，也可以在頁面為深色時指定 `thumb-snap { color-scheme: dark; }`。不支援 `light-dark()` 的瀏覽器（Chrome 和 Edge 123 之前、Firefox 120 之前、Safari 17.5 之前）會顯示淺色。
 - CSS 自訂屬性：`--thumbsnap-accent`、`--thumbsnap-accent-hover`、`--thumbsnap-radius`、`--thumbsnap-font`。
 - 每個操作都會觸發一個可冒泡、composed 的 `thumbsnap` 事件。其 `detail` 為 `{ action, videoId?, variant?, format?, count? }`，`action` 為 `resolve`、`download`、`download-zip`、`copy-image`、`copy-text`、`share` 或 `error`。
 - `load(text)` 會像手動輸入一樣載入連結；`clear()` 會清空工具。
@@ -109,7 +109,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 src/
 ├── core/       連結、CDN 上的檔案、載入與探查、oEmbed、裁切、轉換與顏色、ZIP、檔案名稱（不含介面）
 ├── i18n/       en（原文）、ko、ja、zh-hans、zh-hant、id、es、fr、pt、pt-br、vi、de、it、pl
-├── ui/         <thumb-snap> 元素（Lit）— 頁面的語言和主題、單一影片的狀態、範本、樣式
+├── ui/         <thumb-snap> 元素（Lit）— 頁面的語言、單一影片的狀態、範本、樣式
 ├── index.ts    公開 API；不註冊任何元素
 └── auto.ts     打包檔的進入點；註冊 <thumb-snap>
 tests/          Vitest — 連結、檔案、ZIP、裁切、oEmbed、語系檔、最佳尺寸的選擇
