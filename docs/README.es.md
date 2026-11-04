@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <b>Español</b> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <b>Español (España)</b> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Un componente web que recibe enlaces de YouTube y encuentra todas las imágenes que YouTube ofrece de cada vídeo —la
 miniatura en todos sus tamaños, fotogramas con la relación de aspecto del propio vídeo y los fotogramas que YouTube
@@ -32,10 +32,11 @@ automáticos para distinguir una miniatura subida de una generada automáticamen
 YouTube el título, el canal y si el vídeo es vertical. Lo que se averiguó sondeando YouTube está documentado en
 [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-La herramienta está disponible en 16 idiomas: inglés, coreano, japonés, chino (simplificado y tradicional), alemán,
-español, francés, italiano, portugués (de Portugal y de Brasil), polaco, ruso, tailandés, indonesio y vietnamita.
-Sigue el idioma de la página en la que está; en cualquier otro idioma, aparece en inglés. El modo claro u oscuro sigue
-el ajuste del dispositivo, o el modo oscuro de la página cuando la página se lo pasa.
+La herramienta está disponible en 17 idiomas: inglés, coreano, japonés, chino (simplificado y tradicional), alemán,
+español (de España y de Latinoamérica), francés, italiano, portugués (de Portugal y de Brasil), polaco, ruso,
+tailandés, indonesio y vietnamita. Sigue el idioma de la página en la que está; en cualquier otro idioma, aparece en
+inglés. El modo claro u oscuro sigue el ajuste del dispositivo, o el modo oscuro de la página cuando la página se lo
+pasa.
 
 El código fuente de este repositorio tiene licencia MIT. El nombre ThumbSnap y su icono no están incluidos en este
 código. El icono de arriba se muestra solo como referencia: no está cubierto por la licencia MIT y lo que compiles
@@ -44,7 +45,7 @@ pertenecen a sus creadores.
 
 ## Pruébalo
 
-ThumbSnap funciona en [hobbyworker.me](https://hobbyworker.me/es/services/thumbsnap/), en los 16 idiomas.
+ThumbSnap funciona en [hobbyworker.me](https://hobbyworker.me/es/services/thumbsnap/), en los 17 idiomas.
 
 ## Requisitos
 
@@ -98,7 +99,7 @@ con `THIRD_PARTY_LICENSES.txt`.
 
 | Atributo | Predeterminado | |
 |---|---|---|
-| `locale` | el atributo `lang` más cercano | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl` `ru` `th`; las etiquetas como `zh-TW` o `pt-BR` se asignan al idioma correspondiente |
+| `locale` | el atributo `lang` más cercano | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (España) `es-419` (Latinoamérica) `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl` `ru` `th`; las etiquetas como `zh-TW` o `pt-BR` se asignan al idioma correspondiente |
 | `value` | | enlaces o ID que se cargan al inicio |
 | `no-url-sync` | desactivado | no toca `?v=` ni `?list=` en la barra de direcciones |
 | `no-history` | desactivado | no guarda vídeos recientes en `localStorage` |
@@ -143,7 +144,7 @@ Las piezas básicas —`parseTarget`, `extractTargets`, `imageUrl`, `loadImage`,
 ```
 src/
 ├── core/       enlaces, los archivos de la CDN, carga y sondeo, oEmbed, recorte, conversión y colores, ZIP, nombres de archivo (sin interfaz)
-├── i18n/       en (original), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (original), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
 ├── ui/         el elemento <thumb-snap> (Lit) — el idioma de la página, el estado de un vídeo, plantillas, estilos
 ├── index.ts    la API pública; no registra nada
 └── auto.ts     el punto de entrada del bundle; registra <thumb-snap>

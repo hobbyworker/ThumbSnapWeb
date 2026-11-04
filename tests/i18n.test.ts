@@ -18,8 +18,13 @@ describe('catalogs', () => {
 
   it('matches the languages of hobbyworker.me', () => {
     expect([...LOCALES].sort()).toEqual(
-      ['de', 'en', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'pl', 'pt', 'pt-br', 'ru', 'th', 'vi', 'zh-hans', 'zh-hant'],
+      ['de', 'en', 'es', 'es-419', 'fr', 'id', 'it', 'ja', 'ko', 'pl', 'pt', 'pt-br', 'ru', 'th', 'vi', 'zh-hans', 'zh-hant'],
     );
+  });
+
+  it('keeps Spain and Latin America apart', () => {
+    expect(getMessages('es').frameN).toBe('Fotograma {n}');
+    expect(getMessages('es-419').frameN).toBe('Cuadro {n}');
   });
 
   it('keeps Portugal and Brazil apart', () => {
@@ -48,6 +53,18 @@ describe('resolveLocale', () => {
     ['pt-br', 'pt-br'],
     ['in', 'id'],
     ['de-AT', 'de'],
+    ['es', 'es'],
+    ['es-ES', 'es'],
+    ['es-GQ', 'es'],
+    ['es-419', 'es-419'],
+    ['es-MX', 'es-419'],
+    ['es-AR', 'es-419'],
+    ['es-CO', 'es-419'],
+    ['es-CL', 'es-419'],
+    ['es-PE', 'es-419'],
+    ['es-US', 'es-419'],
+    ['es_MX', 'es-419'],
+    ['es-Latn-MX', 'es-419'],
     ['ru-RU', 'ru'],
     ['th-TH', 'th'],
   ])('%s → %s', (tag, locale) => {

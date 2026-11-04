@@ -1,6 +1,7 @@
 import de from './locales/de';
 import en from './locales/en';
 import es from './locales/es';
+import es419 from './locales/es-419';
 import fr from './locales/fr';
 import id from './locales/id';
 import it from './locales/it';
@@ -19,7 +20,7 @@ import type { Messages } from './types';
 export type { MessageKey, Messages } from './types';
 
 /** Same codes as the language folders of hobbyworker.me. The order doesn't matter. */
-export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl', 'ru', 'th'] as const;
+export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'es-419', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl', 'ru', 'th'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
@@ -31,6 +32,7 @@ const CATALOG: Record<Locale, Messages> = {
   'zh-hant': zhHant,
   id,
   es,
+  'es-419': es419,
   fr,
   pt,
   'pt-br': ptBr,
@@ -51,6 +53,7 @@ const INTL_TAGS: Record<Locale, string> = {
   'zh-hant': 'zh-Hant',
   id: 'id',
   es: 'es',
+  'es-419': 'es-419',
   fr: 'fr',
   pt: 'pt-PT',
   'pt-br': 'pt-BR',
@@ -61,6 +64,9 @@ const INTL_TAGS: Record<Locale, string> = {
   ru: 'ru',
   th: 'th',
 };
+
+/** Regions whose Spanish is es-419 (its parent locale in CLDR), and 419 itself. */
+const LATIN_AMERICA = new Set(['419', 'ar', 'bo', 'br', 'bz', 'cl', 'co', 'cr', 'cu', 'do', 'ec', 'gt', 'hn', 'mx', 'ni', 'pa', 'pe', 'pr', 'py', 'sv', 'us', 'uy', 've']);
 
 function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
@@ -77,6 +83,11 @@ export function resolveLocale(tag: string | null | undefined): Locale | null {
   const base = value.split('-')[0];
   // Brazil has its own catalog; plain `pt` and every other region get Portugal's.
   if (base === 'pt') return /-br(?:-|$)/.test(value) ? 'pt-br' : 'pt';
+  // Latin America and the US get es-419; plain `es`, Spain and every other region get es.
+  if (base === 'es') {
+    const region = value.split('-').slice(1).find((part) => /^(?:[a-z]{2}|\d{3})$/.test(part));
+    return region && LATIN_AMERICA.has(region) ? 'es-419' : 'es';
+  }
   if (base === 'in') return 'id'; // legacy code for Indonesian
   return isLocale(base) ? base : null;
 }

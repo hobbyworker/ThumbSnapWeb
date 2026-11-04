@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <b>Português (Portugal)</b> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <b>Português (Portugal)</b> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Um componente web que recebe links do YouTube e encontra todas as imagens que o YouTube disponibiliza para cada vídeo
 — a miniatura em todos os tamanhos, fotogramas na proporção do próprio vídeo e os fotogramas que o YouTube escolhe
@@ -32,10 +32,10 @@ fotogramas automáticos para distinguir uma miniatura carregada de uma gerada au
 oEmbed do YouTube o título, o canal e se o vídeo é vertical. O que se descobriu ao sondar o YouTube está registado em
 [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-A ferramenta está disponível em 16 idiomas — inglês, coreano, japonês, chinês (simplificado e tradicional), alemão,
-espanhol, francês, italiano, português (de Portugal e do Brasil), polaco, russo, tailandês, indonésio e vietnamita — e
-segue o idioma da página em que está. Em qualquer outro idioma, aparece em inglês. O modo claro ou escuro segue a
-definição do dispositivo, ou o modo escuro da página, se a página o transmitir.
+A ferramenta está disponível em 17 idiomas — inglês, coreano, japonês, chinês (simplificado e tradicional), alemão,
+espanhol (de Espanha e da América Latina), francês, italiano, português (de Portugal e do Brasil), polaco, russo,
+tailandês, indonésio e vietnamita — e segue o idioma da página em que está. Em qualquer outro idioma, aparece em
+inglês. O modo claro ou escuro segue a definição do dispositivo, ou o modo escuro da página, se a página o transmitir.
 
 O código-fonte deste repositório está sob a licença MIT. O nome ThumbSnap e o seu ícone não fazem parte deste código.
 O ícone no topo é mostrado apenas como referência: não está abrangido pela licença MIT, e o que for compilado a partir
@@ -44,7 +44,7 @@ pertencem aos seus criadores.
 
 ## Experimentar
 
-O ThumbSnap funciona em [hobbyworker.me](https://hobbyworker.me/pt/services/thumbsnap/), em todos os 16 idiomas.
+O ThumbSnap funciona em [hobbyworker.me](https://hobbyworker.me/pt/services/thumbsnap/), em todos os 17 idiomas.
 
 ## Requisitos
 
@@ -98,7 +98,7 @@ A compilação e os testes foram verificados com o Node.js 24.
 
 | Atributo | Predefinição | |
 |---|---|---|
-| `locale` | o atributo `lang` mais próximo | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl` `ru` `th`; as etiquetas de idioma como `zh-TW` ou `pt-BR` são associadas ao idioma correspondente |
+| `locale` | o atributo `lang` mais próximo | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Espanha) `es-419` (América Latina) `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl` `ru` `th`; as etiquetas de idioma como `zh-TW` ou `pt-BR` são associadas ao idioma correspondente |
 | `value` | | links ou IDs a carregar no início |
 | `no-url-sync` | desativado | não altera `?v=` nem `?list=` na barra de endereço |
 | `no-history` | desativado | não guarda vídeos recentes no `localStorage` |
@@ -142,7 +142,7 @@ Os blocos de construção — `parseTarget`, `extractTargets`, `imageUrl`, `load
 ```
 src/
 ├── core/       links, os ficheiros da CDN, carregamento e sondagem, oEmbed, recorte, conversão e cores, ZIP, nomes de ficheiro (sem interface)
-├── i18n/       en (original), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (original), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
 ├── ui/         o elemento <thumb-snap> (Lit) — o idioma da página, o estado de um vídeo, modelos, estilos
 ├── index.ts    a API pública; não regista nada
 └── auto.ts     o ponto de entrada do bundle; regista <thumb-snap>

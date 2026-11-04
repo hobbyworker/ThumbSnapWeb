@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <b>ไทย</b> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <b>ไทย</b> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 เว็บคอมโพเนนต์ที่รับลิงก์ YouTube แล้วค้นหาทุกภาพที่ YouTube มีให้สำหรับแต่ละวิดีโอ ทั้งภาพขนาดย่อทุกขนาด เฟรมตามสัดส่วนของวิดีโอเอง และเฟรมที่ YouTube เลือกเอง เพื่อดาวน์โหลด คัดลอก แปลง หรือบันทึกเป็น ZIP ทุกอย่างทำงานในเบราว์เซอร์ ไม่ต้องมีเซิร์ฟเวอร์และไม่ต้องใช้คีย์ API
 
@@ -25,13 +25,13 @@
 
 YouTube ไม่ได้บอกว่ามีไฟล์ใดบ้าง ThumbSnap จึงขอทีละไฟล์แล้วอ่านคำตอบ ไฟล์ที่ไม่มีจะได้ 404 พร้อมภาพสีเทาขนาด 120×90 มาแทน เครื่องมือเทียบภาพขนาดย่อกับเฟรมอัตโนมัติทีละไบต์เพื่อแยกภาพขนาดย่อที่อัปโหลดออกจากภาพที่สร้างอัตโนมัติ และดึงชื่อวิดีโอ ช่อง และข้อมูลว่าวิดีโอเป็นแนวตั้งหรือไม่จาก oEmbed ของ YouTube สิ่งที่พบจากการทดสอบกับ YouTube บันทึกไว้ใน [docs/youtube-thumbnails.md](youtube-thumbnails.md)
 
-เครื่องมือนี้มี 16 ภาษา ได้แก่ อังกฤษ เกาหลี ญี่ปุ่น จีน (ตัวย่อและตัวเต็ม) เยอรมัน สเปน ฝรั่งเศส อิตาลี โปรตุเกส (โปรตุเกสและบราซิล) โปแลนด์ รัสเซีย ไทย อินโดนีเซีย และเวียดนาม และจะแสดงตามภาษาของหน้าที่วางไว้ ภาษาอื่นจะแสดงเป็นภาษาอังกฤษ ธีมสว่างหรือมืดเป็นไปตามการตั้งค่าของอุปกรณ์ หรือตามธีมของหน้าเมื่อหน้าส่งต่อมาให้
+เครื่องมือนี้มี 17 ภาษา ได้แก่ อังกฤษ เกาหลี ญี่ปุ่น จีน (ตัวย่อและตัวเต็ม) เยอรมัน สเปน (สเปนและละตินอเมริกา) ฝรั่งเศส อิตาลี โปรตุเกส (โปรตุเกสและบราซิล) โปแลนด์ รัสเซีย ไทย อินโดนีเซีย และเวียดนาม และจะแสดงตามภาษาของหน้าที่วางไว้ ภาษาอื่นจะแสดงเป็นภาษาอังกฤษ ธีมสว่างหรือมืดเป็นไปตามการตั้งค่าของอุปกรณ์ หรือตามธีมของหน้าเมื่อหน้าส่งต่อมาให้
 
 ซอร์สโค้ดในที่เก็บนี้ใช้สัญญาอนุญาต MIT ชื่อ ThumbSnap และไอคอนไม่ได้เป็นส่วนหนึ่งของซอร์สนี้ ไอคอนด้านบนแสดงไว้เพื่ออ้างอิงเท่านั้น ไม่อยู่ภายใต้สัญญาอนุญาต MIT และบิลด์จากที่เก็บนี้ไม่มีไอคอนนี้ ThumbSnap ไม่มีส่วนเกี่ยวข้องกับ YouTube หรือ Google และภาพขนาดย่อเป็นของผู้สร้างแต่ละราย
 
 ## ลองใช้
 
-ThumbSnap ใช้งานได้ที่ [hobbyworker.me](https://hobbyworker.me/th/services/thumbsnap/) ครบทั้ง 16 ภาษา
+ThumbSnap ใช้งานได้ที่ [hobbyworker.me](https://hobbyworker.me/th/services/thumbsnap/) ครบทั้ง 17 ภาษา
 
 ## ข้อกำหนด
 
@@ -75,7 +75,7 @@ npm run build   # dist/thumbsnap.js, source map และ THIRD_PARTY_LICENSES.t
 
 | แอตทริบิวต์ | ค่าเริ่มต้น | |
 |---|---|---|
-| `locale` | แอตทริบิวต์ `lang` ที่ใกล้ที่สุด | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (โปรตุเกส) `pt-br` (บราซิล) `vi` `de` `it` `pl` `ru` `th` แท็กอย่าง `zh-TW` หรือ `pt-BR` จะจับคู่กับภาษาที่ตรงกัน |
+| `locale` | แอตทริบิวต์ `lang` ที่ใกล้ที่สุด | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (สเปน) `es-419` (ละตินอเมริกา) `fr` `pt` (โปรตุเกส) `pt-br` (บราซิล) `vi` `de` `it` `pl` `ru` `th` แท็กอย่าง `zh-TW` หรือ `pt-BR` จะจับคู่กับภาษาที่ตรงกัน |
 | `value` | | ลิงก์หรือรหัสที่จะโหลดตอนเริ่ม |
 | `no-url-sync` | ปิด | ไม่แตะ `?v=` และ `?list=` ในแถบที่อยู่ |
 | `no-history` | ปิด | ไม่เก็บวิดีโอล่าสุดใน `localStorage` |
@@ -108,7 +108,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 ```
 src/
 ├── core/       ลิงก์ ไฟล์ของ CDN การโหลดและการตรวจ oEmbed การครอป การแปลงและสี ZIP ชื่อไฟล์ (ไม่มีอินเทอร์เฟซ)
-├── i18n/       en (ต้นฉบับ), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (ต้นฉบับ), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
 ├── ui/         องค์ประกอบ <thumb-snap> (Lit) — ภาษาของหน้า สถานะของแต่ละวิดีโอ เทมเพลต สไตล์
 ├── index.ts    API สาธารณะ ไม่ได้ลงทะเบียนอะไร
 └── auto.ts     จุดเริ่มต้นของบันเดิล ลงทะเบียน <thumb-snap>

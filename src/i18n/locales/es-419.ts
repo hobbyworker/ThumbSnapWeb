@@ -1,0 +1,91 @@
+import type { Messages } from '../types';
+
+const es419: Messages = {
+  inputLabel: 'Enlace de YouTube o ID del video',
+  inputPlaceholder: 'Pega un enlace de YouTube: video, Shorts, en vivo o playlist',
+  inputHint: 'Puedes agregar varios enlaces a la vez, uno por línea.',
+  paste: 'Pegar',
+  submit: 'Obtener miniaturas',
+  clearInput: 'Borrar entrada',
+  recent: 'Recientes',
+  clearRecent: 'Borrar historial',
+  noTargets: 'No se encontró ningún enlace de YouTube ni ID de video. Revisa la dirección e inténtalo de nuevo.',
+  tooMany: 'Solo se muestran los primeros {max} videos.',
+  pasteBlocked: 'El navegador bloqueó el acceso al portapapeles. Pega con Ctrl+V o ⌘V.',
+
+  optFormat: 'Formato',
+  formatOriginal: 'Original (JPG)',
+  optCrop: 'Quitar barras negras',
+  optCropHint: 'Recorta las barras negras de las imágenes 4:3 al descargarlas o copiarlas.',
+  optFilename: 'Nombre del archivo',
+  filenameId: 'ID del video',
+  filenameTitle: 'Título + ID del video',
+  formatFallback: 'Este navegador no puede crear archivos {format}, así que se usó PNG.',
+
+  loading: 'Cargando…',
+  unavailable: 'No disponible',
+  metaUnavailable:
+    'Los datos del video no están disponibles (privado, eliminado o restringido), pero es posible que las miniaturas sigan existiendo.',
+  notFound: 'No se encontraron miniaturas. Es posible que el video sea privado o se haya eliminado, o que el ID sea incorrecto.',
+  networkError: 'Error de red. Verifica tu conexión e inténtalo de nuevo.',
+  retry: 'Reintentar',
+  playlistCover: 'Playlist “{title}”: se muestra su video de portada.',
+  playlistUnavailable: 'No se puede leer esta playlist. Es posible que sea privada o una lista personal como Ver más tarde.',
+
+  sectionThumbnails: 'Miniaturas',
+  sectionThumbnailsHint: 'La miniatura del video en todos los tamaños que ofrece YouTube.',
+  sectionOriginal: 'Cuadros en proporción original',
+  sectionOriginalHint:
+    'Cuadros que YouTube capturó con la relación de aspecto original del video, sin barras negras: verticales en los Shorts, hasta 1080p.',
+  originalMissing: 'Este video no tiene cuadros 1–3 en proporción original. YouTube suele guardarlos solo para los Shorts y los videos más antiguos.',
+  sectionFrames: 'Cuadros automáticos',
+  sectionFramesHint: 'Los tres cuadros que YouTube elige automáticamente del inicio, la mitad y el final del video.',
+  sectionWebp: 'Versiones WebP',
+  sectionWebpHint:
+    'Archivos WebP más livianos de YouTube. Ábrelos para guardarlos o elige el formato WebP para convertir cualquier imagen.',
+  sectionEmbed: 'Código para insertar',
+  sectionEmbedHint: 'Una miniatura con enlace para blogs, README y foros.',
+
+  colors: 'Colores',
+  copyColor: 'Copiar {color}',
+
+  sizeMaxres: 'Resolución máxima',
+  size720: 'HD 720p',
+  sizeSd: 'Estándar',
+  sizeHq: 'Alta',
+  sizeMq: 'Media',
+  sizeDefault: 'Pequeña',
+  frameN: 'Cuadro {n}',
+  firstFrame: 'Primer cuadro',
+  imageSize: 'Tamaño',
+
+  best: 'Mejor',
+  downloadBest: 'Descargar la mejor',
+  downloadZip: 'Descargar todo (ZIP)',
+  downloadEverything: 'Descargar todos los videos (ZIP)',
+  zipping: 'Preparando ZIP…',
+  download: 'Descargar',
+  copyImage: 'Copiar imagen',
+  copyImageUrl: 'Copiar URL de la imagen',
+  copyVideoLink: 'Copiar enlace del video',
+  openImage: 'Abrir imagen',
+  openVideo: 'Ver en YouTube',
+  share: 'Compartir',
+  remove: 'Quitar',
+  showImages: 'Mostrar imágenes',
+  hideImages: 'Ocultar imágenes',
+  copied: 'Copiado',
+  copyFailed: 'No se pudo copiar. Es posible que tu navegador no lo permita aquí.',
+  downloadFailed: 'La descarga falló. Inténtalo de nuevo.',
+  close: 'Cerrar',
+  videoCount: 'Videos: {n}',
+
+  badgeShorts: 'Vertical (Shorts)',
+  badgeCustom: 'Miniatura personalizada',
+  badgeAuto: 'La miniatura es el cuadro automático {n}',
+
+  embedUrl: 'URL de la imagen',
+  copy: 'Copiar',
+};
+
+export default es419;

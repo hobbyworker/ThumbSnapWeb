@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <b>Tiếng Việt</b> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <b>Tiếng Việt</b> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Web component nhận liên kết YouTube và tìm ra mọi hình ảnh mà YouTube cung cấp cho từng video — hình thu nhỏ ở mọi kích
 thước, khung hình theo đúng tỷ lệ khung hình của video, và các khung hình YouTube tự chọn — để tải xuống, sao chép,
@@ -31,10 +31,10 @@ sẽ trả về mã 404 kèm một ảnh giữ chỗ màu xám 120×90. Công c�
 dạng dọc hay không từ endpoint oEmbed của YouTube. Những gì tìm ra khi thăm dò YouTube được ghi lại trong
 [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-Công cụ có 16 ngôn ngữ — tiếng Anh, tiếng Hàn, tiếng Nhật, tiếng Trung (Giản thể và Phồn thể), tiếng Đức, tiếng Tây Ban
-Nha, tiếng Pháp, tiếng Ý, tiếng Bồ Đào Nha (Bồ Đào Nha và Brazil), tiếng Ba Lan, tiếng Nga, tiếng Thái, tiếng Indonesia và
-tiếng Việt — và theo ngôn ngữ của trang chứa nó. Với các ngôn ngữ khác, công cụ hiển thị bằng tiếng Anh. Giao diện sáng hay
-tối theo cài đặt của thiết bị, hoặc theo chế độ tối của trang khi trang truyền sang.
+Công cụ có 17 ngôn ngữ — tiếng Anh, tiếng Hàn, tiếng Nhật, tiếng Trung (Giản thể và Phồn thể), tiếng Đức, tiếng Tây Ban Nha
+(Tây Ban Nha và Mỹ Latinh), tiếng Pháp, tiếng Ý, tiếng Bồ Đào Nha (Bồ Đào Nha và Brazil), tiếng Ba Lan, tiếng Nga, tiếng
+Thái, tiếng Indonesia và tiếng Việt — và theo ngôn ngữ của trang chứa nó. Với các ngôn ngữ khác, công cụ hiển thị bằng
+tiếng Anh. Giao diện sáng hay tối theo cài đặt của thiết bị, hoặc theo chế độ tối của trang khi trang truyền sang.
 
 Mã nguồn trong kho này được cấp phép MIT. Tên ThumbSnap và biểu tượng của nó không nằm trong mã nguồn này. Biểu tượng ở
 đầu trang chỉ để minh họa: biểu tượng này không thuộc phạm vi giấy phép MIT và cũng không có trong các bản build từ kho
@@ -42,7 +42,7 @@ này. ThumbSnap không liên kết với YouTube hay Google, và hình thu nhỏ
 
 ## Dùng thử
 
-ThumbSnap chạy trên [hobbyworker.me](https://hobbyworker.me/vi/services/thumbsnap/), với đủ 16 ngôn ngữ.
+ThumbSnap chạy trên [hobbyworker.me](https://hobbyworker.me/vi/services/thumbsnap/), với đủ 17 ngôn ngữ.
 
 ## Yêu cầu
 
@@ -96,7 +96,7 @@ npm run build   # dist/thumbsnap.js, source map của nó và THIRD_PARTY_LICENS
 
 | Thuộc tính | Mặc định | |
 |---|---|---|
-| `locale` | thuộc tính `lang` gần nhất | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt` (Bồ Đào Nha) `pt-br` (Brazil) `vi` `de` `it` `pl` `ru` `th`; các thẻ ngôn ngữ như `zh-TW` hoặc `pt-BR` cũng được ánh xạ |
+| `locale` | thuộc tính `lang` gần nhất | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Tây Ban Nha) `es-419` (Mỹ Latinh) `fr` `pt` (Bồ Đào Nha) `pt-br` (Brazil) `vi` `de` `it` `pl` `ru` `th`; các thẻ ngôn ngữ như `zh-TW` hoặc `pt-BR` cũng được ánh xạ |
 | `value` | | liên kết hoặc ID cần tải khi khởi động |
 | `no-url-sync` | tắt | không động đến `?v=` và `?list=` trên thanh địa chỉ |
 | `no-history` | tắt | không lưu video gần đây vào `localStorage` |
@@ -138,7 +138,7 @@ Các thành phần cơ bản — `parseTarget`, `extractTargets`, `imageUrl`, `l
 ```
 src/
 ├── core/       liên kết, các tệp trên CDN, tải và thăm dò, oEmbed, cắt ảnh, chuyển đổi và màu sắc, ZIP, tên tệp (không có giao diện)
-├── i18n/       en (gốc), ko, ja, zh-hans, zh-hant, id, es, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (gốc), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
 ├── ui/         phần tử <thumb-snap> (Lit) — ngôn ngữ của trang, trạng thái của từng video, template, style
 ├── index.ts    API công khai; không đăng ký gì
 └── auto.ts     điểm vào của bundle; đăng ký <thumb-snap>
