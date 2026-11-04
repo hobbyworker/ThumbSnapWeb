@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <b>繁體中文</b></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <b>繁體中文</b></p>
 
 這是一個 Web 元件：輸入 YouTube 連結，它就會找出 YouTube 為每部影片提供的所有圖片——各種尺寸的縮圖、保持影片原始長寬比的畫面，以及 YouTube 自動選出的畫面——供你下載、複製、轉換或打包成 ZIP 儲存。它完全在瀏覽器中執行，不需要伺服器，也不需要 API 金鑰。
 
@@ -25,13 +25,13 @@
 
 YouTube 不會說明其中哪些檔案存在，所以 ThumbSnap 會逐一請求每個檔案，並讀取回應：不存在的檔案會以 404 傳回，並附帶一張灰色的 120×90 佔位圖。它會逐位元組比較縮圖和自動產生的畫面，藉此分辨上傳的縮圖和自動產生的縮圖，並透過 YouTube 的 oEmbed 端點取得標題、頻道以及影片是否為直式。探查 YouTube 的結果記錄在 [docs/youtube-thumbnails.md](youtube-thumbnails.md) 中。
 
-本工具提供 14 種語言：英文、韓文、日文、中文（簡體、繁體）、德文、西班牙文、法文、義大利文、葡萄牙文（葡萄牙、巴西）、波蘭文、印尼文和越南文。工具會依照所在頁面的語言顯示，其他語言則顯示英文。淺色或深色預設跟隨裝置設定；頁面把自己的設定傳給它時，則跟隨頁面的深色模式。
+本工具提供 16 種語言：英文、韓文、日文、中文（簡體、繁體）、德文、西班牙文、法文、義大利文、葡萄牙文（葡萄牙、巴西）、波蘭文、俄文、泰文、印尼文和越南文。工具會依照所在頁面的語言顯示，其他語言則顯示英文。淺色或深色預設跟隨裝置設定；頁面把自己的設定傳給它時，則跟隨頁面的深色模式。
 
 本儲存庫的原始碼採用 MIT 授權條款。ThumbSnap 這個名稱及其圖像不包含在此原始碼中。最上方的圖像僅供展示，不在 MIT 授權條款的範圍內，以本儲存庫建置出的檔案也不包含它。ThumbSnap 與 YouTube 及 Google 無關，縮圖的版權屬於其創作者。
 
 ## 試用
 
-ThumbSnap 已在 [hobbyworker.me](https://hobbyworker.me/zh-hant/services/thumbsnap/) 上線，支援全部 14 種語言。
+ThumbSnap 已在 [hobbyworker.me](https://hobbyworker.me/zh-hant/services/thumbsnap/) 上線，支援全部 16 種語言。
 
 ## 系統需求
 
@@ -75,7 +75,7 @@ npm run build   # dist/thumbsnap.js、其 source map 和 THIRD_PARTY_LICENSES.tx
 
 | 屬性 | 預設值 | |
 |---|---|---|
-| `locale` | 最接近的 `lang` 屬性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt`（葡萄牙） `pt-br`（巴西） `vi` `de` `it` `pl`；`zh-TW`、`pt-BR` 等語言標籤會對應到相應的語言 |
+| `locale` | 最接近的 `lang` 屬性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` `fr` `pt`（葡萄牙） `pt-br`（巴西） `vi` `de` `it` `pl` `ru` `th`；`zh-TW`、`pt-BR` 等語言標籤會對應到相應的語言 |
 | `value` | | 啟動時要載入的連結或 ID |
 | `no-url-sync` | 關閉 | 不更動網址列中的 `?v=` 和 `?list=` |
 | `no-history` | 關閉 | 不在 `localStorage` 中保存最近的影片 |
@@ -108,7 +108,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 ```
 src/
 ├── core/       連結、CDN 上的檔案、載入與探查、oEmbed、裁切、轉換與顏色、ZIP、檔案名稱（不含介面）
-├── i18n/       en（原文）、ko、ja、zh-hans、zh-hant、id、es、fr、pt、pt-br、vi、de、it、pl
+├── i18n/       en（原文）、ko、ja、zh-hans、zh-hant、id、es、fr、pt、pt-br、vi、de、it、pl、ru、th
 ├── ui/         <thumb-snap> 元素（Lit）— 頁面的語言、單一影片的狀態、範本、樣式
 ├── index.ts    公開 API；不註冊任何元素
 └── auto.ts     打包檔的進入點；註冊 <thumb-snap>

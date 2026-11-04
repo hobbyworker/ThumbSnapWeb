@@ -17,7 +17,9 @@ describe('catalogs', () => {
   });
 
   it('matches the languages of hobbyworker.me', () => {
-    expect(LOCALES).toEqual(['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl']);
+    expect([...LOCALES].sort()).toEqual(
+      ['de', 'en', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'pl', 'pt', 'pt-br', 'ru', 'th', 'vi', 'zh-hans', 'zh-hant'],
+    );
   });
 
   it('keeps Portugal and Brazil apart', () => {
@@ -46,11 +48,13 @@ describe('resolveLocale', () => {
     ['pt-br', 'pt-br'],
     ['in', 'id'],
     ['de-AT', 'de'],
+    ['ru-RU', 'ru'],
+    ['th-TH', 'th'],
   ])('%s → %s', (tag, locale) => {
     expect(resolveLocale(tag)).toBe(locale);
   });
 
-  it.each([[null], [undefined], [''], ['xx'], ['ru']])('%j → null', (tag) => {
+  it.each([[null], [undefined], [''], ['xx'], ['ar']])('%j → null', (tag) => {
     expect(resolveLocale(tag)).toBeNull();
   });
 });

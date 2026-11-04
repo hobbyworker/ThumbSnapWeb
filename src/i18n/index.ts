@@ -9,6 +9,8 @@ import ko from './locales/ko';
 import pl from './locales/pl';
 import pt from './locales/pt';
 import ptBr from './locales/pt-br';
+import ru from './locales/ru';
+import th from './locales/th';
 import vi from './locales/vi';
 import zhHans from './locales/zh-hans';
 import zhHant from './locales/zh-hant';
@@ -16,8 +18,8 @@ import type { Messages } from './types';
 
 export type { MessageKey, Messages } from './types';
 
-/** Same codes (and order) as the language folders of hobbyworker.me. */
-export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl'] as const;
+/** Same codes as the language folders of hobbyworker.me. The order doesn't matter. */
+export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl', 'ru', 'th'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
@@ -36,6 +38,8 @@ const CATALOG: Record<Locale, Messages> = {
   de,
   it,
   pl,
+  ru,
+  th,
 };
 
 /** BCP 47 tags for Intl APIs. */
@@ -54,6 +58,8 @@ const INTL_TAGS: Record<Locale, string> = {
   de: 'de',
   it: 'it',
   pl: 'pl',
+  ru: 'ru',
+  th: 'th',
 };
 
 function isLocale(value: string): value is Locale {
