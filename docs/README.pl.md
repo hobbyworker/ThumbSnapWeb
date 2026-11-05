@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <b>Polski</b> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ar.md">العربية</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <b>Polski</b> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Komponent webowy, który przyjmuje linki do YouTube i znajduje wszystkie obrazy udostępniane przez YouTube dla
 każdego filmu — miniaturę we wszystkich rozmiarach, klatki w proporcjach samego filmu i klatki, które YouTube
@@ -32,12 +32,12 @@ automatycznie, porównuje miniaturę z klatkami automatycznymi bajt po bajcie, a
 pionowy, pobiera z endpointu oEmbed YouTube. To, co udało się ustalić, odpytując YouTube, opisano
 w [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-Narzędzie jest dostępne w 17 językach — angielskim, koreańskim, japońskim, chińskim (uproszczonym
+Narzędzie jest dostępne w 18 językach — angielskim, koreańskim, japońskim, chińskim (uproszczonym
 i tradycyjnym), niemieckim, hiszpańskim (europejskim i latynoamerykańskim), francuskim, włoskim,
-portugalskim (europejskim i brazylijskim), polskim, rosyjskim, tajskim, indonezyjskim i wietnamskim —
-i używa języka strony, na której się znajduje. W pozostałych językach wyświetla się po angielsku. Jasny
-lub ciemny wygląd zależy od ustawienia urządzenia albo od trybu ciemnego strony, jeśli strona go
-przekaże.
+portugalskim (europejskim i brazylijskim), polskim, rosyjskim, tajskim, arabskim, indonezyjskim
+i wietnamskim — i używa języka strony, na której się znajduje. W pozostałych językach wyświetla się po
+angielsku. Jasny lub ciemny wygląd zależy od ustawienia urządzenia albo od trybu ciemnego strony, jeśli
+strona go przekaże.
 
 Kod źródłowy w tym repozytorium jest objęty licencją MIT. Nazwa ThumbSnap i jego ikona nie wchodzą w skład tego
 kodu. Ikona na górze jest pokazana wyłącznie poglądowo: nie obejmuje jej licencja MIT i nie ma jej w komponencie
@@ -46,7 +46,7 @@ twórców.
 
 ## Wypróbuj
 
-ThumbSnap działa na [hobbyworker.me](https://hobbyworker.me/pl/services/thumbsnap/) we wszystkich 17 językach.
+ThumbSnap działa na [hobbyworker.me](https://hobbyworker.me/pl/services/thumbsnap/) we wszystkich 18 językach.
 
 ## Wymagania
 
@@ -101,7 +101,7 @@ Rozpowszechniaj go razem z `THIRD_PARTY_LICENSES.txt`.
 
 | Atrybut | Domyślnie | |
 |---|---|---|
-| `locale` | najbliższy atrybut `lang` | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Hiszpania) `es-419` (Ameryka Łacińska) `fr` `pt` (Portugalia) `pt-br` (Brazylia) `vi` `de` `it` `pl` `ru` `th`; tagi takie jak `zh-TW` czy `pt-BR` są przypisywane do odpowiedniego języka |
+| `locale` | najbliższy atrybut `lang` | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Hiszpania) `es-419` (Ameryka Łacińska) `fr` `pt` (Portugalia) `pt-br` (Brazylia) `vi` `de` `it` `pl` `ru` `th` `ar`; tagi takie jak `zh-TW` czy `pt-BR` są przypisywane do odpowiedniego języka |
 | `value` | | linki lub identyfikatory do wczytania na starcie |
 | `no-url-sync` | wyłączony | nie zmienia `?v=` ani `?list=` w pasku adresu |
 | `no-history` | wyłączony | nie zapisuje ostatnich filmów w `localStorage` |
@@ -145,7 +145,7 @@ Eksportowane są też elementy składowe — `parseTarget`, `extractTargets`, `i
 ```
 src/
 ├── core/       linki, pliki z CDN, wczytywanie i sprawdzanie, oEmbed, przycinanie, konwersja i kolory, ZIP, nazwy plików (bez interfejsu)
-├── i18n/       en (źródło), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (źródło), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th, ar
 ├── ui/         element <thumb-snap> (Lit) — język strony, stan jednego filmu, szablony, style
 ├── index.ts    publiczne API; niczego nie rejestruje
 └── auto.ts     punkt wejścia bundla; rejestruje <thumb-snap>

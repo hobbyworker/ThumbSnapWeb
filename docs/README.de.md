@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <b>Deutsch</b> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ar.md">العربية</a> · <b>Deutsch</b> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Eine Webkomponente, die YouTube-Links entgegennimmt und zu jedem Video alle Bilder findet, die YouTube
 bereitstellt – das Thumbnail in allen Größen, Frames im eigenen Seitenverhältnis des Videos und die Frames, die
@@ -33,11 +33,11 @@ den automatisch erzeugten Frames; Titel, Kanal und ob das Video hochkant ist, er
 YouTube. Was sich beim Abfragen von YouTube gezeigt hat, ist in [docs/youtube-thumbnails.md](youtube-thumbnails.md)
 festgehalten.
 
-Das Tool gibt es in 17 Sprachen – Englisch, Koreanisch, Japanisch, Chinesisch (vereinfacht und traditionell),
+Das Tool gibt es in 18 Sprachen – Englisch, Koreanisch, Japanisch, Chinesisch (vereinfacht und traditionell),
 Deutsch, Spanisch (Spanien und Lateinamerika), Französisch, Italienisch, Portugiesisch (Portugal und Brasilien),
-Polnisch, Russisch, Thailändisch, Indonesisch und Vietnamesisch. Es folgt der Sprache der Seite, in die es
-eingebunden ist; in allen anderen Sprachen erscheint es auf Englisch. Hell oder dunkel richtet sich nach der
-Einstellung des Geräts oder nach dem Dunkelmodus der Seite, wenn die Seite ihn weitergibt.
+Polnisch, Russisch, Thailändisch, Arabisch, Indonesisch und Vietnamesisch. Es folgt der Sprache der Seite, in
+die es eingebunden ist; in allen anderen Sprachen erscheint es auf Englisch. Hell oder dunkel richtet sich nach
+der Einstellung des Geräts oder nach dem Dunkelmodus der Seite, wenn die Seite ihn weitergibt.
 
 Der Quellcode in diesem Repository steht unter der MIT-Lizenz. Der Name ThumbSnap und sein Symbol sind nicht in
 diesem Quellcode enthalten. Das Symbol ganz oben dient nur der Anschauung: Es fällt nicht unter die MIT-Lizenz und
@@ -46,7 +46,7 @@ Thumbnails gehören ihren Urhebern.
 
 ## Ausprobieren
 
-ThumbSnap läuft auf [hobbyworker.me](https://hobbyworker.me/de/services/thumbsnap/), in allen 17 Sprachen.
+ThumbSnap läuft auf [hobbyworker.me](https://hobbyworker.me/de/services/thumbsnap/), in allen 18 Sprachen.
 
 ## Voraussetzungen
 
@@ -102,7 +102,7 @@ Liefere `THIRD_PARTY_LICENSES.txt` mit.
 
 | Attribut | Standard | |
 |---|---|---|
-| `locale` | das nächstgelegene `lang`-Attribut | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Spanien) `es-419` (Lateinamerika) `fr` `pt` (Portugal) `pt-br` (Brasilien) `vi` `de` `it` `pl` `ru` `th`; Tags wie `zh-TW` oder `pt-BR` werden passend zugeordnet |
+| `locale` | das nächstgelegene `lang`-Attribut | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Spanien) `es-419` (Lateinamerika) `fr` `pt` (Portugal) `pt-br` (Brasilien) `vi` `de` `it` `pl` `ru` `th` `ar`; Tags wie `zh-TW` oder `pt-BR` werden passend zugeordnet |
 | `value` | | Links oder IDs, die beim Start geladen werden |
 | `no-url-sync` | aus | lässt `?v=` und `?list=` in der Adressleiste unangetastet |
 | `no-history` | aus | speichert keine zuletzt geladenen Videos in `localStorage` |
@@ -149,7 +149,7 @@ Oberfläche nutzen.
 ```
 src/
 ├── core/       Links, die Dateien des CDN, Laden und Prüfen, oEmbed, Zuschneiden, Umwandeln und Farben, ZIP, Dateinamen (ohne Oberfläche)
-├── i18n/       en (Ausgangstext), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (Ausgangstext), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th, ar
 ├── ui/         das Element <thumb-snap> (Lit) – Sprache der Seite, der Zustand eines Videos, Templates, Styles
 ├── index.ts    die öffentliche API; registriert nichts
 └── auto.ts     der Einstiegspunkt des Bundles; registriert <thumb-snap>

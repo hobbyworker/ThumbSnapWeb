@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <b>한국어</b> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <b>한국어</b> · <a href="README.ar.md">العربية</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 YouTube 링크를 넣으면 그 영상에 대해 YouTube 가 내어 주는 이미지를 모두 찾아 주는 웹 컴포넌트입니다. 모든 크기의
 썸네일, 영상 본래 화면비의 프레임, YouTube 가 스스로 고른 프레임을 내려받거나 복사하고, 형식을 바꾸거나 ZIP 으로
@@ -30,10 +30,10 @@ YouTube 는 이 가운데 무엇이 있는지 알려 주지 않으므로, ThumbS
 것인지 가리고, 제목 · 채널 · 세로 영상 여부는 YouTube 의 oEmbed 로 가져옵니다. YouTube 를 조사하며 알게 된 것은
 [docs/youtube-thumbnails.md](youtube-thumbnails.md) 에 정리해 두었습니다.
 
-도구는 17개 언어로 나옵니다 — 영어 · 한국어 · 일본어 · 중국어(간체 · 번체) · 독일어 · 스페인어(스페인 · 중남미) ·
-프랑스어 · 이탈리아어 · 포르투갈어(포르투갈 · 브라질) · 폴란드어 · 러시아어 · 태국어 · 인도네시아어 · 베트남어. 들어간 페이지의
-언어를 따르고, 그 밖의 언어에서는 영어로 나옵니다. 라이트 · 다크는 기본으로 기기 설정을 따르고, 페이지가 넘겨 주면 페이지의 다크
-모드를 따릅니다.
+도구는 18개 언어로 나옵니다 — 영어 · 한국어 · 일본어 · 중국어(간체 · 번체) · 독일어 · 스페인어(스페인 · 중남미) ·
+프랑스어 · 이탈리아어 · 포르투갈어(포르투갈 · 브라질) · 폴란드어 · 러시아어 · 태국어 · 아랍어 · 인도네시아어 · 베트남어.
+들어간 페이지의 언어를 따르고, 그 밖의 언어에서는 영어로 나옵니다. 라이트 · 다크는 기본으로 기기 설정을 따르고, 페이지가 넘겨 주면
+페이지의 다크 모드를 따릅니다.
 
 이 저장소의 소스는 MIT 라이선스입니다. ThumbSnap 이라는 이름과 아이콘은 이 소스에 들어 있지 않습니다. 맨 위의 아이콘은
 보여 드리려고 둔 그림으로, MIT 라이선스에 포함되지 않고 이 저장소로 빌드한 결과에도 들어가지 않습니다. ThumbSnap 은
@@ -41,7 +41,7 @@ YouTube · Google 과 관련이 없고, 썸네일의 권리는 그 제작자에�
 
 ## 써 보기
 
-ThumbSnap 은 [hobbyworker.me](https://hobbyworker.me/ko/services/thumbsnap/) 에서 17개 언어로 쓸 수 있습니다.
+ThumbSnap 은 [hobbyworker.me](https://hobbyworker.me/ko/services/thumbsnap/) 에서 18개 언어로 쓸 수 있습니다.
 
 ## 요구 사항
 
@@ -93,7 +93,7 @@ Node.js 24 에서 빌드와 테스트를 확인했습니다.
 
 | 속성 | 기본값 | |
 |---|---|---|
-| `locale` | 가장 가까운 `lang` 속성 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es`(스페인) `es-419`(중남미) `fr` `pt`(포르투갈) `pt-br`(브라질) `vi` `de` `it` `pl` `ru` `th`. `zh-TW` · `pt-BR` 같은 태그도 알맞게 바꿉니다 |
+| `locale` | 가장 가까운 `lang` 속성 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es`(스페인) `es-419`(중남미) `fr` `pt`(포르투갈) `pt-br`(브라질) `vi` `de` `it` `pl` `ru` `th` `ar`. `zh-TW` · `pt-BR` 같은 태그도 알맞게 바꿉니다 |
 | `value` | | 시작할 때 불러올 링크나 ID |
 | `no-url-sync` | 꺼짐 | 주소창의 `?v=` · `?list=` 를 건드리지 않음 |
 | `no-history` | 꺼짐 | 최근 항목을 `localStorage` 에 남기지 않음 |
@@ -132,7 +132,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 ```
 src/
 ├── core/       링크 · CDN 의 파일 · 불러오기와 확인 · oEmbed · 자르기 · 변환 · 색상 · ZIP · 파일 이름 (화면 없음)
-├── i18n/       en(원문) · ko · ja · zh-hans · zh-hant · id · es · es-419 · fr · pt · pt-br · vi · de · it · pl · ru · th
+├── i18n/       en(원문) · ko · ja · zh-hans · zh-hant · id · es · es-419 · fr · pt · pt-br · vi · de · it · pl · ru · th · ar
 ├── ui/         <thumb-snap> 요소 (Lit) — 페이지의 언어, 영상 하나의 상태, 템플릿, 스타일
 ├── index.ts    공개 API — 아무것도 등록하지 않음
 └── auto.ts     번들의 진입점 — <thumb-snap> 을 등록

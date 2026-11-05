@@ -120,7 +120,8 @@ export const styles = css`
     width: 100%;
     min-height: 3.25rem;
     max-height: 15rem;
-    padding: 0.8rem 2.75rem 0.8rem 0.95rem;
+    padding-block: 0.8rem;
+    padding-inline: 0.95rem 2.75rem;
     border: 1px solid var(--ts-border);
     border-radius: calc(var(--ts-radius) - 2px);
     background: var(--ts-surface-2);
@@ -137,6 +138,11 @@ export const styles = css`
   textarea::placeholder {
     color: var(--ts-muted);
     opacity: 0.85;
+  }
+
+  /* The link field is left to right (links and IDs); its hint follows the language while it shows. */
+  [dir='rtl'] textarea:placeholder-shown {
+    direction: rtl;
   }
 
   textarea:focus {
@@ -323,7 +329,8 @@ export const styles = css`
     align-items: center;
     gap: 0.45rem;
     max-width: 14rem;
-    padding: 0.2rem 0.75rem 0.2rem 0.25rem;
+    padding-block: 0.2rem;
+    padding-inline: 0.25rem 0.75rem;
     border: 1px solid var(--ts-border);
     border-radius: 999px;
     background: var(--ts-surface);
@@ -552,6 +559,11 @@ export const styles = css`
     transition: transform 0.2s;
   }
 
+  /* Closed, the chevron points the way the text runs: the only icon that turns around in right-to-left. */
+  [dir='rtl'] summary svg {
+    transform: rotate(90deg);
+  }
+
   details[open] > summary svg {
     transform: none;
   }
@@ -710,7 +722,8 @@ export const styles = css`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.3rem 0.4rem 0.3rem 0.75rem;
+    padding-block: 0.3rem;
+    padding-inline: 0.75rem 0.4rem;
     background: var(--ts-surface-2);
     font-size: 0.82em;
     font-weight: 600;
@@ -802,13 +815,24 @@ export const styles = css`
 
   .viewer figcaption {
     align-items: center;
-    padding: 0.4rem 0.5rem 0.4rem 1rem;
+    padding-block: 0.4rem;
+    padding-inline: 1rem 0.5rem;
     font-size: 0.9em;
   }
 
   .viewer-actions {
     display: flex;
     gap: 0.1rem;
+  }
+
+  /* Only in right-to-left lines (sizeLine): width×height held left to right, a file size kept whole. */
+  .num {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .iso {
+    unicode-bidi: isolate;
   }
 
   .sr-only {

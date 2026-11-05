@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <b>日本語</b> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ar.md">العربية</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <b>日本語</b> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 YouTubeのリンクから、動画ごとにYouTubeが配信している画像をすべて見つけ出すWebコンポーネントです。各サイズのサムネイル、動画本来のアスペクト比のフレーム、YouTubeが自動で選んだフレームを、ダウンロード・コピー・変換したり、ZIPにまとめて保存したりできます。ブラウザだけで動作し、サーバーもAPIキーも必要ありません。
 
@@ -25,13 +25,13 @@ YouTubeのリンクから、動画ごとにYouTubeが配信している画像を
 
 YouTubeはこのうちどれが存在するかを示さないため、ThumbSnapはファイルを1つずつ要求し、その応答を読み取ります。存在しないファイルは、灰色の120×90のプレースホルダー画像を伴う404として返ってきます。また、サムネイルと自動生成フレームをバイト単位で比較して、アップロードされたサムネイルか自動生成されたものかを見分け、タイトル・チャンネル・縦長の動画かどうかはYouTubeのoEmbedエンドポイントから取得します。YouTubeを調べてわかったことは[docs/youtube-thumbnails.md](youtube-thumbnails.md)にまとめています。
 
-このツールは17の言語で表示されます：英語・韓国語・日本語・中国語（簡体字・繁体字）・ドイツ語・スペイン語（スペイン・中南米）・フランス語・イタリア語・ポルトガル語（ポルトガル・ブラジル）・ポーランド語・ロシア語・タイ語・インドネシア語・ベトナム語。置かれたページの言語に従い、それ以外の言語では英語で表示されます。ライト・ダークは標準では端末の設定に従い、ページが引き渡せばページのダークモードに従います。
+このツールは18の言語で表示されます：英語・韓国語・日本語・中国語（簡体字・繁体字）・ドイツ語・スペイン語（スペイン・中南米）・フランス語・イタリア語・ポルトガル語（ポルトガル・ブラジル）・ポーランド語・ロシア語・タイ語・アラビア語・インドネシア語・ベトナム語。置かれたページの言語に従い、それ以外の言語では英語で表示されます。ライト・ダークは標準では端末の設定に従い、ページが引き渡せばページのダークモードに従います。
 
 このリポジトリのソースはMITライセンスです。ThumbSnapという名前とそのアイコンは、このソースに含まれていません。冒頭のアイコンは紹介のために置いた画像で、MITライセンスの対象外です。このリポジトリからビルドしたものにも含まれません。ThumbSnapはYouTubeおよびGoogleとは関係がなく、サムネイルの権利は制作者に帰属します。
 
 ## 試してみる
 
-ThumbSnapは[hobbyworker.me](https://hobbyworker.me/ja/services/thumbsnap/)で公開しており、17の言語すべてで使えます。
+ThumbSnapは[hobbyworker.me](https://hobbyworker.me/ja/services/thumbsnap/)で公開しており、18の言語すべてで使えます。
 
 ## 動作環境
 
@@ -75,7 +75,7 @@ Node.js 24でビルドとテストを確認しています。
 
 | 属性 | 既定値 | |
 |---|---|---|
-| `locale` | 最も近い`lang`属性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es`（スペイン） `es-419`（中南米） `fr` `pt`（ポルトガル） `pt-br`（ブラジル） `vi` `de` `it` `pl` `ru` `th`。`zh-TW`や`pt-BR`などのタグも対応する言語に割り当てる |
+| `locale` | 最も近い`lang`属性 | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es`（スペイン） `es-419`（中南米） `fr` `pt`（ポルトガル） `pt-br`（ブラジル） `vi` `de` `it` `pl` `ru` `th` `ar`。`zh-TW`や`pt-BR`などのタグも対応する言語に割り当てる |
 | `value` | | 最初に読み込むリンクまたはID |
 | `no-url-sync` | オフ | アドレスバーの`?v=`と`?list=`を変更しない |
 | `no-history` | オフ | 最近の動画を`localStorage`に保存しない |
@@ -108,7 +108,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 ```
 src/
 ├── core/       リンク、CDNのファイル、読み込みと存在確認、oEmbed、切り抜き・変換・カラー、ZIP、ファイル名（UIなし）
-├── i18n/       en（原文）・ko・ja・zh-hans・zh-hant・id・es・es-419・fr・pt・pt-br・vi・de・it・pl・ru・th
+├── i18n/       en（原文）・ko・ja・zh-hans・zh-hant・id・es・es-419・fr・pt・pt-br・vi・de・it・pl・ru・th・ar
 ├── ui/         <thumb-snap>要素（Lit）— ページの言語、動画1本分の状態、テンプレート、スタイル
 ├── index.ts    公開API。何も登録しない
 └── auto.ts     バンドルのエントリポイント。<thumb-snap>を登録する

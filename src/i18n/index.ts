@@ -1,3 +1,4 @@
+import ar from './locales/ar';
 import de from './locales/de';
 import en from './locales/en';
 import es from './locales/es';
@@ -20,7 +21,7 @@ import type { Messages } from './types';
 export type { MessageKey, Messages } from './types';
 
 /** Same codes as the language folders of hobbyworker.me. The order doesn't matter. */
-export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'es-419', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl', 'ru', 'th'] as const;
+export const LOCALES = ['en', 'ko', 'ja', 'zh-hans', 'zh-hant', 'id', 'es', 'es-419', 'fr', 'pt', 'pt-br', 'vi', 'de', 'it', 'pl', 'ru', 'th', 'ar'] as const;
 export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
@@ -42,6 +43,7 @@ const CATALOG: Record<Locale, Messages> = {
   pl,
   ru,
   th,
+  ar,
 };
 
 /** BCP 47 tags for Intl APIs. */
@@ -63,6 +65,7 @@ const INTL_TAGS: Record<Locale, string> = {
   pl: 'pl',
   ru: 'ru',
   th: 'th',
+  ar: 'ar',
 };
 
 /** Regions whose Spanish is es-419 (its parent locale in CLDR), and 419 itself. */
@@ -100,6 +103,14 @@ export function intlTag(locale: Locale): string {
   return INTL_TAGS[locale];
 }
 
+/** Languages written right to left. Only ar has a catalog so far; he, fa and ur are here for when they come. */
+const RTL = new Set(['ar', 'fa', 'he', 'ur']);
+
+/** The writing direction of a locale, for the dir attribute of what the tool shows in it. */
+export function localeDir(locale: Locale): 'ltr' | 'rtl' {
+  return RTL.has(locale.split('-')[0]) ? 'rtl' : 'ltr';
+}
+
 /** Replaces `{name}` placeholders. */
 export function format(message: string, params: Record<string, string | number>): string {
   return message.replace(/\{(\w+)\}/g, (match, name: string) => (name in params ? String(params[name]) : match));
@@ -108,6 +119,7 @@ export function format(message: string, params: Record<string, string | number>)
 export function formatBytes(bytes: number, locale: Locale): string {
   const mega = bytes >= 1_000_000;
   return new Intl.NumberFormat(intlTag(locale), {
+    numberingSystem: 'latn', // 0–9 everywhere, Arabic included
     style: 'unit',
     unit: mega ? 'megabyte' : 'kilobyte',
     unitDisplay: 'short',

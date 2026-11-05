@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <b>Русский</b> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ar.md">العربية</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <a href="README.id.md">Bahasa Indonesia</a> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <b>Русский</b> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Веб-компонент, который принимает ссылки на YouTube и находит все изображения, которые YouTube отдаёт для
 каждого видео, — превью во всех размерах, кадры в собственных пропорциях видео и кадры, которые YouTube
@@ -32,11 +32,11 @@ YouTube не сообщает, какие из этих файлов есть, �
 ли видео, берёт из oEmbed YouTube. Что удалось выяснить, опрашивая YouTube, описано в
 [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-Инструмент доступен на 17 языках — английском, корейском, японском, китайском (упрощённом и традиционном),
+Инструмент доступен на 18 языках — английском, корейском, японском, китайском (упрощённом и традиционном),
 немецком, испанском (Испании и Латинской Америки), французском, итальянском, португальском (Португалии и
-Бразилии), польском, русском, тайском, индонезийском и вьетнамском — и следует языку страницы, на которой
-стоит. На других языках он показывается по-английски. Светлая или тёмная тема следует настройке устройства
-или теме страницы, если страница её передаёт.
+Бразилии), польском, русском, тайском, арабском, индонезийском и вьетнамском — и следует языку страницы,
+на которой стоит. На других языках он показывается по-английски. Светлая или тёмная тема следует настройке
+устройства или теме страницы, если страница её передаёт.
 
 Исходный код в этом репозитории распространяется по лицензии MIT. Название ThumbSnap и его значок не входят в
 этот код. Значок вверху показан только для справки: он не подпадает под лицензию MIT, и сборки из этого
@@ -44,7 +44,7 @@ YouTube не сообщает, какие из этих файлов есть, �
 
 ## Попробовать
 
-ThumbSnap работает на [hobbyworker.me](https://hobbyworker.me/ru/services/thumbsnap/), на всех 17 языках.
+ThumbSnap работает на [hobbyworker.me](https://hobbyworker.me/ru/services/thumbsnap/), на всех 18 языках.
 
 ## Требования
 
@@ -98,7 +98,7 @@ npm run build   # dist/thumbsnap.js, его source map и THIRD_PARTY_LICENSES.t
 
 | Атрибут | По умолчанию | |
 |---|---|---|
-| `locale` | ближайший атрибут `lang` | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Испания) `es-419` (Латинская Америка) `fr` `pt` (Португалия) `pt-br` (Бразилия) `vi` `de` `it` `pl` `ru` `th`; теги вроде `zh-TW` или `pt-BR` сопоставляются с нужным языком |
+| `locale` | ближайший атрибут `lang` | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Испания) `es-419` (Латинская Америка) `fr` `pt` (Португалия) `pt-br` (Бразилия) `vi` `de` `it` `pl` `ru` `th` `ar`; теги вроде `zh-TW` или `pt-BR` сопоставляются с нужным языком |
 | `value` | | ссылки или ID, которые загрузятся при старте |
 | `no-url-sync` | выключено | не трогает `?v=` и `?list=` в адресной строке |
 | `no-history` | выключено | не хранит недавние видео в `localStorage` |
@@ -143,7 +143,7 @@ defineThumbSnap('thumb-snap', MyThumbSnap);
 ```
 src/
 ├── core/       ссылки, файлы CDN, загрузка и проверка, oEmbed, обрезка, преобразование и цвета, ZIP, имена файлов (без интерфейса)
-├── i18n/       en (исходный), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (исходный), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th, ar
 ├── ui/         элемент <thumb-snap> (Lit) — язык страницы, состояние одного видео, шаблоны, стили
 ├── index.ts    публичный API; ничего не регистрирует
 └── auto.ts     точка входа бандла; регистрирует <thumb-snap>

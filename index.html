@@ -101,6 +101,7 @@
             <option value="pl">Polski</option>
             <option value="ru">Русский</option>
             <option value="th">ไทย</option>
+            <option value="ar">العربية</option>
           </select>
         </label>
         <label>
@@ -125,11 +126,16 @@
       const lang = document.getElementById('lang');
       const theme = document.getElementById('theme');
       const params = new URLSearchParams(location.search);
+      // Like a real page in that language: Arabic pages are dir="rtl" (the tool sets its own direction either way).
+      const setLang = (value) => {
+        root.lang = value;
+        root.dir = ['ar', 'fa', 'he', 'ur'].includes(value.split('-')[0]) ? 'rtl' : 'ltr';
+      };
       const initialLang = params.get('lang');
-      if (initialLang) root.lang = initialLang;
+      if (initialLang) setLang(initialLang);
       lang.value = root.lang;
       theme.value = root.style.colorScheme || 'auto';
-      lang.addEventListener('change', () => (root.lang = lang.value));
+      lang.addEventListener('change', () => setLang(lang.value));
       theme.addEventListener('change', () => {
         root.style.colorScheme = theme.value === 'auto' ? '' : theme.value;
         try {

@@ -6,10 +6,10 @@ import { extractTargets, isVideoId, playlistUrl, targetKey } from '../core/parse
 import { readJson, removeKey, writeJson } from '../core/storage';
 import { imageUrl, type Variant } from '../core/variants';
 import { createZip, type ZipFile } from '../core/zip';
-import { format, formatBytes, getMessages, intlTag, type Locale, type MessageKey, type Messages } from '../i18n';
+import { format, formatBytes, getMessages, intlTag, localeDir, type Locale, type MessageKey, type Messages } from '../i18n';
 import { icons } from './icons';
 import { PageSync } from './page-sync';
-import { renderEntry, variantLabel, type RenderContext } from './render';
+import { isolate, renderEntry, sizeLine, variantLabel, type RenderContext } from './render';
 import { styles } from './styles';
 import { VideoEntry } from './video-entry';
 
@@ -226,7 +226,7 @@ export class ThumbSnapElement extends LitElement {
   /** The link field with its buttons and options, and the notice under it. */
   protected renderTop(): TemplateResult {
     const t = this.messages;
-    return html`<div class="part" lang=${intlTag(this.#page.locale)}>
+    return html`<div class="part" lang=${intlTag(this.#page.locale)} dir=${localeDir(this.#page.locale)}>
       ${this.#renderForm(t)} ${this._notice ? html`<p class="msg warn" role="alert">${this._notice}</p>` : nothing}
     </div>`;
   }
@@ -250,7 +250,7 @@ export class ThumbSnapElement extends LitElement {
       remove: (entry) => this.#remove(entry),
       toggle: (entry) => this.#toggle(entry),
     };
-    return html`<div class="part" lang=${intlTag(this.#page.locale)}>
+    return html`<div class="part" lang=${intlTag(this.#page.locale)} dir=${localeDir(this.#page.locale)}>
       ${this.#renderHistory(t)}
       ${multi
         ? html`<div class="batch">
@@ -270,7 +270,7 @@ export class ThumbSnapElement extends LitElement {
   /** Also rendered inside the open viewer, since a modal dialog covers (and makes inert) the page. */
   #renderToast(t: Messages): TemplateResult {
     return html`<div class="toast ${this._toast ? 'show' : ''}" role="status" aria-live="polite">
-      ${this._toast ? format(t[this._toast.key], this._toast.params ?? {}) : ''}
+      ${this._toast ? isolate(t[this._toast.key], this._toast.params ?? {}) : ''}
     </div>`;
   }
 
@@ -282,7 +282,7 @@ export class ThumbSnapElement extends LitElement {
     };
     return html`<form class="panel search" novalidate @submit=${this.#onSubmit}>
       <label class="label" for="ts-input">${t.inputLabel}</label>
-      <div class="field">
+      <div class="field" dir="ltr">
         <textarea
           id="ts-input"
           rows="1"
@@ -350,7 +350,7 @@ export class ThumbSnapElement extends LitElement {
           (item) => html`<li>
             <button type="button" class="chip" title=${item.title ?? item.id} @click=${() => this.load(`https://youtu.be/${item.id}`)}>
               <img src=${imageUrl(item.id, 'default')} alt="" width="120" height="90" loading="lazy" />
-              <span>${item.title ?? item.id}</span>
+              <span dir="auto">${item.title ?? item.id}</span>
             </button>
           </li>`,
         )}
@@ -375,7 +375,7 @@ export class ThumbSnapElement extends LitElement {
             <figcaption>
               <span>
                 <strong>${variantLabel(viewer.variant, t)}</strong>
-                · ${state.image.width}×${state.image.height} · ${formatBytes(state.image.blob.size, this.#page.locale)}
+                · ${sizeLine(this.#page.locale, state.image.width, state.image.height, formatBytes(state.image.blob.size, this.#page.locale))}
               </span>
               <span class="viewer-actions">
                 <button type="button" class="icon-btn" title=${t.download} aria-label=${t.download} @click=${() => void this.#download(viewer.entry, viewer.variant)}>

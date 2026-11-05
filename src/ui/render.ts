@@ -12,7 +12,7 @@ import {
   type FrameNumber,
   type Variant,
 } from '../core/variants';
-import { format, formatBytes, type Locale, type Messages } from '../i18n';
+import { format, formatBytes, localeDir, type Locale, type Messages } from '../i18n';
 import { icons } from './icons';
 import type { Section, VideoEntry } from './video-entry';
 
@@ -31,6 +31,24 @@ export interface RenderContext {
   zip(entries: VideoEntry[], key: string): void;
   remove(entry: VideoEntry): void;
   toggle(entry: VideoEntry): void;
+}
+
+/** A message whose {params} each sit in a <bdi>, so a title in another script keeps its place in the sentence. */
+export function isolate(message: string, params: Record<string, string | number>): TemplateResult {
+  return html`${message.split(/(\{\w+\})/).map((part) => {
+    const name = /^\{(\w+)\}$/.exec(part)?.[1];
+    return name !== undefined && name in params ? html`<bdi>${params[name]}</bdi>` : part;
+  })}`;
+}
+
+/**
+ * "1280×720 · 65 kB". Right to left, width×height is held left to right and the size kept whole (.num, .iso), or the
+ * line would read 720×1280; left to right it stays one run of text, as it always was.
+ */
+export function sizeLine(locale: Locale, width?: number, height?: number, bytes?: string): TemplateResult {
+  const dims = width && height ? `${width}×${height}` : '';
+  if (localeDir(locale) === 'ltr') return html`${dims}${bytes ? ` · ${bytes}` : ''}`;
+  return html`${dims ? html`<span class="num">${dims}</span>` : nothing}${bytes ? html` · <span class="iso">${bytes}</span>` : nothing}`;
 }
 
 export function variantLabel(variant: Variant, t: Messages): string {
@@ -107,7 +125,7 @@ function card(
     <figcaption>
       <span class="c-label">${label}</span>
       <span class="c-meta">
-        ${width && height ? `${width}×${height}` : ''}${ok ? ` · ${formatBytes(state.image.blob.size, c.locale)}` : ''}
+        ${sizeLine(c.locale, width, height, ok ? formatBytes(state.image.blob.size, c.locale) : undefined)}
       </span>
     </figcaption>
     ${options.extra ?? nothing} ${ok ? cardActions(entry, variant, c) : nothing}
@@ -168,7 +186,7 @@ function webpCard(entry: VideoEntry, variant: Variant, c: RenderContext): Templa
     <div class="preview">${preview}</div>
     <figcaption>
       <span class="c-label">${variantLabel(variant, t)}</span>
-      <span class="c-meta">${ok ? `${state.width}×${state.height}` : `${variant.width}×${variant.height}`} · WebP</span>
+      <span class="c-meta">${ok ? sizeLine(c.locale, state.width, state.height) : sizeLine(c.locale, variant.width, variant.height)} · WebP</span>
     </figcaption>
     ${ok
       ? html`<div class="c-actions">
@@ -200,7 +218,7 @@ function embedCode(entry: VideoEntry, c: RenderContext): TemplateResult {
           <span>${label}</span>
           <button type="button" class="btn sm" @click=${() => c.copyText(code)}>${icons.copy}<span>${t.copy}</span></button>
         </div>
-        <pre><code>${code}</code></pre>
+        <pre dir="ltr"><code>${code}</code></pre>
       </div>`,
     )}
   </div>`;
@@ -267,20 +285,20 @@ function header(entry: VideoEntry, c: RenderContext): TemplateResult {
           : nothing}
     </div>
     <div class="v-info">
-      ${entry.playlistTitle ? html`<p class="v-kicker">${format(t.playlistCover, { title: entry.playlistTitle })}</p>` : nothing}
+      ${entry.playlistTitle ? html`<p class="v-kicker">${isolate(t.playlistCover, { title: entry.playlistTitle })}</p>` : nothing}
       <h3 class="v-title">
         ${info?.title && id
-          ? html`<a href=${watchUrl(id)} target="_blank" rel="noopener noreferrer">${info.title}</a>`
-          : html`<code>${id ?? (entry.target.kind === 'playlist' ? entry.target.listId : '')}</code>`}
+          ? html`<a dir="auto" href=${watchUrl(id)} target="_blank" rel="noopener noreferrer">${info.title}</a>`
+          : html`<code dir="ltr">${id ?? (entry.target.kind === 'playlist' ? entry.target.listId : '')}</code>`}
       </h3>
       ${info?.title
         ? html`<p class="v-sub">
             ${info.author
               ? html`${info.authorUrl
-                    ? html`<a href=${info.authorUrl} target="_blank" rel="noopener noreferrer">${info.author}</a>`
-                    : info.author}<span aria-hidden="true">·</span>`
+                    ? html`<a dir="auto" href=${info.authorUrl} target="_blank" rel="noopener noreferrer">${info.author}</a>`
+                    : html`<bdi>${info.author}</bdi>`}<span aria-hidden="true">·</span>`
               : nothing}
-            <code>${id}</code>
+            <code dir="ltr">${id}</code>
           </p>`
         : nothing}
       ${problem}

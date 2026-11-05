@@ -10,7 +10,7 @@
   <a href="../LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow"></a>
 </p>
 
-<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <b>Bahasa Indonesia</b> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
+<p align="center"><a href="../README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.ar.md">العربية</a> · <a href="README.de.md">Deutsch</a> · <a href="README.es.md">Español (España)</a> · <a href="README.es-419.md">Español (Latinoamérica)</a> · <a href="README.fr.md">Français</a> · <b>Bahasa Indonesia</b> · <a href="README.it.md">Italiano</a> · <a href="README.ja.md">日本語</a> · <a href="README.pl.md">Polski</a> · <a href="README.pt-BR.md">Português (Brasil)</a> · <a href="README.pt-PT.md">Português (Portugal)</a> · <a href="README.ru.md">Русский</a> · <a href="README.th.md">ไทย</a> · <a href="README.vi.md">Tiếng Việt</a> · <a href="README.zh-Hans.md">简体中文</a> · <a href="README.zh-Hant.md">繁體中文</a></p>
 
 Komponen web yang menerima link YouTube dan menemukan semua gambar yang disediakan YouTube untuk setiap video —
 thumbnail dalam semua ukurannya, frame dengan rasio aspek asli video, dan frame yang dipilih YouTube sendiri — untuk
@@ -31,11 +31,11 @@ dengan frame otomatis byte demi byte untuk membedakan thumbnail yang diunggah da
 mengambil judul, channel, dan apakah videonya vertikal dari endpoint oEmbed YouTube. Temuan dari penyelidikan terhadap
 YouTube dicatat di [docs/youtube-thumbnails.md](youtube-thumbnails.md).
 
-Alat ini tersedia dalam 17 bahasa — Inggris, Korea, Jepang, Tionghoa (Sederhana dan Tradisional), Jerman, Spanyol
-(Spanyol dan Amerika Latin), Prancis, Italia, Portugis (Portugal dan Brasil), Polandia, Rusia, Thai, Indonesia, dan
-Vietnam. Alat ini mengikuti bahasa halaman tempatnya dipasang; untuk bahasa lainnya, alat ini tampil dalam bahasa
-Inggris. Tampilan terang atau gelap mengikuti pengaturan perangkat, atau mode gelap halaman bila halaman
-meneruskannya.
+Alat ini tersedia dalam 18 bahasa — Inggris, Korea, Jepang, Tionghoa (Sederhana dan Tradisional), Jerman, Spanyol
+(Spanyol dan Amerika Latin), Prancis, Italia, Portugis (Portugal dan Brasil), Polandia, Rusia, Thai, Arab,
+Indonesia, dan Vietnam. Alat ini mengikuti bahasa halaman tempatnya dipasang; untuk bahasa lainnya, alat ini tampil
+dalam bahasa Inggris. Tampilan terang atau gelap mengikuti pengaturan perangkat, atau mode gelap halaman bila
+halaman meneruskannya.
 
 Kode sumber di repositori ini berlisensi MIT. Nama ThumbSnap dan ikonnya tidak termasuk dalam kode sumber ini. Ikon di
 bagian atas hanya ditampilkan sebagai gambaran: ikon itu tidak dicakup lisensi MIT dan tidak disertakan dalam hasil
@@ -44,7 +44,7 @@ kreatornya.
 
 ## Coba langsung
 
-ThumbSnap berjalan di [hobbyworker.me](https://hobbyworker.me/id/services/thumbsnap/) dalam ke-17 bahasanya.
+ThumbSnap berjalan di [hobbyworker.me](https://hobbyworker.me/id/services/thumbsnap/) dalam ke-18 bahasanya.
 
 ## Persyaratan
 
@@ -100,7 +100,7 @@ Sertakan `THIRD_PARTY_LICENSES.txt` bersamanya.
 
 | Atribut | Bawaan | |
 |---|---|---|
-| `locale` | atribut `lang` terdekat | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Spanyol) `es-419` (Amerika Latin) `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl` `ru` `th`; tag seperti `zh-TW` atau `pt-BR` dipetakan ke bahasa yang sesuai |
+| `locale` | atribut `lang` terdekat | `en` `ko` `ja` `zh-hans` `zh-hant` `id` `es` (Spanyol) `es-419` (Amerika Latin) `fr` `pt` (Portugal) `pt-br` (Brasil) `vi` `de` `it` `pl` `ru` `th` `ar`; tag seperti `zh-TW` atau `pt-BR` dipetakan ke bahasa yang sesuai |
 | `value` | | link atau ID yang dimuat di awal |
 | `no-url-sync` | nonaktif | membiarkan `?v=` dan `?list=` di bilah alamat apa adanya |
 | `no-history` | nonaktif | tidak menyimpan video terbaru di `localStorage` |
@@ -143,7 +143,7 @@ Blok penyusunnya — `parseTarget`, `extractTargets`, `imageUrl`, `loadImage`, `
 ```
 src/
 ├── core/       link, file di CDN, pemuatan dan pengecekan, oEmbed, pemotongan, konversi dan warna, ZIP, nama file (tanpa antarmuka)
-├── i18n/       en (sumber), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th
+├── i18n/       en (sumber), ko, ja, zh-hans, zh-hant, id, es, es-419, fr, pt, pt-br, vi, de, it, pl, ru, th, ar
 ├── ui/         elemen <thumb-snap> (Lit) — bahasa halaman, status satu video, template, gaya
 ├── index.ts    API publik; tidak mendaftarkan apa pun
 └── auto.ts     titik masuk bundle; mendaftarkan <thumb-snap>

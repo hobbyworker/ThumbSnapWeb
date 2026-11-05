@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LOCALES, format, getMessages, intlTag, resolveLocale } from '../src/i18n';
+import { LOCALES, format, formatBytes, getMessages, intlTag, localeDir, resolveLocale } from '../src/i18n';
 
 const PLACEHOLDER = /\{(\w+)\}/g;
 const placeholders = (s: string) => [...s.matchAll(PLACEHOLDER)].map((m) => m[1]).sort();
@@ -18,7 +18,7 @@ describe('catalogs', () => {
 
   it('matches the languages of hobbyworker.me', () => {
     expect([...LOCALES].sort()).toEqual(
-      ['de', 'en', 'es', 'es-419', 'fr', 'id', 'it', 'ja', 'ko', 'pl', 'pt', 'pt-br', 'ru', 'th', 'vi', 'zh-hans', 'zh-hant'],
+      ['ar', 'de', 'en', 'es', 'es-419', 'fr', 'id', 'it', 'ja', 'ko', 'pl', 'pt', 'pt-br', 'ru', 'th', 'vi', 'zh-hans', 'zh-hant'],
     );
   });
 
@@ -65,13 +65,17 @@ describe('resolveLocale', () => {
     ['es-US', 'es-419'],
     ['es_MX', 'es-419'],
     ['es-Latn-MX', 'es-419'],
+    ['ar', 'ar'],
+    ['ar-EG', 'ar'],
+    ['ar-SA', 'ar'],
+    ['ar_AE', 'ar'],
     ['ru-RU', 'ru'],
     ['th-TH', 'th'],
   ])('%s → %s', (tag, locale) => {
     expect(resolveLocale(tag)).toBe(locale);
   });
 
-  it.each([[null], [undefined], [''], ['xx'], ['ar']])('%j → null', (tag) => {
+  it.each([[null], [undefined], [''], ['xx'], ['he']])('%j → null', (tag) => {
     expect(resolveLocale(tag)).toBeNull();
   });
 });
@@ -87,6 +91,20 @@ describe('intlTag', () => {
     ['zh-hant', 'zh-Hant'],
   ] as const)('%s → %s', (locale, tag) => {
     expect(intlTag(locale)).toBe(tag);
+  });
+});
+
+describe('localeDir', () => {
+  it('lays Arabic out right to left and the rest left to right', () => {
+    expect(localeDir('ar')).toBe('rtl');
+    expect(LOCALES.filter((l) => l !== 'ar').every((l) => localeDir(l) === 'ltr')).toBe(true);
+  });
+});
+
+describe('formatBytes', () => {
+  it('writes 0–9 in every locale, Arabic included', () => {
+    for (const locale of LOCALES) expect(formatBytes(1_400_000, locale), locale).toMatch(/^1[.,]4\D/);
+    expect(formatBytes(65_000, 'ar')).not.toMatch(/[\u0660-\u0669\u06f0-\u06f9]/);
   });
 });
 

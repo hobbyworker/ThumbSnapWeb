@@ -31,5 +31,5 @@ export { baseName, fileName, sanitizeFilename } from './core/filename';
 export type { FilenameStyle } from './core/filename';
 export { htmlSnippet, markdownSnippet } from './core/snippets';
 
-export { DEFAULT_LOCALE, LOCALES, format, getMessages, intlTag, resolveLocale } from './i18n';
+export { DEFAULT_LOCALE, LOCALES, format, getMessages, intlTag, localeDir, resolveLocale } from './i18n';
 export type { Locale, MessageKey, Messages } from './i18n';
